@@ -1,9 +1,9 @@
-<?php $title="Connexion";?>
+<?php $title="administration";?>
 
 <?php ob_start(); ?>
 
-<h1>page connexion</h1>
-<p>formulaire de connection</p>
+<h1>adminsitration</h1>
+<p>test</p>
 <p><a href="index.php">retour accueil</a></p>
 
 
