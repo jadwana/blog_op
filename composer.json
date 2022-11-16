@@ -1,0 +1,18 @@
+{
+    "name": "tagad/blog-sp.blog",
+    "autoload": {
+        "psr-4": {
+            
+            "app\\": "app/"
+            
+        }
+    },
+
+    "authors": [
+        {
+            "name": "jadwana",
+            "email": "jadwana@yahoo.fr"
+        }
+    ],
+    "require": {}
+}
