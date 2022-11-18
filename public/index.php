@@ -5,31 +5,37 @@
 require '../vendor/autoload.php';
 
 
+$loader = new Twig\Loader\FilesystemLoader('../app/views');
+$twig = new \Twig\Environment($loader, [
+    'cache'=> false, //'tmp'
+]);
+
 //router
 if(isset($_GET['action']) && $_GET['action'] !==''){
     
     switch ($_GET['action']){
         case "post":
-            require '../app/views/postList.php';
+            echo $twig->render ('postList.twig', ['title'=>'liste de post']);
             break;
         case "onepost":
-            require '../app/views/onepost.php';
+            echo $twig->render ('onepost.twig', ['title'=>'un post']);
             break;
         case "logon":
-            require '../app/views/connexion.php';
+            echo $twig->render ('connexion.twig', ['title'=>'logon']);
             break;
         case "register":
-            require '../app/views/register.php';
+            echo $twig->render ('register.twig', ['title'=>'inscription']);
             break;
         case "admin":
-            require '../app/views/administration.php';
+            echo $twig->render ('administration.twig', ['title'=>'admin']);
             break;  
         default:
-            require '../app/views/404.php';
+            echo $twig->render ('404.twig', ['title'=>'404']);
     }
     
 
 
 }else{
-    require '../app/views/homepage.php';
+    echo $twig->render ('homepage.twig', ['title'=>'accueil']);
+    // require '../app/views/homepage.php';
 }

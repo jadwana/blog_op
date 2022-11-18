@@ -6,33 +6,59 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit822dafff77f8d4e1de447fd77559ff3d
 {
+    public static $files = array (
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'v' => 
+        array (
+            'vendor\\' => 7,
+        ),
+        't' => 
+        array (
+            'twig\\' => 5,
+        ),
         'a' => 
         array (
             'app\\' => 4,
         ),
-        'R' => 
+        'T' => 
         array (
-            'Router\\' => 7,
+            'Twig\\' => 5,
         ),
-        'E' => 
+        'S' => 
         array (
-            'Exceptions\\' => 11,
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'vendor\\' => 
+        array (
+            0 => 'C:\\Users\\tagad\\Desktop\\WAMP\\www\\blogSP.blog\\vendor',
+        ),
+        'twig\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/twig',
+        ),
         'app\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
-        'Router\\' => 
+        'Twig\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/Router',
+            0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
-        'Exceptions\\' => 
+        'Symfony\\Polyfill\\Mbstring\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/Exceptions',
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
     );
 

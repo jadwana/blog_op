@@ -3,7 +3,9 @@
     "autoload": {
         "psr-4": {
             
-            "app\\": "app/"
+            "app\\": "app/",
+            "vendor\\": "vendor/",
+            "twig\\": "twig/"
             
         }
     },
@@ -14,5 +16,7 @@
             "email": "jadwana@yahoo.fr"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "^3.4"
+    }
 }
