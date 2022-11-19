@@ -1,15 +1,32 @@
 {% extends 'layout.twig' %}
 
-{% block head %}
-    <title> {{title}} </title>
+{% block title %}
+     liste posts
 {% endblock %}
 
 {% block content %}
 
 <h1>Mon super super blog !</h1>
-<p>Derniers billets du blog :</p>
-<p><a href="index.php">retour accueil</a></p>
-<p><a href="index.php?action=onepost">detail du billet</a></p>
+<h2>Derniers billets du blog :</h2>
+<p><a href="index.php">retour accueil</a></p> <br>
+
+
+
+   {% for post in posts %}
+
+   <div class="card mb-2" style="width: 50rem;">
+    <div class="card-body ">
+        <h3 class="card-title bg-primary text-light">{{post.getTitle}}</h3>
+        <h5 class="card-subtitle mb-2 text-mutetd">le : {{post.getFrench_creation_date}}</h5>
+        <p class="card-text">{{post.getChapo}}</p>
+        <p class="card-footer">Par : {{post.getUsername}}</p>
+        <a href="index.php?action=onepost&id={{post.getIdentifier}}" class="card-link">Voir la suite ...</a>
+    </div>
+
+   </div >
+      
+   
+    {% endfor %}
 
 {% endblock %}
 

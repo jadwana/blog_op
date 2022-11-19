@@ -2,10 +2,13 @@
 
 
 //autoload
-require '../vendor/autoload.php';
+
+use App\Controllers\PostList;
+
+require 'vendor/autoload.php';
 
 
-$loader = new Twig\Loader\FilesystemLoader('../app/views');
+$loader = new Twig\Loader\FilesystemLoader('app/views');
 $twig = new \Twig\Environment($loader, [
     'cache'=> false, //'tmp'
 ]);
@@ -15,7 +18,8 @@ if(isset($_GET['action']) && $_GET['action'] !==''){
     
     switch ($_GET['action']){
         case "post":
-            echo $twig->render ('postList.twig', ['title'=>'liste de post']);
+            (new PostList())->execute();
+            
             break;
         case "onepost":
             echo $twig->render ('onepost.twig', ['title'=>'un post']);
