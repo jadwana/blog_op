@@ -20,10 +20,6 @@ class ComposerStaticInit822dafff77f8d4e1de447fd77559ff3d
         array (
             'twig\\' => 5,
         ),
-        'a' => 
-        array (
-            'app\\' => 4,
-        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -32,6 +28,10 @@ class ComposerStaticInit822dafff77f8d4e1de447fd77559ff3d
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
+        ),
+        'A' => 
+        array (
+            'App\\' => 4,
         ),
     );
 
@@ -44,10 +44,6 @@ class ComposerStaticInit822dafff77f8d4e1de447fd77559ff3d
         array (
             0 => __DIR__ . '/../..' . '/twig',
         ),
-        'app\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app',
-        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -59,6 +55,10 @@ class ComposerStaticInit822dafff77f8d4e1de447fd77559ff3d
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/App',
         ),
     );
 
