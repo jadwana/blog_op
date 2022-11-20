@@ -1,3 +1,4 @@
+
 {% macro input(name, label, value = null, options =[]) %}
 <div class="form-group {{ options.class }}">
     <label for="{{name}}"> {{label}} </label>
@@ -9,5 +10,6 @@
 <div class="form-group {{ options.class }}">
     <label for="{{name}}"> {{label}} </label>
     <textarea class="form-control" id="{{ name }}" name="{{ name }}" cols=" {{cols}} " rows="{{rows}}"> {{value}} </textarea>
+
 </div>
 {% endmacro %}
