@@ -13,7 +13,7 @@ class Post
      */
     private string $title;
     /**
-     * post date
+     * post date modification
      *
      * @var string
      */
