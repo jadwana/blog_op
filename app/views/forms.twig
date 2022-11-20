@@ -1,13 +1,15 @@
-{% macro input(name, label) %}
-<div class="form-group">
+
+{% macro input(name, label, value = null, options =[]) %}
+<div class="form-group {{ options.class }}">
     <label for="{{name}}"> {{label}} </label>
-    <input type="text" class="form-control" id="{{ name }}" name="{{ name }}">
+    <input type=" {{options.type ? options.type : 'text'}} " class="form-control" id="{{ name }}" name="{{ name }}" value=" {{value}} ">
 </div>
 {% endmacro %}
 
-{% macro textarea(name, label, cols, rows) %}
-<div class="form-group">
+{% macro textarea(name, label, cols, rows, value = null, options=[]) %}
+<div class="form-group {{ options.class }}">
     <label for="{{name}}"> {{label}} </label>
-    <textarea class="form-control" id="{{ name }}" name="{{ name }}" cols=" {{cols}} " rows="{{rows}}"></textarea>
+    <textarea class="form-control" id="{{ name }}" name="{{ name }}" cols=" {{cols}} " rows="{{rows}}"> {{value}} </textarea>
+
 </div>
 {% endmacro %}
