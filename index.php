@@ -2,6 +2,7 @@
 session_start();
 
 use App\Controllers\Logon;
+use App\Controllers\Logout;
 use App\Controllers\OnePost;
 use App\Controllers\PostList;
 
@@ -42,6 +43,9 @@ try{
                  }
                  (new Logon())->execute();
                 break;
+            case "logout":
+                (new Logout())->execute();
+                break;  
             case "register":
                 echo $twig->render ('register.twig', ['title'=>'inscription']);
                 break;
