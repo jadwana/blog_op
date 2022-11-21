@@ -38,6 +38,7 @@ class Comment
      */
     private string $post;
 
+    //connect to the data base
     public DatabaseConnection $connection;
 
     //method to retrieve comments associated with post id
