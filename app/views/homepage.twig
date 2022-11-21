@@ -95,6 +95,8 @@
 {% if session.user_id is defined %}
 id session: {{session.user_id}}
 bienvenue {{session.username}}
+{% else %}
+bienvenue visiteur
 {% endif %}
 <form action="#" method="post">
      <div class="row">
