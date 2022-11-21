@@ -92,7 +92,10 @@
              </div >
       </div>
 </div>
-
+{% if session.user_id is defined %}
+id session: {{session.user_id}}
+bienvenue {{session.username}}
+{% endif %}
 <form action="#" method="post">
      <div class="row">
           {{ forms.input ('firstname', 'votre nom', firstname, {class: 'col-4'}) }}
@@ -110,7 +113,7 @@
 
 </form>
 
-<p>id session: {{session.user_id}} </p>
+
 {% endblock %}
 
 
