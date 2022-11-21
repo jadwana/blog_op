@@ -16,6 +16,6 @@ abstract class Controller
         $this->loader = new FilesystemLoader('App/views');
 
         //we set the twig environment
-        $this-> twig= new Environment($this->loader);
+        $this->twig= new Environment($this->loader);
     }
 }

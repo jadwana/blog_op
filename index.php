@@ -1,11 +1,11 @@
 <?php
+session_start();
 
-
-//autoload
-
+use App\Controllers\Logon;
 use App\Controllers\OnePost;
 use App\Controllers\PostList;
 
+//autoload
 require 'vendor/autoload.php';
 
 
@@ -13,6 +13,8 @@ $loader = new Twig\Loader\FilesystemLoader('app/views');
 $twig = new \Twig\Environment($loader, [
     'cache'=> false, //'tmp'
 ]);
+
+
 
 //router
 try{
@@ -22,6 +24,7 @@ try{
         switch ($_GET['action']){
             case "postlist":
                 (new PostList())->execute();
+                
                 break;
             case "onepost":
                 if(isset($_GET['id']) && $_GET['id'] > 0){
@@ -33,7 +36,11 @@ try{
                  }
                 break;
             case "logon":
-                echo $twig->render ('connexion.twig', ['title'=>'logon']);
+                if(isset($_SESSION['user_id'])){
+                    header("location: index.php");
+                    exit;
+                 }
+                 (new Logon())->execute();
                 break;
             case "register":
                 echo $twig->render ('register.twig', ['title'=>'inscription']);
@@ -48,7 +55,7 @@ try{
     
     
     }else{
-        echo $twig->render ('homepage.twig', ['title'=>'accueil']);
+        echo $twig->render ('homepage.twig', array('session'=> $_SESSION));
     }
 
 }catch (Exception $e) {
