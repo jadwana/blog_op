@@ -1,0 +1,16 @@
+body {
+    background-color:#e4f2e7;
+}
+.navbar{
+    background-color: #2d3e40;
+    
+}
+.nav-link{
+    color: #93bfb7;
+}
+.nav-link:hover{
+    color: #387373;
+}
+.card-title{
+    background-color: #93bfb7;
+}

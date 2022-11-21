@@ -9,12 +9,13 @@ abstract class Controller
     private $loader;
     protected $twig;
 
+    //method in charge of twig parameter
     public function __construct()
     {
-        //on parametre le dossier contenant les templates
+        //we configure the folder containing the templates
         $this->loader = new FilesystemLoader('App/views');
 
-        //on parametre l'environnement twig
+        //we set the twig environment
         $this-> twig= new Environment($this->loader);
     }
 }

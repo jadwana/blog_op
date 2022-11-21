@@ -3,18 +3,113 @@
 {% block title %}
      accueil
 {% endblock %}
-
+{% import 'forms.twig' as forms %}
 
 {% block content %}
-<h1>Mon super super blog !</h1>
+<h1 class="text-center mt-5">Bienvenue sur mon blog !</h1><br><br>
 
 
-<p class="bg-primary text-light">introduction du blog</p>
-<p>paragraphe d'introduction</p>
-<a href="index.php?action=postlist">lien vers articles</a>
-<a href="index.php?action=logon">lien vers connexion</a>
-<a href="index.php?action=register">lien vers inscription</a>
-<a href="index.php?action=admin">lien vers administration</a>
+<h2 class="text-center my-5">Padawan développeuse, Jedi développeuse un jour sera (Maitre Yoda)</h2><br>
+
+<div class="row mb-5">
+     <div class="col text-center"><img src="public/images/logo.png" width="70%" alt=""></div>
+     <div class="col"><p class="text-center my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt corrupti vitae modi nam quae quaerat nobis 
+          ab magnam eaque laborum, beatae doloribus, atque eveniet voluptatem vero, sequi repudiandae odit.</p>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut asperiores cum, veniam totam quas beatae, esse repellat tempore nemo deserunt saepe labore
+           animi accusamus dolore corporis quia reiciendis ipsum possimus.</p>
+           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut asperiores cum, veniam totam quas beatae, esse repellat tempore nemo deserunt saepe labore
+               animi accusamus dolore corporis quia reiciendis ipsum possimus.</p>
+     </div>
+     
+</div>
+
+
+
+
+<div class="row mb-5">
+     <div class="col-6">
+          <div class="card mx-2 mb-2" >
+               <img src="public/images/poppies.jpg" class="card-img-top" alt="poppies">
+              <div class="card-body ">
+     
+                  <h3 class="card-title">Qui suis-je?</h3>
+                  
+                  <p class="card-text">Actuellement en formation "Développeur d'application - PHP / Symfony" au sein de l'école en ligne 
+                    OpenClassrooms. Cette formation me permettra de maitriser le framework Symfony et d'obtenir un titre 
+                    de "Développeur d'application" de niveau II, équivalent à un bac +3/4.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt corrupti vitae modi nam quae quaerat nobis 
+                    ab magnam eaque laborum, beatae doloribus, atque eveniet voluptatem vero, sequi repudiandae odit.</p>
+                    
+              </div>
+             </div >
+      </div>
+      <div class="col-6">
+          <div class="card mx-2 mb-2" >
+               <img src="public/images/mountains.jpg" class="card-img-top" alt="mountains">
+              <div class="card-body ">
+     
+                  <h3 class="card-title">Mon parcours</h3>
+                  
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt corrupti vitae modi nam quae quaerat nobis 
+                    ab magnam eaque laborum, beatae doloribus, atque eveniet voluptatem vero, sequi repudiandae odit.</p>
+                    <a href="#" class="card-link">vers mon CV</a>
+                    
+              </div>
+             </div >
+      </div>
+</div>
+
+<div class="row">
+     <div class="col-6">
+          <div class="card mx-2 mb-2" >
+               <img src="public/images/code.jpg" class="card-img-top" alt="code">
+              <div class="card-body ">
+     
+                  <h3 class="card-title">Lorem ipsum dolor</h3>
+                  
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt corrupti vitae modi nam quae quaerat nobis 
+                    ab magnam eaque laborum, beatae doloribus, atque eveniet voluptatem vero, sequi repudiandae odit.</p>
+                    
+              </div>
+             </div >
+      </div>
+      <div class="col-6">
+          <div class="card mx-2 mb-2" >
+               <img src="public/images/laptop.jpg" class="card-img-top" alt="laptop">
+              <div class="card-body ">
+     
+                  <h3 class="card-title">Ipsum voluptates</h3>
+                  
+                  <p class="card-text">
+                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus placeat similique eligendi? 
+                   Hic quos consequatur adipisci esse sint nesciunt id quaerat perferendis eaque. Ipsum voluptates 
+                   possimus perferendis. Harum, molestias natus.</p>
+                    
+                    
+              </div>
+             </div >
+      </div>
+</div>
+
+<form action="#" method="post">
+     <div class="row">
+          {{ forms.input ('firstname', 'votre nom', firstname, {class: 'col-4'}) }}
+          {{ forms.input ('surnamename', 'votre prénom', surname, {class: 'col-4'}) }}
+         
+     </div>
+     <div class="row">
+          {{ forms.input ('email', 'votre email', email,  {class: 'col-4', type: 'email'}) }}
+     </div>
+     {{forms.textarea('message', 'votre message', '1','10', message, {class: 'col-8'}) }}
+     <div class="form-group">
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+     </div>
+
+
+</form>
+
 
 {% endblock %}
 
