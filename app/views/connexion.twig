@@ -3,12 +3,29 @@
 {% block title %}
      connexion
 {% endblock %}
-
+{% import 'forms.twig' as forms %}
 
 {% block content %}
-<h1>page connexion</h1>
-<p>formulaire de connection</p>
-<p><a href="index.php">retour accueil</a></p>
 
+<h3>Connectez-vous :</h3> <br>
+
+
+<form action="index.php?action=logon" method="post">
+     <div class="row">
+          {{ forms.input ('username', 'Votre pseudo', username, {class: 'col-4'}) }}
+     </div>
+     <div class="row mb-2">
+          {{ forms.input ('password', 'Votre mot de passe', password,  {class: 'col-4', type: 'password'}) }}
+     </div>
+    <div><p>Tous les champs sont requis</p></div>
+     <div class="form-group mb-5">
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+     </div>
+
+
+</form>
+id de session : {{session.username}}
+<p>Pas encore de compte?</p>
+<p><a href="index.php?action=addUser">Inscrivez-vous !</a></p>
 {% endblock %}
 
