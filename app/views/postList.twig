@@ -6,27 +6,30 @@
 
 {% block content %}
 
-<h1>Mon super super blog !</h1>
+<h1 class="text-center">Mon super super blog !</h1>
 <h2>Derniers billets du blog :</h2>
-<p><a href="index.php">retour accueil</a></p> <br>
+<br>
 
-
-
-   {% for post in posts %}
-
-   <div class="card mb-2" style="width: 50rem;">
-    <div class="card-body ">
-        <h3 class="card-title bg-primary text-light">{{post.getTitle}}</h3>
-        <h5 class="card-subtitle mb-2 text-mutetd">le : {{post.getFrench_creation_date}}</h5>
-        <p class="card-text">{{post.getChapo}}</p>
-        <p class="card-footer">Par : {{post.getUsername}}</p>
-        <a href="index.php?action=onepost&id={{post.getIdentifier}}" class="card-link">Voir la suite ...</a>
-    </div>
-
-   </div >
-      
+<div class="row">
+    
+        {% for post in posts %}
+        <div class="col-6">
+            <div class="card mx-2 mb-2" >
+                <div class="card-body ">
+                    <h3 class="card-title">{{post.getTitle}}</h3>
+                    <h5 class="card-subtitle mb-2 text-mutetd">le : {{post.getFrench_creation_date}}</h5>
+                    <p class="card-text">{{post.getChapo}}</p>
+                    <p class="card-footer">Par : {{post.getUsername}}</p>
+                    <a href="index.php?action=onepost&id={{post.getIdentifier}}" class="card-link">Voir la suite ...</a>
+                </div>
+               </div >
+        </div>
+        
+         {% endfor %}
    
-    {% endfor %}
+</div>
+
+  
 
 {% endblock %}
 
