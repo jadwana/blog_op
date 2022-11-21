@@ -33,9 +33,16 @@
                         <li class="nav-item">
                             <a href="index.php?action=register" class="nav-link">Inscription</a>
                         </li>
+                        {% if session.user_id is defined %}
+                        <li class="nav-item">
+                            <a href="index.php?action=logout" class="nav-link">Déconnexion</a>
+                        </li>
+                        {% else %}
                         <li class="nav-item">
                             <a href="index.php?action=logon" class="nav-link">Connexion</a>
                         </li>
+                        {% endif %}
+                        
                         <li class="nav-item">
                             <a href="#contact" class="nav-link">Contact</a>
                         </li>
