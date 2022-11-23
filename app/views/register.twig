@@ -4,11 +4,26 @@
 inscription
 {% endblock %}
 
-
+{% import 'forms.twig' as forms %}
 {% block content %}
 
 <h1>Inscription</h1>
-<p>formulaire d'inscription</p>
-<p><a href="index.php">retour accueil</a></p>
 
+<form action="index.php?action=addUser" method="post">
+    <div class="row">
+          {{ forms.input ('username', 'Votre pseudo (minimum 5 caractères)', username, {class: 'col-4'}) }}
+     </div>
+     <div class="row">
+        {{ forms.input ('password', 'Votre mot de passe', password,  {class: 'col-4', type: 'password'}) }}
+     </div>
+     <div class="row mb-3">
+        {{ forms.input ('email', 'votre email', email,  {class: 'col-4', type: 'email'}) }}
+   </div>
+   <div class="form-group mb-5">
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+</div>
+</form>
+
+<p>Déjà un compte?</p>
+<p><a href="index.php?action=logon">Connectez-vous !</a></p>
 {% endblock %}
