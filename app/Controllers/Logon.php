@@ -12,18 +12,18 @@ require 'vendor/autoload.php';
 class Logon extends Controller
 
 {
+    //method which verifies the username and password of the user and retrieves the session data
     public function execute()
     {
         if(!empty($_POST)){
              $username =null;
-            // $password = null;
 
             if(isset($_POST['username'], $_POST['password']) && !empty(trim($_POST['username'])) && !empty($_POST['password'])){
                 $username=htmlspecialchars(trim($_POST['username']));
 
                 $userRepository = new User();
                 $userRepository->connection= new DatabaseConnection();
-                $connectedUser = $userRepository->checkUserPseudo($username);
+                $connectedUser = $userRepository->checkUserUsername($username);
                 if(!$connectedUser){
                     throw new \Exception('mauvais pseudo  !');
                 }else{
@@ -42,7 +42,6 @@ class Logon extends Controller
             }
             
         }else{
-            // header('location: index.php?action=logon');
         }
         $this->twig->display('connection.twig');  
     }

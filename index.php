@@ -3,6 +3,7 @@ session_start();
 
 use App\Controllers\Logon;
 use App\Controllers\Logout;
+use App\Controllers\AddUser;
 use App\Controllers\OnePost;
 use App\Controllers\PostList;
 
@@ -37,17 +38,16 @@ try{
                  }
                 break;
             case "logon":
-                if(isset($_SESSION['user_id'])){
-                    header("location: index.php");
-                    exit;
-                 }
                  (new Logon())->execute();
                 break;
             case "logout":
                 (new Logout())->execute();
                 break;  
             case "register":
-                echo $twig->render ('register.twig', ['title'=>'inscription']);
+                if(isset($_SESSION['user_id'])){
+                    throw new Exception('Vous êtes déjà connecté, vous ne pouvez pas vous inscrire à nouveau');
+                }
+                (new AddUser())->execute();
                 break;
             case "admin":
                 echo $twig->render ('administration.twig', ['title'=>'admin']);

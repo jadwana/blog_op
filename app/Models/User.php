@@ -42,7 +42,7 @@ class User
     public DatabaseConnection $connection;
 
     //method to check user username and get this user data
-    public function checkUserPseudo(string $username): ?user
+    public function checkUserUsername(string $username): ?user
     {
         $statement= $this->connection->getConnection()->prepare(
             'SELECT * FROM users WHERE username=? ');
@@ -85,7 +85,7 @@ class User
     public function addUser(string $username, string $password, string $email): bool
     {
         $statement = $this->connection->getConnection()->prepare(
-            'INSERT INTO users( username, password, email) VALUES(?, ?, ?, ?, ?)'
+            'INSERT INTO users( username, password, email) VALUES(?, ?, ?)'
         );
         $affectedLines = $statement->execute([$username, $password, $email]);
 
