@@ -44,6 +44,6 @@ class Logon extends Controller
         }else{
             // header('location: index.php?action=logon');
         }
-        $this->twig->display('connexion.twig');  
+        $this->twig->display('connection.twig');  
     }
 }
