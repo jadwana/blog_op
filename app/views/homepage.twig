@@ -9,15 +9,16 @@
 <h1 class="text-center mt-5">Bienvenue sur mon blog !</h1><br><br>
 
 
-<h2 class="text-center my-5">Padawan développeuse, Jedi développeuse un jour sera (Maitre Yoda)</h2><br>
+<h2 class="text-center mt-5">Padawan développeuse, Jedi développeuse un jour sera.</h2>
+<h4 class="text-center">(Maitre Yoda)</h4><br>
 
 <div class="row mb-5">
      <div class="col text-center"><img src="public/images/logo.png" width="70%" alt=""></div>
-     <div class="col"><p class="text-center my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt corrupti vitae modi nam quae quaerat nobis 
+     <div class="col"><p class="text-center m-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt corrupti vitae modi nam quae quaerat nobis 
           ab magnam eaque laborum, beatae doloribus, atque eveniet voluptatem vero, sequi repudiandae odit.</p>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut asperiores cum, veniam totam quas beatae, esse repellat tempore nemo deserunt saepe labore
+          <p class="text-center m-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut asperiores cum, veniam totam quas beatae, esse repellat tempore nemo deserunt saepe labore
            animi accusamus dolore corporis quia reiciendis ipsum possimus.</p>
-           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut asperiores cum, veniam totam quas beatae, esse repellat tempore nemo deserunt saepe labore
+           <p class="text-center m-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut asperiores cum, veniam totam quas beatae, esse repellat tempore nemo deserunt saepe labore
                animi accusamus dolore corporis quia reiciendis ipsum possimus.</p>
      </div>
      
@@ -34,11 +35,23 @@
      
                   <h3 class="card-title">Qui suis-je?</h3>
                   
-                  <p class="card-text">Actuellement en formation "Développeur d'application - PHP / Symfony" au sein de l'école en ligne 
-                    OpenClassrooms. Cette formation me permettra de maitriser le framework Symfony et d'obtenir un titre 
-                    de "Développeur d'application" de niveau II, équivalent à un bac +3/4.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt corrupti vitae modi nam quae quaerat nobis 
-                    ab magnam eaque laborum, beatae doloribus, atque eveniet voluptatem vero, sequi repudiandae odit.</p>
+                  <p class="card-text">
+                    <div class="row">
+                         <div class="col-4">
+                              <div class="card">
+                                   <img src="public/images/portrait.jpg" class="card-img-top pb-3" alt="portrait">
+                                   <h5 class="card-title text-center px-3">Sandrine Paris</h5>
+                              </div>
+                         </div>
+                         <div class="col pt-3">
+                              Actuellement en formation "Développeur d'application - PHP / Symfony" au sein de l'école en ligne 
+                         OpenClassrooms. Cette formation me permettra de maitriser le framework Symfony et d'obtenir un titre 
+                         de "Développeur d'application" de niveau II, équivalent à un bac +3/4.
+                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt corrupti vitae modi nam quae quaerat nobis 
+                         ab magnam eaque laborum, beatae doloribus, atque eveniet voluptatem vero, sequi repudiandae odit.
+                         </div>
+                    </div>
+                   </p>
                     
               </div>
              </div >
@@ -100,14 +113,15 @@ bienvenue visiteur
 {% endif %}
 <form action="#" method="post">
      <div class="row">
-          {{ forms.input ('firstname', 'votre nom', firstname, {class: 'col-4'}) }}
-          {{ forms.input ('surnamename', 'votre prénom', surname, {class: 'col-4'}) }}
+          {{ forms.input ('firstname', 'Votre nom', firstname, {class: 'col-4'}) }}
+          {{ forms.input ('surnamename', 'Votre prénom', surname, {class: 'col-4'}) }}
          
      </div>
      <div class="row">
-          {{ forms.input ('email', 'votre email', email,  {class: 'col-4', type: 'email'}) }}
+          {{ forms.input ('email', 'Votre email', email,  {class: 'col-4', type: 'email'}) }}
+          {{ forms.input ('object', 'Objet du message', object, {class: 'col-4'}) }}
      </div>
-     {{forms.textarea('message', 'votre message', '1','10', message, {class: 'col-8'}) }}
+     {{forms.textarea('message', 'Votre message', '1','10', message, {class: 'col-8'}) }}
      <div class="form-group">
           <button type="submit" class="btn btn-primary">Envoyer</button>
      </div>
