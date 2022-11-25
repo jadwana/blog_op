@@ -1,0 +1,25 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+    ajout post
+{% endblock %}
+{% import 'forms.twig' as forms %}
+
+{% block content %}
+<h2>ajouter un nouvel article</h2>
+<form action="#" method="post">
+     <div class="row">
+          {{ forms.input ('title', 'Titre', title, {class: 'col-12'}) }}
+     </div>
+     <div class="row">
+          {{forms.textarea('chapo', 'Le chapô', '1','10', message, {class: 'col-12'}) }}
+     </div>
+     {{forms.textarea('content', 'Contenu de l\'article', '1','10', message, {class: 'col-12'}) }}
+     
+     Auteur : {{session.username}}
+     <div class="form-group">
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+     </div>
+ </form>
+
+{% endblock %}

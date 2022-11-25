@@ -3,6 +3,7 @@ session_start();
 
 use App\Controllers\Logon;
 use App\Controllers\Logout;
+use App\Controllers\AddPost;
 use App\Controllers\AddUser;
 use App\Controllers\OnePost;
 use App\Controllers\PostList;
@@ -72,8 +73,15 @@ try{
                  }
                 break;
             case "admin":
-                echo $twig->render ('administration.twig', ['title'=>'admin']);
-                break;  
+                if(isset($_SESSION['user_id']) && $_SESSION['role']=='admin'){
+                    echo $twig->render ('administration.twig',array('session'=> $_SESSION));
+                 }else{
+                    throw new Exception('Seul l\'administrateur à accès à cette page') ;
+                 }
+                break;
+            case "addPost":
+                (new AddPost())->execute();
+                break;
             default:
                 echo $twig->render ('404.twig', ['title'=>'404']);
         }
@@ -87,7 +95,7 @@ try{
 }catch (Exception $e) {
     $errorMessage = $e->getMessage();
 
-    echo $twig->render ('error.twig', ['error'=> $errorMessage]);
+    echo $twig->render ('error.twig', ['error'=> $errorMessage, 'session'=> $_SESSION]);
 }
 
 
