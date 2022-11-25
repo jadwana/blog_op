@@ -108,22 +108,28 @@
              </div >
       </div>
 </div>
-<h4 class="text-center">Me contacter :</h4>
-<div class="bg-primary">
-     <form action="#" method="post" class="my-auto">
-          <div class="row">
-               {{ forms.input ('firstname', 'Votre nom', firstname, {class: 'col-4'}) }}
-               {{ forms.input ('surnamename', 'Votre prénom', surname, {class: 'col-4'}) }}
-          </div>
-          <div class="row">
-               {{ forms.input ('email', 'Votre email', email,  {class: 'col-4', type: 'email'}) }}
-               {{ forms.input ('object', 'Objet du message', object, {class: 'col-4'}) }}
-          </div>
-          {{forms.textarea('message', 'Votre message', '1','10', message, {class: 'col-8'}) }}
-          <div class="form-group">
-               <button type="submit" class="btn btn-primary">Envoyer</button>
-          </div>
-     </form>
+
+<h4 class="text-center my-5">Me contacter :</h4>
+<div class="row">
+     <div class="col-2 "></div>
+     <div class="col-8 ">
+          <form action="#" method="post">
+               <div class="row">
+                    {{ forms.input ('firstname', 'Votre nom', firstname, {class: 'col-6'}) }}
+                    {{ forms.input ('surnamename', 'Votre prénom', surname, {class: 'col-6'}) }}
+               </div>
+               <div class="row">
+                    {{ forms.input ('email', 'Votre email', email,  {class: 'col-6', type: 'email'}) }}
+                    {{ forms.input ('object', 'Objet du message', object, {class: 'col-6'}) }}
+               </div>
+               {{forms.textarea('message', 'Votre message', '1','10', message, {class: 'col-12'}) }}
+               <div class="form-group mt-5">
+                    <button type="submit" class="btn bg-secondary text-light d-block mx-auto" >Envoyer</button>
+               </div>
+          </form>
+     </div>
+     <div class="col-2"></div>
+    
 </div>
 
 

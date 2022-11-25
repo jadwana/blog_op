@@ -10,26 +10,25 @@ require 'vendor/autoload.php';
 
 
 class Logon extends Controller
-
 {
     //method which verifies the username and password of the user and retrieves the session data
     public function execute()
     {
-        if(!empty($_POST)){
+        if(!empty($_POST)) {
              $username =null;
 
-            if(isset($_POST['username'], $_POST['password']) && !empty(trim($_POST['username'])) && !empty($_POST['password'])){
+            if(isset($_POST['username'], $_POST['password']) && !empty(trim($_POST['username'])) && !empty($_POST['password'])) {
                 $username=htmlspecialchars(trim($_POST['username']));
 
                 $userRepository = new User();
                 $userRepository->connection= new DatabaseConnection();
                 $connectedUser = $userRepository->checkUserUsername($username);
-                if(!$connectedUser){
+                if(!$connectedUser) {
                     ?>
                     <script language="javascript"> alert("Mauvais pseudo");</script>
                     <?php
                 }else{
-                    if(password_verify(trim($_POST['password']), $connectedUser->getPassword)){
+                    if(password_verify(trim($_POST['password']), $connectedUser->getPassword)) {
                         $_SESSION['user_id']= $connectedUser->getUser_id;
                         $_SESSION['username']= $connectedUser->getUsername;
                         $_SESSION['role'] = $connectedUser->getRole;
@@ -41,9 +40,9 @@ class Logon extends Controller
                         <?php 
                         
                     }else{
-                    ?>
+                        ?>
                     <script language="javascript"> alert("Mauvais mot de passe");</script>
-                    <?php
+                        <?php
                     }
                 }
             }else{?>

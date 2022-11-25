@@ -7,6 +7,7 @@ use App\Controllers\AddUser;
 use App\Controllers\OnePost;
 use App\Controllers\PostList;
 use App\Controllers\AddComment;
+use App\Controllers\UpdateComment;
 
 //autoload
 require 'vendor/autoload.php';
@@ -53,8 +54,19 @@ try{
             case "addComment":
                 if(isset($_GET['id']) && $_GET['id'] > 0){
                     $identifier = $_GET['id'];
-        
                     (new AddComment())->execute($identifier);
+                 }else{
+                    throw new Exception('aucun identifiant envoyé') ;
+                 }
+                break;
+            case "updateComment":
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    $identifier = $_GET['id'];
+                    $input = null;
+                    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+                       $input = $_POST;
+                    }
+                    (new UpdateComment())->execute($identifier, $input);
                  }else{
                     throw new Exception('aucun identifiant envoyé') ;
                  }

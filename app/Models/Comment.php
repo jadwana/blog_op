@@ -48,7 +48,8 @@ class Comment
         $statement= $this->connection->getConnection()->prepare(
             "SELECT comments.comment_id, comments.comment, DATE_FORMAT(comments.commentDate, '%d%m%Y à %Hh%imin%ss') AS 
         french_creation_date, comments.post_id, users.username FROM comments INNER JOIN users ON comments.user_id = users.user_id 
-        WHERE post_id = ? AND comments.validation = 'y' ORDER BY comments.commentDate DESC");
+        WHERE post_id = ? AND comments.validation = 'y' ORDER BY comments.commentDate DESC"
+        );
 
         $statement->execute([$post]);
 
@@ -62,9 +63,9 @@ class Comment
             $comment->getPost =$row['post_id'];
 
             $comments[] = $comment;
-    }
+        }
     
-    return $comments;
+        return $comments;
     } 
 
     //method to retrieve a single comment based on its id
@@ -107,7 +108,7 @@ class Comment
     public function updateComment(string $identifier, string $comment): bool
     {
         $statement = $this->connection->getConnection()->prepare(
-            'UPDATE comments SET  comment=?  WHERE comment_id=?'
+            "UPDATE comments SET  comment=?, validation='n'  WHERE comment_id=?"
         );
         $affectedLines = $statement->execute([$comment, $identifier]);
 
@@ -127,7 +128,7 @@ class Comment
     /**
      * Set the value of frenchCreationDate
      *
-     * @return  self
+     * @return self
      */ 
     public function setFrenchCreationDate($frenchCreationDate)
     {
@@ -147,7 +148,7 @@ class Comment
     /**
      * Set the value of comment
      *
-     * @return  self
+     * @return self
      */ 
     public function setComment($comment)
     {
@@ -167,7 +168,7 @@ class Comment
     /**
      * Set the value of identifier
      *
-     * @return  self
+     * @return self
      */ 
     public function setIdentifier($identifier)
     {
@@ -187,7 +188,7 @@ class Comment
     /**
      * Set the value of post
      *
-     * @return  self
+     * @return self
      */ 
     public function setPost($post)
     {
@@ -207,7 +208,7 @@ class Comment
     /**
      * Set the value of username
      *
-     * @return  self
+     * @return self
      */ 
     public function setUsername($username)
     {

@@ -11,16 +11,16 @@ class AddUser extends Controller
     //on fait les vérifications et on securise les entrées
     public function execute()
     {
-        if(!empty($_POST)){
-            if(isset($_POST["username"], $_POST["password"]) && !empty($_POST["username"]) && !empty($_POST["password"])){
+        if(!empty($_POST)) {
+            if(isset($_POST["username"], $_POST["password"]) && !empty($_POST["username"]) && !empty($_POST["password"])) {
 
                 $username= strip_tags(trim($_POST['username']));
-                if(strlen($username)<5){
+                if(strlen($username)<5) {
                     throw new \Exception('votre pseudo est trop court!');
                 }
-                    if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-                        echo 'adresse mail incorrecte';
-                    }
+                if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                    echo 'adresse mail incorrecte';
+                }
                     // $pseudo=htmlspecialchars($_POST['pseudo']);
                     $email=$_POST['email'];
 
@@ -28,17 +28,17 @@ class AddUser extends Controller
                     $usernameCheck = new User();
                     $usernameCheck->connection= new DatabaseConnection();
                     $result1 = $usernameCheck->checkUserUsername($username);
-                        if($result1){
-                            throw new \Exception('pseudo déjà existant !');
-                        }
+                if($result1) {
+                    throw new \Exception('pseudo déjà existant !');
+                }
 
                     //we check that the email is unique
                     $userMailCheck = new User();
                     $userMailCheck->connection= new DatabaseConnection();
                     $result2 = $userMailCheck->checkUserEmail($email);
-                        if($result2){
-                            throw new \Exception('email déjà existant !');
-                        }
+                if($result2) {
+                    throw new \Exception('email déjà existant !');
+                }
 
                     $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
@@ -46,9 +46,9 @@ class AddUser extends Controller
                     $userRepository = new User();
                     $userRepository->connection = new DatabaseConnection();
                     $success = $userRepository->addUser($username, $pass, $email);
-                        if(!$success){
-                            throw new \Exception('Impossible d\'ajouter l\'utilisateur !');
-                        }
+                if(!$success) {
+                    throw new \Exception('Impossible d\'ajouter l\'utilisateur !');
+                }
                         $usersession = new User();
                         $usersession->connection= new DatabaseConnection();
                         $sessionResult = $usersession->checkUserUsername($username);
