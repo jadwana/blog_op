@@ -15,7 +15,7 @@
 
 <div class="card mb-2" style="width: 50rem;">
      <div class="card-body ">
-         <h3 class="card-title bg-primary text-light">{{post.getTitle}}</h3>
+         <h3 class="card-title">{{post.getTitle}}</h3>
          <h5 class="card-subtitle mb-2 text-mutetd">le : {{post.getFrench_creation_date}}</h5>
          <p class="card-text">{{post.getChapo}}</p>
          <p class="card-text">{{post.getContent}}</p>
@@ -26,7 +26,7 @@
 {% if session.user_id is defined %}
      <form action="index.php?action=addComment&id={{post.getIdentifier}}" method="post">
           
-          {{forms.textarea('message', 'Ajouter votre commentaire :', '1','10', comment, {class: 'col-8'}) }}
+          {{forms.textarea('comment', 'Ajouter votre commentaire :', '1','10', comment, {class: 'col-8'}) }}
           Auteur : {{session.username}}
           <div class="form-group">
                <button type="submit" class="btn btn-primary">Envoyer</button>

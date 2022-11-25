@@ -6,6 +6,7 @@ use App\Controllers\Logout;
 use App\Controllers\AddUser;
 use App\Controllers\OnePost;
 use App\Controllers\PostList;
+use App\Controllers\AddComment;
 
 //autoload
 require 'vendor/autoload.php';
@@ -48,6 +49,15 @@ try{
                     throw new Exception('Vous êtes déjà connecté, vous ne pouvez pas vous inscrire à nouveau');
                 }
                 (new AddUser())->execute();
+                break;
+            case "addComment":
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    $identifier = $_GET['id'];
+        
+                    (new AddComment())->execute($identifier);
+                 }else{
+                    throw new Exception('aucun identifiant envoyé') ;
+                 }
                 break;
             case "admin":
                 echo $twig->render ('administration.twig', ['title'=>'admin']);

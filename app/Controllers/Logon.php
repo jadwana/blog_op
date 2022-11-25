@@ -25,21 +25,31 @@ class Logon extends Controller
                 $userRepository->connection= new DatabaseConnection();
                 $connectedUser = $userRepository->checkUserUsername($username);
                 if(!$connectedUser){
-                    throw new \Exception('mauvais pseudo  !');
+                    ?>
+                    <script language="javascript"> alert("Mauvais pseudo");</script>
+                    <?php
                 }else{
                     if(password_verify(trim($_POST['password']), $connectedUser->getPassword)){
                         $_SESSION['user_id']= $connectedUser->getUser_id;
                         $_SESSION['username']= $connectedUser->getUsername;
                         $_SESSION['role'] = $connectedUser->getRole;
 
-                        header("location: index.php");
+                        ?>
+                        <script language="javascript"> 
+                        alert("connection réussie!");
+                        document.location.href = 'index.php';</script>
+                        <?php 
+                        
                     }else{
-                        echo 'mauvais mot de passe'; exit;
+                    ?>
+                    <script language="javascript"> alert("Mauvais mot de passe");</script>
+                    <?php
                     }
                 }
-            }else{
-                echo 'vous devez remplir tous les champs';
-            }
+            }else{?>
+                <script language="javascript"> 
+            alert("Vous devez remplir tous les champs");</script>
+            <?php }
             
         }else{
         }

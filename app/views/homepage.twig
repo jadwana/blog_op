@@ -6,8 +6,11 @@
 {% import 'forms.twig' as forms %}
 
 {% block content %}
-<h1 class="text-center mt-5">Bienvenue sur mon blog !</h1><br><br>
-
+<h1 class="text-center mt-5">Bienvenue sur mon blog ! {% if session.user_id is defined %}
+     {{session.username}}
+     {% else %}
+     Visiteur
+     {% endif %}</h1><br>
 
 <h2 class="text-center mt-5">Padawan développeuse, Jedi développeuse un jour sera.</h2>
 <h4 class="text-center">(Maitre Yoda)</h4><br>
@@ -105,29 +108,24 @@
              </div >
       </div>
 </div>
-{% if session.user_id is defined %}
-id session: {{session.user_id}}
-bienvenue {{session.username}}
-{% else %}
-bienvenue visiteur
-{% endif %}
-<form action="#" method="post">
-     <div class="row">
-          {{ forms.input ('firstname', 'Votre nom', firstname, {class: 'col-4'}) }}
-          {{ forms.input ('surnamename', 'Votre prénom', surname, {class: 'col-4'}) }}
-         
-     </div>
-     <div class="row">
-          {{ forms.input ('email', 'Votre email', email,  {class: 'col-4', type: 'email'}) }}
-          {{ forms.input ('object', 'Objet du message', object, {class: 'col-4'}) }}
-     </div>
-     {{forms.textarea('message', 'Votre message', '1','10', message, {class: 'col-8'}) }}
-     <div class="form-group">
-          <button type="submit" class="btn btn-primary">Envoyer</button>
-     </div>
+<h4 class="text-center">Me contacter :</h4>
+<div class="bg-primary">
+     <form action="#" method="post" class="my-auto">
+          <div class="row">
+               {{ forms.input ('firstname', 'Votre nom', firstname, {class: 'col-4'}) }}
+               {{ forms.input ('surnamename', 'Votre prénom', surname, {class: 'col-4'}) }}
+          </div>
+          <div class="row">
+               {{ forms.input ('email', 'Votre email', email,  {class: 'col-4', type: 'email'}) }}
+               {{ forms.input ('object', 'Objet du message', object, {class: 'col-4'}) }}
+          </div>
+          {{forms.textarea('message', 'Votre message', '1','10', message, {class: 'col-8'}) }}
+          <div class="form-group">
+               <button type="submit" class="btn btn-primary">Envoyer</button>
+          </div>
+     </form>
+</div>
 
-
-</form>
 
 
 {% endblock %}
