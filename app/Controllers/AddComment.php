@@ -8,24 +8,28 @@ require 'vendor/autoload.php';
 
 class AddComment extends Controller
 {
-    //fonction en charge de faire les vérifications de securité
-    //et d'ajouter un nouveau commentaire
+    /**
+     * function in charge of doing security checks and adding a new comment
+     *
+     * @param string $post
+     * @return void
+     */
     public function execute(string $post)
     {
-    $user_id =$_SESSION['user_id'];
-    $comment = null;
-    $_SESSION['message']=null;
-        //on fait les vérifications
-        if(!empty($_POST['comment'])){
-            $comment = htmlspecialchars($_POST['comment']) ;
+        $user_id =$_SESSION['user_id'];
+        $comment = null;
+        $_SESSION['message']=null;
+        //we do the checks
+        if(!empty($_POST['comment'])) {
+            $comment = htmlspecialchars($_POST['comment']);
         }else {
             throw new \Exception('les données du formulaire sont invalides');
         }
-        //on crée le nouveau commentaire
+        //we create a new comment
         $commentRepository = new Comment();
         $commentRepository->connection = new DatabaseConnection();
         $success = $commentRepository->createComment($post, $user_id, $comment);
-        if(!$success){
+        if(!$success) {
             throw new \Exception('Impossible d\'ajouter le commentaire !');
         }else{
             ?>

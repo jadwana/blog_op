@@ -1,0 +1,18 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+    modification commentaire
+{% endblock %}
+{% import 'forms.twig' as forms %}
+
+{% block content %}
+<form action="index.php?action=updateComment&id={{comment.getIdentifier}}" method="post">
+          
+    {{forms.textarea('comment', 'votre commentaire à modifier :', '1','10', comment.getComment, {class: 'col-8'}) }}
+    Auteur : {{session.username}}
+    <div class="form-group">
+         <button type="submit" class="btn btn-primary">Modifier</button>
+    </div>
+</form>
+
+{% endblock %}

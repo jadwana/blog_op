@@ -55,7 +55,8 @@ class Post
         $statement= $this->connection->getConnection()->prepare(
             "SELECT users.username,posts.post_id, posts.title, posts.content, posts.chapo, 
             DATE_FORMAT(posts.creationDate, '%d%m%Y à %Hh%imin%ss') AS french_creation_date FROM posts 
-            INNER JOIN users ON users.user_id=posts.user_id WHERE posts.post_id = ?");
+            INNER JOIN users ON users.user_id=posts.user_id WHERE posts.post_id = ?"
+        );
 
         $statement->execute([$identifier]);
 
@@ -76,16 +77,17 @@ class Post
     public function getPosts(): array
     {
         $statement= $this->connection->getConnection()->query(
-        "SELECT users.username,posts.post_id,posts.title, posts.chapo, 
+            "SELECT users.username,posts.post_id,posts.title, posts.chapo, 
         DATE_FORMAT(posts.creationDate,'%d%m%Y à %Hh%imin%ss') AS french_creation_date 
-        FROM users INNER JOIN posts ON users.user_id=posts.user_id ORDER BY creationDate DESC;");
+        FROM users INNER JOIN posts ON users.user_id=posts.user_id ORDER BY creationDate DESC;"
+        );
 
         
 
         $posts = [];
 
         while (($row = $statement->fetch())){
-        $post = new Post();
+            $post = new Post();
             $post->getTitle = $row['title'];
             $post->getFrench_creation_date = $row['french_creation_date'];
             $post->getIdentifier = $row['post_id'];
@@ -136,7 +138,7 @@ class Post
     /**
      * Get post title
      *
-     * @return  string
+     * @return string
      */ 
     public function getTitle()
     {
@@ -146,9 +148,9 @@ class Post
     /**
      * Set post title
      *
-     * @param  string  $title  post title
+     * @param string $title post title
      *
-     * @return  self
+     * @return self
      */ 
     public function setTitle(string $title)
     {
@@ -160,7 +162,7 @@ class Post
     /**
      * Get post date
      *
-     * @return  string
+     * @return string
      */ 
     public function getFrenchCreationDate()
     {
@@ -170,9 +172,9 @@ class Post
     /**
      * Set post date
      *
-     * @param  string  $frenchCreationDate  post date
+     * @param string $frenchCreationDate post date
      *
-     * @return  self
+     * @return self
      */ 
     public function setFrenchCreationDate(string $frenchCreationDate)
     {
@@ -184,7 +186,7 @@ class Post
     /**
      * Get post content
      *
-     * @return  string
+     * @return string
      */ 
     public function getContent()
     {
@@ -194,9 +196,9 @@ class Post
     /**
      * Set post content
      *
-     * @param  string  $content  post content
+     * @param string $content post content
      *
-     * @return  self
+     * @return self
      */ 
     public function setContent(string $content)
     {
@@ -208,7 +210,7 @@ class Post
     /**
      * Get post chapo
      *
-     * @return  string
+     * @return string
      */ 
     public function getChapo()
     {
@@ -218,9 +220,9 @@ class Post
     /**
      * Set post chapo
      *
-     * @param  string  $chapo  post chapo
+     * @param string $chapo post chapo
      *
-     * @return  self
+     * @return self
      */ 
     public function setChapo(string $chapo)
     {
@@ -232,7 +234,7 @@ class Post
     /**
      * Get post id
      *
-     * @return  string
+     * @return string
      */ 
     public function getIdentifier()
     {
@@ -242,9 +244,9 @@ class Post
     /**
      * Set post id
      *
-     * @param  string  $identifier  post id
+     * @param string $identifier post id
      *
-     * @return  self
+     * @return self
      */ 
     public function setIdentifier(string $identifier)
     {
@@ -264,7 +266,7 @@ class Post
     /**
      * Get user's nickname
      *
-     * @return  string
+     * @return string
      */ 
     public function getUsername()
     {
@@ -274,9 +276,9 @@ class Post
     /**
      * Set user's nickname
      *
-     * @param  string  $username  user's nickname
+     * @param string $username user's nickname
      *
-     * @return  self
+     * @return self
      */ 
     public function setUsername(string $username)
     {

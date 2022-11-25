@@ -5,7 +5,7 @@ namespace App\Models;
 use App\db\DatabaseConnection;
 
 require 'vendor/autoload.php';
-class User 
+class User
 {
     /**
      * role of user
@@ -45,7 +45,8 @@ class User
     public function checkUserUsername(string $username): ?user
     {
         $statement= $this->connection->getConnection()->prepare(
-            'SELECT * FROM users WHERE username=? ');
+            'SELECT * FROM users WHERE username=? '
+        );
 
             $statement->execute([$username]);
 
@@ -68,7 +69,8 @@ class User
     public function checkUserEmail(string $email)
     {
         $statement= $this->connection->getConnection()->prepare(
-            'SELECT * FROM users WHERE email=? ');
+            'SELECT * FROM users WHERE email=? '
+        );
 
             $statement->execute([$email]);
 
@@ -103,7 +105,7 @@ class User
     /**
      * Set the value of role
      *
-     * @return  self
+     * @return self
      */ 
     public function setRole($role)
     {
@@ -123,7 +125,7 @@ class User
     /**
      * Set the value of password
      *
-     * @return  self
+     * @return self
      */ 
     public function setPassword($password)
     {
@@ -143,7 +145,7 @@ class User
     /**
      * Set the value of user_id
      *
-     * @return  self
+     * @return self
      */ 
     public function setUser_id($user_id)
     {
@@ -163,7 +165,7 @@ class User
     /**
      * Set the value of email
      *
-     * @return  self
+     * @return self
      */ 
     public function setEmail($email)
     {
@@ -183,7 +185,7 @@ class User
     /**
      * Set the value of username
      *
-     * @return  self
+     * @return self
      */ 
     public function setUsername($username)
     {
@@ -192,4 +194,3 @@ class User
         return $this;
     }
 }
-   

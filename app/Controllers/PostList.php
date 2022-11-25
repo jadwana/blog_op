@@ -6,9 +6,11 @@ use App\Models\Post;
 use App\db\DatabaseConnection;
 
 $loader = new \Twig\Loader\FilesystemLoader('app/views');
-$twig = new \Twig\Environment($loader, [
+$twig = new \Twig\Environment(
+    $loader, [
     'cache'=> false, //'tmp'
-]);
+    ]
+);
         
 
 class PostList extends Controller
@@ -24,7 +26,7 @@ class PostList extends Controller
 
         //$this->twig->display('postList.twig', ['posts'=> $posts], array('session'=> $_SESSION));
 
-        echo $this->twig->render ('postlist.twig',['posts'=> $posts, 'session'=> $_SESSION]);
+        echo $this->twig->render('postlist.twig', ['posts'=> $posts, 'session'=> $_SESSION]);
     }
 
     
