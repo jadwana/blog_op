@@ -112,15 +112,17 @@ class Post
         
     }
 
-    //method to edit a post
-    public function updatePost(string $post_id, string $content, string $title, string $chapo ): bool
-    {
+    //method to update a post
+    public function updatePost(string $identifier, string $content, string $title, string $chapo )
+    {   
         $statement = $this->connection->getConnection()->prepare(
-            'UPDATE content, title, chapo, creationDate SET  content=?, title=?, chapo=? creationDate=NOW WHERE post_id=?'
+            "UPDATE posts SET  content=?, title=?, chapo=?, creationDate=NOW() WHERE post_id=?"
         );
-        $affectedLines = $statement->execute([$content, $title, $chapo, $post_id ]);
-
+       
+        $affectedLines = $statement->execute([$content, $title, $chapo, $identifier]);
+       
         return($affectedLines > 0);
+        
     }
 
     //method to delete a post

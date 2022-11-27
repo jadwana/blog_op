@@ -8,16 +8,23 @@
 {% block content %}
 <h1>page d'administration du blog</h1>
 {{session.username}}
-<h2>gestion des commentaires</h2>
-<p><a href="index.php?action=">validation des commentaires</a></p>
-<p>suppression de commentaires</p>
+<div class="row">
+     <div class="col">
+          <h2>gestion des commentaires</h2>
+          <p><a href="index.php?action=">validation des commentaires</a></p>
+          <p>suppression de commentaires</p>
+     </div>
+     <div class="col">
+          <h2>gestion des articles</h2>
+          <ul>
+          <li><p><a href="index.php?action=addPost">ajout d'un article</a></p></li>
+          <li><p><a href="index.php?action=adminpostlist">modification ou suppressiond'un article</a></p></li>
+          </ul>
+     </div>
+</div>
 
-<h2>gestion des articles</h2>
-<ul>
-    <li><p><a href="index.php?action=addPost">ajout d'un article</a></p></li>
-    <li><p><a href="index.php?action=">modification d'un article</a></p></li>
-    <li><p><a href="index.php?action=">suppression d'un article</a></p></li>
-</ul>
+
+
 
 
 {% endblock %}

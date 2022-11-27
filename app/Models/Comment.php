@@ -108,7 +108,7 @@ class Comment
     public function updateComment(string $identifier, string $comment): bool
     {
         $statement = $this->connection->getConnection()->prepare(
-            "UPDATE comments SET  comment=?, validation='n'  WHERE comment_id=?"
+            "UPDATE comments SET  comment=?, validation='n', commentDate=NOW() WHERE comment_id=?"
         );
         $affectedLines = $statement->execute([$comment, $identifier]);
 

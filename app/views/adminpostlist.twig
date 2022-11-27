@@ -1,0 +1,35 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+     liste posts
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center">Liste des articles</h1>
+<h2>A modifier ou à supprimer</h2>
+<br>
+
+<div class="row">
+    
+        {% for post in posts %}
+        <div class="col-6">
+            <div class="card mx-2 mb-2" >
+                <div class="card-body ">
+                    <h3 class="card-title">{{post.getTitle}}</h3>
+                    <h5 class="card-subtitle mb-2 text-mutetd">le : {{post.getFrench_creation_date}}</h5>
+                    <p class="card-text">{{post.getChapo}}</p>
+                    <p class="card-footer">Par : {{post.getUsername}}</p>
+                    <a href="index.php?action=updatepost&id={{post.getIdentifier}}" class="card-link">modifier</a>
+                    <a href="#">supprimer</a>
+                </div>
+               </div >
+        </div>
+        
+         {% endfor %}
+   
+</div>
+user : {{session.username}}
+  
+
+{% endblock %}
