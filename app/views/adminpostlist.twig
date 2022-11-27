@@ -20,8 +20,10 @@
                     <h5 class="card-subtitle mb-2 text-mutetd">le : {{post.getFrench_creation_date}}</h5>
                     <p class="card-text">{{post.getChapo}}</p>
                     <p class="card-footer">Par : {{post.getUsername}}</p>
-                    <a href="index.php?action=updatepost&id={{post.getIdentifier}}" class="card-link">modifier</a>
-                    <a href="#">supprimer</a>
+                    <a href="index.php?action=updatepost&id={{post.getIdentifier}}" class="btn card-link">modifier</a>
+                    <a href="index.php?action=deletepost&id={{post.getIdentifier}}" onclick="return confirm('Êtes-vous certain de vouloir effacer définitivement cet article ?')" 
+                    class="btn card-link">supprimer</a>
+                    
                 </div>
                </div >
         </div>
@@ -30,6 +32,6 @@
    
 </div>
 user : {{session.username}}
-  
+
 
 {% endblock %}

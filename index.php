@@ -10,6 +10,7 @@ use App\Controllers\PostList;
 use App\Controllers\AddComment;
 use App\Controllers\UpdatePost;
 use App\Controllers\AdminPostList;
+use App\Controllers\DeletePost;
 use App\Controllers\UpdateComment;
 
 //autoload
@@ -98,7 +99,14 @@ try{
                     throw new Exception('aucun identifiant envoyé') ;
                  }
                 break;
-
+            case "deletepost":
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    $identifier = $_GET['id'];
+                    (new DeletePost())->execute($identifier);
+                 }else{
+                    throw new Exception('aucun identifiant envoyé') ;
+                 }
+                break;
             default:
                 echo $twig->render ('404.twig', ['title'=>'404']);
         }
