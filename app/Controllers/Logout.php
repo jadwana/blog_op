@@ -3,12 +3,12 @@ namespace App\Controllers;
 
 class Logout
 {
-    //deconnection de l'utilisateur
+    //method to user logout
     public function execute()
     {
         session_start();
-        //on verifie que l'utilisateur est bien connecté
-        //sinon on le renvoie sur la page d'accueil
+        // check that the user is logged in
+        // otherwise it is sent to the homepage
         if(!isset($_SESSION["user_id"])) {
             header("location: index.php");
             exit;

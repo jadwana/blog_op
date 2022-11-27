@@ -8,7 +8,7 @@ use App\db\DatabaseConnection;
 
         
 
-class PostList extends Controller
+class AdminPostList extends Controller
 {
     //method in charge of displaying the list of posts
     public function execute()
@@ -21,7 +21,7 @@ class PostList extends Controller
 
         
 
-        echo $this->twig->render('postlist.twig', ['posts'=> $posts, 'session'=> $_SESSION]);
+        echo $this->twig->render('adminpostlist.twig', ['posts'=> $posts, 'session'=> $_SESSION]);
     }
 
     

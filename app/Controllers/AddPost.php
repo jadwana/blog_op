@@ -7,7 +7,12 @@ use App\db\DatabaseConnection;
 require 'vendor/autoload.php';
 
 class AddPost extends Controller
-{
+{   
+    /**
+     * method to add a new post
+     *
+     * @return void
+     */
     public function execute()
     {
         
@@ -17,7 +22,7 @@ class AddPost extends Controller
         $chapo = null;
 
         if(!empty($_POST)){
-            //on fait les vérifications
+            // we do the checks
             if(!empty($_POST['content']) && !empty($_POST['title']) && !empty($_POST['chapo'])){
                 $content = htmlspecialchars($_POST['content']) ;
                 $title = htmlspecialchars($_POST['title']) ;
@@ -25,7 +30,7 @@ class AddPost extends Controller
             }else {
                 throw new \Exception('les données du formulaire sont invalides');
             }
-            //on crée le nvel article
+            // we create the new article
             $postRepository = new Post();
             $postRepository->connection = new DatabaseConnection();
             $success = $postRepository->addPost($title, $content, $chapo, $user_id);
@@ -39,12 +44,6 @@ class AddPost extends Controller
                 <?php 
             }
         }
-            
-        
-
-
         $this->twig->display('addPost.twig',array('session'=>$_SESSION));
     }
-
-    
 }

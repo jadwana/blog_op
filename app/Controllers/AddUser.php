@@ -8,7 +8,7 @@ require 'vendor/autoload.php';
 
 class AddUser extends Controller
 {
-    //on fait les vérifications et on securise les entrées
+    //method to do the checks and to secure the entrances
     public function execute()
     {
         if(!empty($_POST)) {
@@ -21,7 +21,6 @@ class AddUser extends Controller
                 if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                     echo 'adresse mail incorrecte';
                 }
-                    // $pseudo=htmlspecialchars($_POST['pseudo']);
                     $email=$_POST['email'];
 
                     //we check that the nickname is unique

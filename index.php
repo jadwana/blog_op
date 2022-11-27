@@ -8,6 +8,8 @@ use App\Controllers\AddUser;
 use App\Controllers\OnePost;
 use App\Controllers\PostList;
 use App\Controllers\AddComment;
+use App\Controllers\UpdatePost;
+use App\Controllers\AdminPostList;
 use App\Controllers\UpdateComment;
 
 //autoload
@@ -29,7 +31,6 @@ try{
         switch ($_GET['action']){
             case "postlist":
                 (new PostList())->execute();
-                
                 break;
             case "onepost":
                 if(isset($_GET['id']) && $_GET['id'] > 0){
@@ -82,6 +83,22 @@ try{
             case "addPost":
                 (new AddPost())->execute();
                 break;
+            case "adminpostlist":
+                (new AdminPostList())->execute();
+                break;
+            case "updatepost":
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    $identifier = $_GET['id'];
+                    $input = null;
+                    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+                       $input = $_POST;
+                    }
+                    (new UpdatePost())->execute($identifier, $input);
+                 }else{
+                    throw new Exception('aucun identifiant envoyé') ;
+                 }
+                break;
+
             default:
                 echo $twig->render ('404.twig', ['title'=>'404']);
         }
