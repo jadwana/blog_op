@@ -11,9 +11,10 @@ use App\Controllers\AddComment;
 use App\Controllers\DeletePost;
 use App\Controllers\UpdatePost;
 use App\Controllers\AdminPostList;
+use App\Controllers\DeleteComment;
 use App\Controllers\UpdateComment;
-use App\Controllers\AdminCommentsList;
 use App\Controllers\ValidatedComment;
+use App\Controllers\AdminCommentsList;
 
 //autoload
 require 'vendor/autoload.php';
@@ -120,6 +121,14 @@ try{
                     throw new Exception('aucun identifiant envoyé') ;
                  }
                 break;
+            case "deleteComment":
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    $identifier = $_GET['id'];
+                    (new DeleteComment())->execute($identifier);
+                 }else{
+                    throw new Exception('aucun identifiant envoyé') ;
+                 }
+                 break;
             default:
                 echo $twig->render ('404.twig', ['title'=>'404']);
         }
