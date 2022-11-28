@@ -113,16 +113,17 @@
 <div class="row">
      <div class="col-2 "></div>
      <div class="col-8 ">
-          <form action="#" method="post">
+          <form action="app/services/sendmail.php" method="post">
                <div class="row">
-                    {{ forms.input ('firstname', 'Votre nom', firstname, {class: 'col-6'}) }}
-                    {{ forms.input ('surnamename', 'Votre prénom', surname, {class: 'col-6'}) }}
+                    {{ forms.input ('firstname', 'Votre nom *', firstname, {class: 'col-6'}) }}
+                    {{ forms.input ('surname', 'Votre prénom *', surname, {class: 'col-6'}) }}
                </div>
                <div class="row">
-                    {{ forms.input ('email', 'Votre email', email,  {class: 'col-6', type: 'email'}) }}
-                    {{ forms.input ('object', 'Objet du message', object, {class: 'col-6'}) }}
+                    {{ forms.input ('email', 'Votre email *', email,  {class: 'col-6', type: 'email'}) }}
+                    {{ forms.input ('object', 'Objet du message *', object, {class: 'col-6'}) }}
                </div>
-               {{forms.textarea('message', 'Votre message', '1','10', message, {class: 'col-12'}) }}
+               {{forms.textarea('message', 'Votre message *', '1','10', message, {class: 'col-12'}) }}
+               <div class="row"> <p class="ps-5"> * Toutes les informations sont requises.</p></div>
                <div class="form-group mt-5">
                     <button type="submit" class="btn d-block mx-auto" >Envoyer</button>
                </div>

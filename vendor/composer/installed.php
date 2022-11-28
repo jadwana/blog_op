@@ -3,13 +3,22 @@
         'name' => 'tagad/blog-sp.blog',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '9590b4e690906dcdbf017cda72c2d9e033a13c77',
+        'reference' => '63862b5e8108148725be833898b7b7069a416be0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'v6.6.5',
+            'version' => '6.6.5.0',
+            'reference' => '8b6386d7417526d1ea4da9edb70b8352f7543627',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'symfony/polyfill-ctype' => array(
             'pretty_version' => 'v1.27.0',
             'version' => '1.27.0.0',
@@ -31,7 +40,7 @@
         'tagad/blog-sp.blog' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '9590b4e690906dcdbf017cda72c2d9e033a13c77',
+            'reference' => '63862b5e8108148725be833898b7b7069a416be0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

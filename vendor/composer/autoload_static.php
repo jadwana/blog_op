@@ -29,6 +29,10 @@ class ComposerStaticInit822dafff77f8d4e1de447fd77559ff3d
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -38,7 +42,7 @@ class ComposerStaticInit822dafff77f8d4e1de447fd77559ff3d
     public static $prefixDirsPsr4 = array (
         'vendor\\' => 
         array (
-            0 => 'C:\\Users\\tagad\\Desktop\\WAMP\\www\\blogSP.blog\\vendor',
+            0 => 'C:\\xampp\\htdocs\\blogSP.blog\\vendor',
         ),
         'twig\\' => 
         array (
@@ -55,6 +59,10 @@ class ComposerStaticInit822dafff77f8d4e1de447fd77559ff3d
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'App\\' => 
         array (
