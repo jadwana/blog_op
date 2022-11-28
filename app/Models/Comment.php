@@ -97,6 +97,16 @@ class Comment
         return($affectedLines > 0);
     }
 
+    //method to delete a post
+    public function deleteComment(string $identifier)
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            'DELETE FROM comments WHERE comment_id=?'
+        );
+        $affectedLines = $statement->execute([$identifier]);
+        return($affectedLines >0);
+    }
+
     //method to retrieve a single comment based on its id
     public function getOneComment(string $identifier): ?Comment
     {
