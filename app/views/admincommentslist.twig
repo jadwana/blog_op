@@ -1,0 +1,33 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+     Détail du post
+{% endblock %}
+
+{% import 'forms.twig' as forms %}
+
+{% block content %}
+<h4 class="text-center my-5">Commentaire(s) à valider/supprimer</h4>
+
+<div class="row">
+     {% for comment in comments %}
+     <div class="col-6">
+          <div class="card mb-2">
+               <div class="card-body ">
+               <h5 class="card-subtitle mb-2 text-mutetd">le : {{comment.getFrenchCreationDate}}</h5>
+               <p class="card-text">{{comment.getComment}}</p>
+               <a href="index.php?action=validationComment&id={{comment.getIdentifier}}" class="btn card-link">valider</a>
+               <a href="index.php?action=deleteComment&id={{comment.getIdentifier}}" onclick="return confirm('Êtes-vous certain de vouloir effacer définitivement ce commentaire ?')" 
+               class="btn card-link">supprimer</a>
+               
+               </div>
+          </div >
+     </div>
+     {% endfor %}
+</div>
+     
+
+user : {{session.username}}
+
+{% endblock %}
+

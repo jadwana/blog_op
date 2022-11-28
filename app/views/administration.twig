@@ -6,19 +6,21 @@
 
 
 {% block content %}
-<h1>page d'administration du blog</h1>
-{{session.username}}
-<div class="row">
-     <div class="col">
-          <h2>gestion des commentaires</h2>
-          <p><a href="index.php?action=">validation des commentaires</a></p>
-          <p>suppression de commentaires</p>
+<h1 class="text-center my-5">Administration du blog</h1>
+
+<div class="text-center"><img src="public/images/logo.png" width="30%" alt=""></div>
+
+<div class="row my-4">
+     <div class="col-6 mt-5">
+          <h2 class="mt-5 gestion text-center">Gestion des commentaires</h2>
+          <p><a href="index.php?action=admincommentslist" class="btn my-3 ms-4">Validation ou suppression des commentaires</a></p>
+          
      </div>
-     <div class="col">
-          <h2>gestion des articles</h2>
+     <div class="col-6 mt-5">
+          <h2 class="mt-5 gestion text-center">Gestion des articles</h2>
           <ul>
-          <li><p><a href="index.php?action=addPost">ajout d'un article</a></p></li>
-          <li><p><a href="index.php?action=adminpostlist">modification ou suppressiond'un article</a></p></li>
+          <li><p><a href="index.php?action=addPost" class="btn my-3">Ajout d'un nouvel article</a></p></li>
+          <li><p><a href="index.php?action=adminpostlist" class="btn my-3">Modification ou suppression d'un article</a></p></li>
           </ul>
      </div>
 </div>
