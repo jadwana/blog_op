@@ -46,7 +46,7 @@ class Comment
     {
     
         $statement= $this->connection->getConnection()->prepare(
-            "SELECT comments.comment_id, comments.comment, DATE_FORMAT(comments.commentDate, '%d%m%Y à %Hh%imin%ss') AS 
+            "SELECT comments.comment_id, comments.comment, DATE_FORMAT(comments.commentDate, '%d-%m-%Y à %Hh%imin%ss') AS 
         french_creation_date, comments.post_id, users.username FROM comments INNER JOIN users ON comments.user_id = users.user_id 
         WHERE post_id = ? AND comments.validation = 'y' ORDER BY comments.commentDate DESC"
         );
@@ -67,12 +67,41 @@ class Comment
     
         return $comments;
     } 
+    public function getUnvalidatedComments()
+    {
+        $statement= $this->connection->getConnection()->prepare(
+            "SELECT comment, comment_id, post_id, DATE_FORMAT(commentDate, '%d-%m-%Y à %Hh%imin%ss') AS 
+            french_creation_date FROM comments WHERE validation='n' ");
+        $statement->execute();
+
+        $comments = [];
+        while (($row = $statement->fetch())){
+            $comment = new Comment();
+            $comment->getFrenchCreationDate = $row['french_creation_date'];
+            $comment->getComment = $row['comment'];
+            $comment->getIdentifier = $row['comment_id'];
+            $comment->getPost =$row['post_id'];
+    
+                $comments[] = $comment;
+            }
+        
+            return $comments;
+    }
+    public function validatedComment(string $identifier)
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            "UPDATE comments SET  validation='y' WHERE comment_id=?"
+        );
+        $affectedLines = $statement->execute([$identifier]);
+
+        return($affectedLines > 0);
+    }
 
     //method to retrieve a single comment based on its id
     public function getOneComment(string $identifier): ?Comment
     {
         $statement = $this->connection->getConnection()->prepare(
-            "SELECT comments.comment_id, comments.comment, DATE_FORMAT(comments.commentDate, '%d%m%Y à %Hh%imin%ss') AS 
+            "SELECT comments.comment_id, comments.comment, DATE_FORMAT(comments.commentDate, '%d-%m-%Y à %Hh%imin%ss') AS 
             french_creation_date, comments.post_id, users.username FROM comments INNER JOIN users ON comments.user_id = users.user_id
              WHERE comments.comment_id = ?"
         );

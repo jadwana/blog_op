@@ -1,5 +1,6 @@
 body {
     background-color:#e4f2e7;
+    color: #2d3e40;
 }
 .navbar{
     background-color: #2d3e40;
@@ -17,4 +18,8 @@ body {
 .btn
 {
     background-color: #387373;
+    color: #e4f2e7;
+}
+.gestion{
+    background-color:  #93bfb7;
 }

@@ -8,10 +8,12 @@ use App\Controllers\AddUser;
 use App\Controllers\OnePost;
 use App\Controllers\PostList;
 use App\Controllers\AddComment;
+use App\Controllers\DeletePost;
 use App\Controllers\UpdatePost;
 use App\Controllers\AdminPostList;
-use App\Controllers\DeletePost;
 use App\Controllers\UpdateComment;
+use App\Controllers\AdminCommentsList;
+use App\Controllers\ValidatedComment;
 
 //autoload
 require 'vendor/autoload.php';
@@ -103,6 +105,17 @@ try{
                 if(isset($_GET['id']) && $_GET['id'] > 0){
                     $identifier = $_GET['id'];
                     (new DeletePost())->execute($identifier);
+                 }else{
+                    throw new Exception('aucun identifiant envoyé') ;
+                 }
+                break;
+            case "admincommentslist":
+                (new AdminCommentsList())->execute();
+                break;
+            case "validationComment":
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    $identifier = $_GET['id'];
+                    (new ValidatedComment())->execute($identifier);
                  }else{
                     throw new Exception('aucun identifiant envoyé') ;
                  }

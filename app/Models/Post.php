@@ -54,7 +54,7 @@ class Post
     {
         $statement= $this->connection->getConnection()->prepare(
             "SELECT users.username,posts.post_id, posts.title, posts.content, posts.chapo, 
-            DATE_FORMAT(posts.creationDate, '%d%m%Y à %Hh%imin%ss') AS french_creation_date FROM posts 
+            DATE_FORMAT(posts.creationDate, '%d-%m-%Y à %Hh%imin%ss') AS french_creation_date FROM posts 
             INNER JOIN users ON users.user_id=posts.user_id WHERE posts.post_id = ?"
         );
 
@@ -78,7 +78,7 @@ class Post
     {
         $statement= $this->connection->getConnection()->query(
             "SELECT users.username,posts.post_id,posts.title, posts.chapo, 
-        DATE_FORMAT(posts.creationDate,'%d%m%Y à %Hh%imin%ss') AS french_creation_date 
+        DATE_FORMAT(posts.creationDate,'%d-%m-%Y à %Hh%imin%ss') AS french_creation_date 
         FROM users INNER JOIN posts ON users.user_id=posts.user_id ORDER BY creationDate DESC;"
         );
 
