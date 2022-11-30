@@ -21,7 +21,7 @@ require '../../vendor/autoload.php';
         $mail->Host='smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username='test2formjad@gmail.com';
-        $mail->Password='raskvwjylcmrevln';
+        $mail->Password='#';
         $mail->SMTP='tls';
         $mail->Port=587;
         $mail->setFrom('test2formjad@gmail.com',$name);
