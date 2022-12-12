@@ -1,22 +1,22 @@
 {% extends 'layout.twig' %}
 
 {% block title %}
-     Détail du post
+     Détail de l'article
 {% endblock %}
 
 {% import 'forms.twig' as forms %}
 
 {% block content %}
 
-<h1>Mon super super blog !</h1>
-<p>Détail du billet :</p>
+<h2 class="text-center my-5">Détail de l'article :</h2>
 
 
 
-<div class="card mb-2" style="width: 50rem;">
+
+<div class="card mb-2">
      <div class="card-body ">
          <h3 class="card-title">{{post.getTitle}}</h3>
-         <h5 class="card-subtitle mb-2 text-mutetd">le : {{post.getFrench_creation_date}}</h5>
+         <h6 class="card-subtitle mb-2 text-mutetd">Le : {{post.getFrench_creation_date}}</h6>
          <p class="card-text">{{post.getChapo}}</p>
          <p class="card-text">{{post.getContent}}</p>
          <p class="card-footer">Par : {{post.getUsername}}</p>
@@ -26,35 +26,41 @@
 {% if session.user_id is defined %}
      <form action="index.php?action=addComment&id={{post.getIdentifier}}" method="post">
           
-          {{forms.textarea('comment', 'Ajouter votre commentaire :', '1','10', comment, {class: 'col-8'}) }}
+          {{forms.textarea('comment', 'Ajouter votre commentaire :', '1','5', comment, {class: 'col mt-5'}) }}
           Auteur : {{session.username}}
           <div class="form-group">
-               <button type="submit" class="btn btn-primary">Envoyer</button>
+               <button type="submit" class="btn mt-3">Envoyer</button>
           </div>
      </form>
 {% else %}
-     Vous devez être connecté pour pouvoir ajouter un commentaire
-     <a href="index.php?action=logon" class="nav-link">Connexion</a>
+     <p class="mt-3">Vous devez être connecté pour pouvoir ajouter un commentaire </p>
+     <a href="index.php?action=logon" class="btn ">Connexion</a>
 {% endif %}
 
 
 
-<h4>Commentaire(s) de cet article</h4>
+<h4 class="my-5">Commentaire(s) de cet article</h4>
 
+<div class="row">
      {% for comment in comments %}
-     <div class="card mb-2" style="width: 20rem;">
-          <div class="card-body ">
-              <h3 class="card-title ">{{comment.getUsername}}</h3>
-              <h5 class="card-subtitle mb-2 text-mutetd">le : {{comment.getFrenchCreationDate}}</h5>
-              <p class="card-text">{{comment.getComment}}</p>
-               {% if session.username == comment.getUsername %}
-              <a href="index.php?action=updateComment&id={{comment.getIdentifier}}" class="card-link">modifier</a>
-              {% endif %}
-          </div>
-     </div >
+     <div class="col-12 col-md-6">
+          <div class="card mb-2">
+               <div class="card-body ">
+                   <h3 class="card-title ">{{comment.getUsername}}</h3>
+                   <h5 class="card-subtitle mb-2 text-mutetd">le : {{comment.getFrenchCreationDate}}</h5>
+                   <p class="card-text">{{comment.getComment}}</p>
+                    {% if session.username == comment.getUsername %}
+                   <a href="index.php?action=updateComment&id={{comment.getIdentifier}}" class="btn card-link">Modifier</a>
+                   {% endif %}
+               </div>
+          </div >
+     </div>
+     
      {% endfor %}
+</div>
+     
 
-user : {{session.username}}
+
 
 {% endblock %}
 

@@ -8,20 +8,31 @@
 {% block content %}
 <h1 class="text-center my-5">Administration du blog</h1>
 
-<div class="text-center"><img src="public/images/logo.png" width="30%" alt=""></div>
+
 
 <div class="row my-4">
-     <div class="col-6 mt-5">
-          <h2 class="mt-5 gestion text-center">Gestion des commentaires</h2>
-          <p><a href="index.php?action=admincommentslist" class="btn my-3 ms-4">Validation ou suppression des commentaires</a></p>
+
+    
+     <div class="col col-md-6 mt-5">
+          <div class="card">
+               <img src="public/images/commentaire.jpg" class="card-img-top" alt="feedback">
+               <div class="card-body" id="admcom">
+                    <h3 class="card-title my-4 text-center">Gestion des commentaires</h3>
+                    <a href="index.php?action=admincommentslist" class="btn my-3 card-link mx-3 d-block">
+                         Validation ou suppression des commentaires</a>
+               </div>
+          </div>
           
      </div>
-     <div class="col-6 mt-5">
-          <h2 class="mt-5 gestion text-center">Gestion des articles</h2>
-          <ul>
-          <li><p><a href="index.php?action=addPost" class="btn my-3">Ajout d'un nouvel article</a></p></li>
-          <li><p><a href="index.php?action=adminpostlist" class="btn my-3">Modification ou suppression d'un article</a></p></li>
-          </ul>
+     <div class="col col-md-6 mt-5">
+          <div class="card">
+               <img src="public/images/article2.jpg"  class="card-img-top" alt="newspaper">
+               <div class="card-body" id="admart">
+                    <h3 class="card-title my-4 text-center">Gestion des articles</h3>
+                    <a href="index.php?action=addPost" class="btn my-3 card-link mx-3 d-block">Ajout d'un nouvel article</a>
+                    <a href="index.php?action=adminpostlist" class="btn my-3 card-link mx-3 d-block">Modification ou suppression d'un article</a>
+               </div>
+          </div>
      </div>
 </div>
 

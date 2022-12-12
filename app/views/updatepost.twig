@@ -1,12 +1,12 @@
 {% extends 'layout.twig' %}
 
 {% block title %}
-    modification article
+    Modification article
 {% endblock %}
 {% import 'forms.twig' as forms %}
 
 {% block content %}
-<h3>article à modifier :</h3>
+<h3>Article à modifier :</h3>
 <form action="index.php?action=updatepost&id={{post.getIdentifier}}" method="post">
     <div class="row">
         {{ forms.input ('title', 'Titre', post.getTitle, {class: 'col-12'}) }}

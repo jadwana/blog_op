@@ -5,46 +5,51 @@ use App\Models\Post;
 use App\db\DatabaseConnection;
 require 'vendor/autoload.php';
 
-
-
 class UpdatePost extends Controller
 {
-    //method to modify a post
+    /**
+     * Method to modify a post
+     *
+     * @param string     $identifier
+     * @param array|null $input
+     * 
+     * @return void
+     */
     public function execute(string $identifier, ?array $input)
     { 
-        
         //submission management if there is an entry
-        if($input !== null) {
+        if ($input !== null) {
             
             $title = null;
             $content = null;
             $chapo = null;
 
-            if(!empty($input['title']) &&!empty($input['chapo']) &&!empty($input['content'])) {
+            if (!empty($input['title']) &&!empty($input['chapo']) 
+                &&!empty($input['content'])
+            ) {
                 
-                $title = htmlspecialchars($input['title']);
-                $chapo = htmlspecialchars($input['chapo']);
-                $content = htmlspecialchars($input['content']);
-            }else {
+                $title = strip_tags($input['title']);
+                $chapo = strip_tags($input["chapo"]);
+                $content = strip_tags($input['content']);
+            } else {
                 throw new \Exception('les données du formulaire sont invalides');
             }
                 $postRepository = new Post();
                 $postRepository->connection = new DatabaseConnection();
-                $success = $postRepository->updatePost($identifier,$content, $title, $chapo );
-            if(!$success) {
+                $success = $postRepository->updatePost($identifier, $content, $title, $chapo);
+            if (!$success) {
                 throw new \Exception('Impossible de modifier l\'article !');
-            }else{
+            } else {
                 
                 $postRepository = new Post();
                 $postRepository->connection = new DatabaseConnection();
                 $post = $postRepository->getPost($identifier);
                 ?>
-                        <script language="javascript"> 
-                        alert("article modifié!");
-                        document.location.href = 'index.php?action=adminpostlist';</script>
-                        <?php 
-                
-                
+                    <script language="javascript"> 
+                    alert("article modifié!");
+                    document.location.href = 'index.php?action=adminpostlist';
+                    </script>
+                    <?php 
             }
 
         }
@@ -56,9 +61,9 @@ class UpdatePost extends Controller
         if ($post === null) {
             throw new \Exception("L'article $identifier n'existe pas.");
         }    
-    
-        $this->twig->display('updatepost.twig', ['post'=>$post,'session'=> $_SESSION]);
-    
-   
+        $this->twig->display(
+            'updatepost.twig', 
+            ['post'=>$post,'session'=> $_SESSION]
+        );
     }
 }

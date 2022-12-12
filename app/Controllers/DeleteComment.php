@@ -7,18 +7,24 @@ require 'vendor/autoload.php';
 
 class DeleteComment
 {
-    //method to delete a post
+    /**
+     * Method to delete a comment
+     *
+     * @param string $identifier
+     * 
+     * @return void
+     */
     public function execute(string $identifier)
     {
         $postRepository = new Comment();
         $postRepository->connection = new DatabaseConnection();
         $success = $postRepository->deleteComment($identifier);
-        if(!$success){
+        if (!$success) {
             throw new \Exception('Impossible de supprimer le commentaire !');
-        }else{
+        } else {
             ?>
             <script language="javascript"> 
-            alert("commentaire supprimé");
+            alert("Commentaire supprimé");
             document.location.href = 'index.php?action=admincommentslist';</script>
             <?php 
         }

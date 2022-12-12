@@ -1,56 +1,69 @@
 <?php
 namespace App\Controllers;
 
-
-
 use App\Models\User;
 use App\db\DatabaseConnection;
 require 'vendor/autoload.php';
 
-
-
 class Logon extends Controller
 {
-    //method which verifies the username and password of the user and retrieves the session data
+    /**
+     * Method which verifies the username and password of the user
+     * and retrieves the session data
+     *
+     * @return void
+     */
     public function execute()
     {
-        if(!empty($_POST)) {
+        if (!empty($_POST)) {
              $username =null;
 
-            if(isset($_POST['username'], $_POST['password']) && !empty(trim($_POST['username'])) && !empty($_POST['password'])) {
+            if (isset($_POST['username'], $_POST['password']) 
+                && !empty(trim($_POST['username'])) && !empty($_POST['password'])
+            ) {
                 $username=htmlspecialchars(trim($_POST['username']));
 
                 $userRepository = new User();
                 $userRepository->connection= new DatabaseConnection();
                 $connectedUser = $userRepository->checkUserUsername($username);
-                if(!$connectedUser) {
+                if (!$connectedUser) {
                     ?>
-                    <script language="javascript"> alert("Mauvais pseudo");</script>
+                    <script language="javascript"> 
+                    alert("Mauvais pseudo");
+                    </script>
                     <?php
-                }else{
-                    if(password_verify(trim($_POST['password']), $connectedUser->getPassword)) {
+                } else {
+                    if (password_verify(
+                        trim($_POST['password']), 
+                        $connectedUser->getPassword
+                    )
+                    ) {
                         $_SESSION['user_id']= $connectedUser->getUser_id;
                         $_SESSION['username']= $connectedUser->getUsername;
                         $_SESSION['role'] = $connectedUser->getRole;
 
                         ?>
                         <script language="javascript"> 
-                        alert("connection réussie!");
-                        document.location.href = 'index.php';</script>
+                        alert("Connexion réussie!");
+                        document.location.href = 'index.php';
+                        </script>
                         <?php 
                         
-                    }else{
+                    } else {
                         ?>
-                    <script language="javascript"> alert("Mauvais mot de passe");</script>
+                        <script language="javascript"> 
+                        alert("Mauvais mot de passe");
+                        </script>
                         <?php
                     }
                 }
-            }else{?>
+            } else {?>
                 <script language="javascript"> 
-            alert("Vous devez remplir tous les champs");</script>
-            <?php }
-            
-        }else{
+                alert("Vous devez remplir tous les champs");
+                </script>
+                <?php 
+            }
+        } else {
         }
         $this->twig->display('connection.twig');  
     }

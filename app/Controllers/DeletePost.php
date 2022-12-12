@@ -7,15 +7,21 @@ require 'vendor/autoload.php';
 
 class DeletePost
 {
-    //method to delete a post
+    /**
+     * Method to delete a post
+     *
+     * @param string $identifier
+     * 
+     * @return void
+     */
     public function execute(string $identifier)
     {
         $postRepository = new Post();
         $postRepository->connection = new DatabaseConnection();
         $success = $postRepository->deletePost($identifier);
-        if(!$success){
+        if (!$success) {
             throw new \Exception('Impossible de supprimer l\'article !');
-        }else{
+        } else {
             ?>
             <script language="javascript"> 
             alert("article supprimé");

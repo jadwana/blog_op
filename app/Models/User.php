@@ -3,30 +3,30 @@
 namespace App\Models;
 
 use App\db\DatabaseConnection;
-
 require 'vendor/autoload.php';
+
 class User
 {
     /**
-     * role of user
+     * Role of user
      *
      * @var string
      */
     private string $role;
     /**
-     * username of user
+     * Username of user
      *
      * @var string
      */
     private string $username;
     /**
-     * password of user
+     * Password of user
      *
      * @var string
      */
     private string $password;
     /**
-     * id of user
+     * Id of user
      *
      * @var string
      */
@@ -38,10 +38,16 @@ class User
      */
     private string $email;
 
-    //connect to database
+    //Connect to database
     public DatabaseConnection $connection;
 
-    //method to check user username and get this user data
+    /**
+     * Method to check user username and get this user data
+     *
+     * @param string $username
+     * 
+     * @return user|null
+     */
     public function checkUserUsername(string $username): ?user
     {
         $statement= $this->connection->getConnection()->prepare(
@@ -61,11 +67,16 @@ class User
             $user->getRole = $row['role'];
             $user->getEmail = $row['email'];
            
-            
         return $user;
     }
 
-    //method to check user email
+    /**
+     * Method to check user email
+     *
+     * @param string $email
+     * 
+     * @return void
+     */
     public function checkUserEmail(string $email)
     {
         $statement= $this->connection->getConnection()->prepare(
@@ -78,12 +89,18 @@ class User
         if ($row === false) {
             return null;
         }
-        
         return $row;
     }
 
-    //method to add data of a new user
-
+    /**
+     * Method to add data of a new user
+     *
+     * @param string $username
+     * @param string $password
+     * @param string $email
+     * 
+     * @return boolean
+     */
     public function addUser(string $username, string $password, string $email): bool
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -96,6 +113,8 @@ class User
 
     /**
      * Get the value of role
+     * 
+     * @return string
      */ 
     public function getRole()
     {
@@ -116,6 +135,8 @@ class User
 
     /**
      * Get the value of password
+     * 
+     * @return string
      */ 
     public function getPassword()
     {
@@ -136,6 +157,8 @@ class User
 
     /**
      * Get the value of user_id
+     * 
+     * @return string
      */ 
     public function getUser_id()
     {
@@ -156,6 +179,8 @@ class User
 
     /**
      * Get the value of email
+     * 
+     * @return string
      */ 
     public function getEmail()
     {
@@ -176,6 +201,8 @@ class User
 
     /**
      * Get the value of username
+     * 
+     * @return string
      */ 
     public function getUsername()
     {

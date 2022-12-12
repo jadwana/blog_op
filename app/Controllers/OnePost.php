@@ -11,7 +11,13 @@ require 'vendor/autoload.php';
 
 class OnePost extends Controller
 {
-     //method in charge of displaying one post and its comments
+     /**
+      * Method in charge of displaying one post and its comments
+      *
+      * @param string $identifier
+      *
+      * @return void
+      */
     public function execute(string $identifier)
     {
         $connection = new DatabaseConnection();
@@ -23,6 +29,9 @@ class OnePost extends Controller
         $post = $postRepository->getPost($identifier);
         $comments = $commentRepository->getComments($identifier);
 
-        $this->twig->display('onepost.twig', ['post'=> $post, 'comments'=>$comments,'session'=> $_SESSION]);
+        $this->twig->display(
+            'onepost.twig', 
+            ['post'=> $post, 'comments'=>$comments,'session'=> $_SESSION]
+        );
     }
 }
