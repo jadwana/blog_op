@@ -6,23 +6,23 @@ use App\Models\Comment;
 use App\db\DatabaseConnection;
 
 
-        
-
 class AdminCommentsList extends Controller
 {
-    //method in charge of displaying the list of posts
+    /**
+     * Method in charge of displaying the list of unvalidaded comments
+     * for the admin
+     *
+     * @return void
+     */
     public function execute()
     {   
-       
-
         $repository = new Comment();
         $repository->connection = new DatabaseConnection();
         $comments = $repository->getUnvalidatedComments();
-
-        
-
-        echo $this->twig->render('admincommentslist.twig', ['comments'=> $comments, 'session'=> $_SESSION]);
+        echo $this->twig->render(
+            'admincommentslist.twig',
+            ['comments'=> $comments, 'session'=> $_SESSION]
+        );
     }
-
     
 }

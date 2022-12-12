@@ -1,7 +1,7 @@
 {% extends 'layout.twig' %}
 
 {% block title %}
-     accueil
+     Accueil
 {% endblock %}
 {% import 'forms.twig' as forms %}
 
@@ -16,8 +16,8 @@
 <h4 class="text-center">(Maitre Yoda)</h4><br>
 
 <div class="row mb-5">
-     <div class="col text-center"><img src="public/images/logo.png" width="70%" alt=""></div>
-     <div class="col"><p class="text-center m-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt corrupti vitae modi nam quae quaerat nobis 
+     <div class="col-12 col-md-6 text-center"><img src="public/images/logo.png" width="70%" alt="logo"></div>
+     <div class="col-12 col-md-6 "><p class="text-center m-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt corrupti vitae modi nam quae quaerat nobis 
           ab magnam eaque laborum, beatae doloribus, atque eveniet voluptatem vero, sequi repudiandae odit.</p>
           <p class="text-center m-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut asperiores cum, veniam totam quas beatae, esse repellat tempore nemo deserunt saepe labore
            animi accusamus dolore corporis quia reiciendis ipsum possimus.</p>
@@ -31,7 +31,7 @@
 
 
 <div class="row mb-5">
-     <div class="col-6">
+     <div class="col-12 col-md-6">
           <div class="card mx-2 mb-2" >
                <img src="public/images/poppies.jpg" class="card-img-top" alt="poppies">
               <div class="card-body ">
@@ -40,9 +40,9 @@
                   
                   <p class="card-text">
                     <div class="row">
-                         <div class="col-4">
+                         <div class="col-12 col-md-4">
                               <div class="card">
-                                   <img src="public/images/portrait.jpg" class="card-img-top pb-3" alt="portrait">
+                                   <img src="public/images/portrait.jpg" class="card-img-top pb-3"alt="portrait">
                                    <h5 class="card-title text-center px-3">Sandrine Paris</h5>
                               </div>
                          </div>
@@ -53,13 +53,20 @@
                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt corrupti vitae modi nam quae quaerat nobis 
                          ab magnam eaque laborum, beatae doloribus, atque eveniet voluptatem vero, sequi repudiandae odit.
                          </div>
+                         <div class="row text-center mx-auto mt-3">
+                              <div class="col"><a href="https://facebook.com"><i class="bi bi-facebook fs-2"></i></a></div>
+                              <div class="col"><a href="https://github.com/jadwana"><i class="bi bi-github fs-2"></i></a></div>
+                              <div class="col"><a href="https://fr.linkedin.com/"><i class="bi bi-linkedin fs-2"></i></a></div>
+                         </div>
+                         
+                         
                     </div>
                    </p>
                     
               </div>
              </div >
       </div>
-      <div class="col-6">
+      <div class="col-12 col-md-6">
           <div class="card mx-2 mb-2" >
                <img src="public/images/mountains.jpg" class="card-img-top" alt="mountains">
               <div class="card-body ">
@@ -69,7 +76,7 @@
                   <p class="card-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sunt corrupti vitae modi nam quae quaerat nobis 
                     ab magnam eaque laborum, beatae doloribus, atque eveniet voluptatem vero, sequi repudiandae odit.</p>
-                    <a href="public/images/cv.pdf" class="card-link">vers mon CV</a>
+                    <a href="public/images/cv.pdf" class=" btn card-link">Mon CV</a>
                     
               </div>
              </div >
@@ -77,7 +84,7 @@
 </div>
 
 <div class="row">
-     <div class="col-6">
+     <div class="col-12 col-md-6">
           <div class="card mx-2 mb-2" >
                <img src="public/images/code.jpg" class="card-img-top" alt="code">
               <div class="card-body ">
@@ -91,7 +98,7 @@
               </div>
              </div >
       </div>
-      <div class="col-6">
+      <div class="col-12 col-md-6">
           <div class="card mx-2 mb-2" >
                <img src="public/images/laptop.jpg" class="card-img-top" alt="laptop">
               <div class="card-body ">
@@ -109,18 +116,18 @@
       </div>
 </div>
 
-<h4 class="text-center my-5">Me contacter :</h4>
+<h4 class="text-center my-5" id="contact">Me contacter :</h4>
 <div class="row">
-     <div class="col-2 "></div>
-     <div class="col-8 ">
+     
+     <div class="col-12 col-md-8 mx-auto d-block">
           <form action="app/services/sendmail.php" method="post">
                <div class="row">
-                    {{ forms.input ('firstname', 'Votre nom *', firstname, {class: 'col-6'}) }}
-                    {{ forms.input ('surname', 'Votre prénom *', surname, {class: 'col-6'}) }}
+                    {{ forms.input ('firstname', 'Votre nom *', firstname, {class: 'col-12 col-md-6'}) }}
+                    {{ forms.input ('surname', 'Votre prénom *', surname, {class: 'col-12 col-md-6'}) }}
                </div>
                <div class="row">
-                    {{ forms.input ('email', 'Votre email *', email,  {class: 'col-6', type: 'email'}) }}
-                    {{ forms.input ('object', 'Objet du message *', object, {class: 'col-6'}) }}
+                    {{ forms.input ('email', 'Votre email *', email,  {class: 'col-12 col-md-6', type: 'email'}) }}
+                    {{ forms.input ('object', 'Objet du message *', object, {class: 'col-12 col-md-6'}) }}
                </div>
                {{forms.textarea('message', 'Votre message *', '1','10', message, {class: 'col-12'}) }}
                <div class="row"> <p class="ps-5"> * Toutes les informations sont requises.</p></div>
@@ -129,7 +136,7 @@
                </div>
           </form>
      </div>
-     <div class="col-2"></div>
+     
     
 </div>
 

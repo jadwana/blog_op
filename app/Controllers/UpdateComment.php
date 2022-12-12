@@ -5,30 +5,35 @@ use App\Models\Comment;
 use App\db\DatabaseConnection;
 require 'vendor/autoload.php';
 
-
-
 class UpdateComment extends Controller
 {
-    //method to modify a comment
+    /**
+     * Method to modify a comment
+     *
+     * @param string     $identifier
+     * @param array|null $input
+     * 
+     * @return void
+     */
     public function execute(string $identifier, ?array $input)
     { 
         //submission management if there is an entry
-        if($input !== null) {
+        if ($input !== null) {
             
             $comment = null;
 
-            if(!empty($input['comment'])) {
+            if (!empty($input['comment'])) {
                 
-                $comment = htmlspecialchars($input['comment']);
-            }else {
+                $comment = strip_tags($input['comment']);
+            } else {
                 throw new \Exception('les données du formulaire sont invalides');
             }
                 $commentRepository = new Comment();
                 $commentRepository->connection = new DatabaseConnection();
                 $success = $commentRepository->updateComment($identifier, $comment);
-            if(!$success) {
+            if (!$success) {
                 throw new \Exception('Impossible de modifier le commentaire !');
-            }else{
+            } else {
                 $commentRepository = new Comment();
                 $commentRepository->connection = new DatabaseConnection();
                 $comment = $commentRepository->getOneComment($identifier);
@@ -45,7 +50,10 @@ class UpdateComment extends Controller
             throw new \Exception("Le commentaire $identifier n'existe pas.");
         }    
     
-        $this->twig->display('updateComment.twig', ['comment'=>$comment,'session'=> $_SESSION]);
+        $this->twig->display(
+            'updateComment.twig', 
+            ['comment'=>$comment,'session'=> $_SESSION]
+        );
    
     }
 }

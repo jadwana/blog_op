@@ -9,9 +9,10 @@ require 'vendor/autoload.php';
 class AddComment extends Controller
 {
     /**
-     * function in charge of doing security checks and adding a new comment
+     * Function in charge of doing security checks and adding a new comment
      *
      * @param string $post
+     * 
      * @return void
      */
     public function execute(string $post)
@@ -20,22 +21,27 @@ class AddComment extends Controller
         $comment = null;
         $_SESSION['message']=null;
         //we do the checks
-        if(!empty($_POST['comment'])) {
-            $comment = htmlspecialchars($_POST['comment']);
-        }else {
-            throw new \Exception('les données du formulaire sont invalides');
+        if (!empty($_POST['comment'])) {
+            $comment = strip_tags($_POST['comment']);
+        } else {
+            ?>
+            <script language="javascript"> 
+            var numpost = <?php echo $post?>;
+            alert("les données du commentaires sont invalides");
+            document.location.href = 'index.php?action=onepost&id='+numpost;</script>
+            <?php 
         }
         //we create a new comment
         $commentRepository = new Comment();
         $commentRepository->connection = new DatabaseConnection();
         $success = $commentRepository->createComment($post, $user_id, $comment);
-        if(!$success) {
+        if (!$success) {
             throw new \Exception('Impossible d\'ajouter le commentaire !');
-        }else{
+        } else {
             ?>
             <script language="javascript"> 
             var numpost = <?php echo $post?>;
-            alert("commentaire envoyé");
+            alert("Commentaire envoyé, celui-ci sera visible après validation.");
             document.location.href = 'index.php?action=onepost&id='+numpost;</script>
             <?php 
         }

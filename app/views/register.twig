@@ -1,29 +1,34 @@
 {% extends 'layout.twig' %}
 
 {% block title %}
-inscription
+Inscription
 {% endblock %}
 
 {% import 'forms.twig' as forms %}
 {% block content %}
-
-<h1>Inscription</h1>
-
-<form action="index.php?action=register" method="post">
-    <div class="row">
-          {{ forms.input ('username', 'Votre pseudo (minimum 5 caractères)', username, {class: 'col-4'}) }}
+<h3 class="my-5 text-center">Inscription :</h3> <br>
+<div class="row justify-content-center">
+   <div class="col-11 col-md-4 shadow mb-5 pt-3">
+      <form action="index.php?action=register" method="post">
+         <div class="row mb-3">
+               {{ forms.input ('username', 'Votre pseudo (minimum 5 caractères)', username, {class: 'col-12'}) }}
+          </div>
+          <div class="row mb-3">
+             {{ forms.input ('password', 'Votre mot de passe', password,  {class: 'col-12', type: 'password'}) }}
+          </div>
+          <div class="row mb-3">
+             {{ forms.input ('email', 'Votre email', email,  {class: 'col-12', type: 'email'}) }}
+        </div>
+        <div class="form-group mb-5">
+         <button type="submit" class="btn btn-primary">Envoyer</button>
      </div>
-     <div class="row">
-        {{ forms.input ('password', 'Votre mot de passe', password,  {class: 'col-4', type: 'password'}) }}
-     </div>
-     <div class="row mb-3">
-        {{ forms.input ('email', 'votre email', email,  {class: 'col-4', type: 'email'}) }}
+     </form>
+     <p class=" text-center">
+      <strong>Déjà un compte?</strong><br>
+     <a href="index.php?action=logon" class="btn text-center my-3">Connectez-vous !</a>
+     </p>
    </div>
-   <div class="form-group mb-5">
-    <button type="submit" class="btn btn-primary">Envoyer</button>
 </div>
-</form>
 
-<p>Déjà un compte?</p>
-<p><a href="index.php?action=logon">Connectez-vous !</a></p>
+
 {% endblock %}

@@ -1,12 +1,12 @@
 {% extends 'layout.twig' %}
 
 {% block title %}
-    modification commentaire
+    Modification commentaire
 {% endblock %}
 {% import 'forms.twig' as forms %}
 
 {% block content %}
-<h3>commentaire à modifier</h3>
+<h3>Commentaire à modifier</h3>
 <form action="index.php?action=updateComment&id={{comment.getIdentifier}}" method="post">
           
     {{forms.textarea('comment', 'votre commentaire à modifier :', '1','10', comment.getComment, {class: 'col-8'}) }}

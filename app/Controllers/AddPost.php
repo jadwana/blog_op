@@ -7,36 +7,43 @@ use App\db\DatabaseConnection;
 require 'vendor/autoload.php';
 
 class AddPost extends Controller
-{   
+{
+
+   
     /**
-     * method to add a new post
+     * Method to add a new post
      *
      * @return void
      */
     public function execute()
     {
-        
         $user_id =$_SESSION['user_id'];
         $content = null;
         $title = null;
         $chapo = null;
 
-        if(!empty($_POST)){
+        if (!empty($_POST)) {
             // we do the checks
-            if(!empty($_POST['content']) && !empty($_POST['title']) && !empty($_POST['chapo'])){
-                $content = htmlspecialchars($_POST['content']) ;
-                $title = htmlspecialchars($_POST['title']) ;
-                $chapo = htmlspecialchars($_POST['chapo']) ;
-            }else {
-                throw new \Exception('les données du formulaire sont invalides');
+            if (!empty($_POST['content']) && !empty($_POST['title']) 
+                && !empty($_POST['chapo'])
+            ) {
+                $content = strip_tags($_POST['content']);
+                $title = strip_tags($_POST['title']);
+                $chapo = strip_tags($_POST['chapo']);
+            } else {
+                ?>
+                <script language="javascript"> 
+                alert("les données du formulaire sont invalides");
+                document.location.href = 'index.php?action=addPost';</script>
+                <?php 
             }
             // we create the new article
             $postRepository = new Post();
             $postRepository->connection = new DatabaseConnection();
             $success = $postRepository->addPost($title, $content, $chapo, $user_id);
-            if(!$success){
+            if (!$success) {
                 throw new \Exception('Impossible d\'ajouter l\'article !');
-            }else{
+            } else {
                 ?>
                 <script language="javascript"> 
                 alert("article ajouté");
@@ -44,6 +51,6 @@ class AddPost extends Controller
                 <?php 
             }
         }
-        $this->twig->display('addPost.twig',array('session'=>$_SESSION));
+        $this->twig->display('addPost.twig', array('session'=>$_SESSION));
     }
 }

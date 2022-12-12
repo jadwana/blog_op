@@ -4,12 +4,16 @@ namespace App\Controllers;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 require 'vendor/autoload.php';
+
 abstract class Controller
 {
     private $loader;
     protected $twig;
 
-    //method in charge of twig parameter
+    //
+    /**
+     * Method in charge of twig parameter
+     */
     public function __construct()
     {
         //we configure the folder containing the templates

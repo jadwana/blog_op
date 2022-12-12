@@ -4,41 +4,42 @@ namespace App\Models;
 
 use App\db\DatabaseConnection;
 require 'vendor/autoload.php';
+
 class Post
 {
     /**
-     * post title
+     * Post title
      *
      * @var string
      */
     private string $title;
     /**
-     * post date modification
+     * Post date modification
      *
      * @var string
      */
     private string $frenchCreationDate;
     /**
-     * post content
+     * Post content
      *
      * @var string
      */
     private string $content;
     /**
-     * post chapo
+     * Post chapo
      *
      * @var string
      */
     private string $chapo;
     
     /**
-     * post indentifier
+     * Post indentifier
      *
      * @var string
      */
     private string $identifier;
     /**
-     * user's nickname
+     * User's nickname
      *
      * @var string
      */
@@ -46,16 +47,23 @@ class Post
     
     
 
-    //connect to the database
+    //Connect to the database
     public DatabaseConnection $connection;
 
-    //method to retrieve data from a single article according to its id
+    /**
+     * Method to retrieve data from a single article according to its id
+     *
+     * @param string $identifier
+     * 
+     * @return Post
+     */
     public function getPost(string $identifier): Post 
     {
         $statement= $this->connection->getConnection()->prepare(
-            "SELECT users.username,posts.post_id, posts.title, posts.content, posts.chapo, 
-            DATE_FORMAT(posts.creationDate, '%d-%m-%Y à %Hh%imin%ss') AS french_creation_date FROM posts 
-            INNER JOIN users ON users.user_id=posts.user_id WHERE posts.post_id = ?"
+            "SELECT users.username,posts.post_id, posts.title, posts.content, 
+            posts.chapo, DATE_FORMAT(posts.creationDate, '%d-%m-%Y à %Hh%imin%ss')
+             AS french_creation_date FROM posts INNER JOIN users ON 
+             users.user_id=posts.user_id WHERE posts.post_id = ?"
         );
 
         $statement->execute([$identifier]);
@@ -73,20 +81,23 @@ class Post
         return $post;
     }
 
-    //method to retrieve data from  all articles
+    /**
+     * Method to retrieve data from  all articles
+     *
+     * @return array
+     */
     public function getPosts(): array
     {
         $statement= $this->connection->getConnection()->query(
             "SELECT users.username,posts.post_id,posts.title, posts.chapo, 
-        DATE_FORMAT(posts.creationDate,'%d-%m-%Y à %Hh%imin%ss') AS french_creation_date 
-        FROM users INNER JOIN posts ON users.user_id=posts.user_id ORDER BY creationDate DESC;"
+            DATE_FORMAT(posts.creationDate,'%d-%m-%Y à %Hh%imin%ss') 
+            AS french_creation_date FROM users INNER JOIN posts ON 
+            users.user_id=posts.user_id ORDER BY creationDate DESC;"
         );
-
-        
 
         $posts = [];
 
-        while (($row = $statement->fetch())){
+        while (($row = $statement->fetch())) {
             $post = new Post();
             $post->getTitle = $row['title'];
             $post->getFrench_creation_date = $row['french_creation_date'];
@@ -99,33 +110,67 @@ class Post
         return $posts;
     }
 
-    //method to add data of a new post
-    public function addPost(string $title,  string $content, string $chapo, string $user_id)
-    {
+    /**
+     * Method to add data of a new post
+     *
+     * @param string $title
+     * @param string $content
+     * @param string $chapo
+     * @param string $user_id
+     * 
+     * @return boolean
+     */
+    public function addPost(string $title, string $content, string $chapo, 
+        string $user_id
+    ) {
        
             $statement = $this->connection->getConnection()->prepare(
-                'INSERT INTO posts( title, content, chapo, user_id, creationDate) VALUES(?, ?, ?, ?, NOW())'
+                'INSERT INTO posts( title, content, chapo, user_id, creationDate) 
+                VALUES(?, ?, ?, ?, NOW())'
             );
-            $affectedLines = $statement->execute([$title, $content, $chapo, $user_id]);
+            $affectedLines = $statement->execute(
+                [$title, $content, $chapo, 
+                $user_id]
+            );
     
             return($affectedLines > 0);
         
     }
 
-    //method to update a post
-    public function updatePost(string $identifier, string $content, string $title, string $chapo )
-    {   
+    /**
+     * Method to update data of a post
+     *
+     * @param string $identifier
+     * @param string $content
+     * @param string $title
+     * @param string $chapo
+     * 
+     * @return void
+     */
+    public function updatePost(string $identifier, string $content, string $title, 
+        string $chapo 
+    ) {
         $statement = $this->connection->getConnection()->prepare(
-            "UPDATE posts SET  content=?, title=?, chapo=?, creationDate=NOW() WHERE post_id=?"
+            'UPDATE posts SET  content=?, title=?, chapo=?, creationDate=NOW() 
+            WHERE post_id=?'
         );
        
-        $affectedLines = $statement->execute([$content, $title, $chapo, $identifier]);
+        $affectedLines = $statement->execute(
+            [$content, $title, $chapo, 
+            $identifier]
+        );
        
         return($affectedLines > 0);
         
     }
 
-    //method to delete a post
+    /**
+     * Method to delete data of a post
+     *
+     * @param string $identifier
+     * 
+     * @return void
+     */
     public function deletePost(string $identifier)
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -259,6 +304,8 @@ class Post
 
     /**
      * Get the value of firstname
+     * 
+     * @return string
      */ 
     public function getFirstname()
     {

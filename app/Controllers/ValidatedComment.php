@@ -4,28 +4,30 @@ namespace App\Controllers;
 require 'vendor/autoload.php';
 use App\Models\Comment;
 use App\db\DatabaseConnection;
-
-
         
-
 class ValidatedComment extends Controller
 {
-    //method in charge of displaying the list of posts
-    public function execute($identifier)
+    /**
+     * Method to validated a comment
+     *
+     * @param string $identifier
+     * 
+     * @return void
+     */
+    public function execute(string $identifier)
     {   
-       
-
         $repository = new Comment();
         $repository->connection = new DatabaseConnection();
         $success = $repository->validatedComment($identifier);
-        if(!$success) {
+        if (!$success) {
             throw new \Exception('Impossible de valider le commentaire !');
-        }else{
+        } else {
             header('location: index.php?action=admincommentslist');
         }
 
-        echo $this->twig->render('admincommentslist.twig', ['session'=> $_SESSION]);
+        echo $this->twig->render(
+            'admincommentslist.twig', 
+            ['session'=> $_SESSION]
+        );
     }
-
-    
 }

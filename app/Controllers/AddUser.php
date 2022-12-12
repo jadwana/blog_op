@@ -8,18 +8,25 @@ require 'vendor/autoload.php';
 
 class AddUser extends Controller
 {
-    //method to do the checks and to secure the entrances
+    
+    /**
+     * Method to do the checks and to secure the entrances
+     * and to add a new user
+     *
+     * @return void
+     */
     public function execute()
     {
-        if(!empty($_POST)) {
-            if(isset($_POST["username"], $_POST["password"]) && !empty($_POST["username"]) && !empty($_POST["password"])) {
-
+        if (!empty($_POST)) {
+            if (isset($_POST["username"], $_POST["password"]) 
+                && !empty($_POST["username"]) && !empty($_POST["password"])
+            ) {
                 $username= strip_tags(trim($_POST['username']));
-                if(strlen($username)<5) {
-                    throw new \Exception('votre pseudo est trop court!');
+                if (strlen($username)<5) {
+                    throw new \Exception('pseudo trop court!');
                 }
-                if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                    echo 'adresse mail incorrecte';
+                if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                    throw new \Exception('adresse mail incorrecte !');
                 }
                     $email=$_POST['email'];
 
@@ -27,15 +34,14 @@ class AddUser extends Controller
                     $usernameCheck = new User();
                     $usernameCheck->connection= new DatabaseConnection();
                     $result1 = $usernameCheck->checkUserUsername($username);
-                if($result1) {
+                if ($result1) {
                     throw new \Exception('pseudo déjà existant !');
                 }
-
                     //we check that the email is unique
                     $userMailCheck = new User();
                     $userMailCheck->connection= new DatabaseConnection();
                     $result2 = $userMailCheck->checkUserEmail($email);
-                if($result2) {
+                if ($result2) {
                     throw new \Exception('email déjà existant !');
                 }
 
@@ -45,7 +51,7 @@ class AddUser extends Controller
                     $userRepository = new User();
                     $userRepository->connection = new DatabaseConnection();
                     $success = $userRepository->addUser($username, $pass, $email);
-                if(!$success) {
+                if (!$success) {
                     throw new \Exception('Impossible d\'ajouter l\'utilisateur !');
                 }
                         $usersession = new User();
@@ -55,9 +61,12 @@ class AddUser extends Controller
                         $_SESSION['username']= $sessionResult->getUsername;
                         $_SESSION['role'] = $sessionResult->getRole;
                         header('location: index.php');
-            }
-            else{
-                echo 'toutes les informations doivent être complétées';
+            } else {
+                ?>
+                <script language="javascript"> 
+                alert("Toutes les informations doivent être complétées");
+                document.location.href = 'index.php?action=register';</script>
+                <?php 
             }
         }
 
