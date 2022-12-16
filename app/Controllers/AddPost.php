@@ -13,7 +13,7 @@ class AddPost extends Controller
      */
     public function execute()
     {
-        $user_id =$_SESSION['user_id'];
+        $user_id = $_SESSION['user_id'];
         $content = null;
         $title = null;
         $chapo = null;
@@ -31,7 +31,7 @@ class AddPost extends Controller
                 <script language="javascript"> 
                 alert("les données du formulaire sont invalides");
                 document.location.href = 'index.php?action=addPost';</script>
-                <?php 
+                <?php
             }
             // we create the new article
             $postRepository = new Post();
@@ -47,8 +47,8 @@ class AddPost extends Controller
                 <?php 
             }
         }
-        $this->twig->display('addPost.twig', array('session'=>$_SESSION));
+        $this->twig->display('addPost.twig', array('session'=> $_SESSION));
 
     }
-    
+
 }

@@ -45,12 +45,12 @@ class User
      * Method to check user username and get this user data
      *
      * @param string $username
-     * 
+     *
      * @return user|null
      */
     public function checkUserUsername(string $username): ?user
     {
-        $statement= $this->connection->getConnection()->prepare(
+        $statement = $this->connection->getConnection()->prepare(
             'SELECT * FROM users WHERE username=? '
         );
 
@@ -114,7 +114,7 @@ class User
      * Get the value of role
      * 
      * @return string
-     */ 
+     */
     public function getRole()
     {
         return $this->role;

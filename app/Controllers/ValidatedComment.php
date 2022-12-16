@@ -3,14 +3,14 @@ namespace App\Controllers;
 
 use App\Models\Comment;
 use App\db\DatabaseConnection;
-        
+  
 class ValidatedComment extends Controller
 {
     /**
      * Method to validated a comment
      *
      * @param int $identifier
-     * 
+     *
      * @return void
      */
     public function execute(int $identifier)
@@ -26,7 +26,7 @@ class ValidatedComment extends Controller
 
         echo $this->twig->render(
             'admincommentslist.twig',
-            ['session'=> $_SESSION]
+            ['session' => $_SESSION]
         );
     }
 }

@@ -19,15 +19,15 @@ class Logon extends Controller
     public function execute()
     {
         if (!empty($_POST)) {
-             $username =null;
+             $username = null;
 
-            if (isset($_POST['username'], $_POST['password']) 
+            if (isset($_POST['username'], $_POST['password'])
                 && !empty(trim($_POST['username'])) && !empty($_POST['password'])
             ) {
-                $username=htmlspecialchars(trim($_POST['username']));
+                $username = htmlspecialchars(trim($_POST['username']));
 
                 $userRepository = new User();
-                $userRepository->connection= new DatabaseConnection();
+                $userRepository->connection = new DatabaseConnection();
                 $connectedUser = $userRepository->checkUserUsername($username);
                 if (!$connectedUser) {
                     ?>
@@ -37,12 +37,12 @@ class Logon extends Controller
                     <?php
                 } else {
                     if (password_verify(
-                        trim($_POST['password']), 
+                        trim($_POST['password']),
                         $connectedUser->getPassword
                     )
                     ) {
-                        $_SESSION['user_id']= $connectedUser->getUser_id;
-                        $_SESSION['username']= $connectedUser->getUsername;
+                        $_SESSION['user_id'] = $connectedUser->getUser_id;
+                        $_SESSION['username'] = $connectedUser->getUsername;
                         $_SESSION['role'] = $connectedUser->getRole;
 
                         ?>
@@ -63,7 +63,7 @@ class Logon extends Controller
                 <script language="javascript"> 
                 alert("Vous devez remplir tous les champs");
                 </script>
-                <?php 
+                <?php
             }
         } else {
         }

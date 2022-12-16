@@ -4,7 +4,7 @@ namespace App\Controllers;
 // require 'vendor/autoload.php';
 use App\Models\Post;
 use App\db\DatabaseConnection;
-        
+     
 class PostList extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class PostList extends Controller
      * @return void
      */
     public function execute()
-    {   
+    {
         $repository = new Post();
         $repository->connection = new DatabaseConnection();
         $posts = $repository->getPosts();

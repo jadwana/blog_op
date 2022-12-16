@@ -43,12 +43,12 @@ class Comment
      * Method to retrieve comments associated with post id
      *
      * @param string $post
-     * 
+     *
      * @return array
      */
     public function getComments(string $post): array
     {
-        $statement= $this->connection->getConnection()->prepare(
+        $statement = $this->connection->getConnection()->prepare(
             "SELECT comments.comment_id, comments.comment, 
             DATE_FORMAT(comments.commentDate, '%d-%m-%Y à %Hh%imin%ss') AS 
             french_creation_date, comments.post_id, users.username FROM comments 
@@ -70,9 +70,9 @@ class Comment
 
             $comments[] = $comment;
         }
-    
+
         return $comments;
-    } 
+    }
     /**
      * Method to retrieve unvalidated comments
      *
@@ -92,7 +92,7 @@ class Comment
             $comment->getFrenchCreationDate = $row['french_creation_date'];
             $comment->getComment = $row['comment'];
             $comment->getIdentifier = $row['comment_id'];
-            $comment->getPost =$row['post_id'];
+            $comment->getPost = $row['post_id'];
     
                 $comments[] = $comment;
         }
@@ -130,7 +130,7 @@ class Comment
             'DELETE FROM comments WHERE comment_id=?'
         );
         $affectedLines = $statement->execute([$identifier]);
-        return($affectedLines >0);
+        return($affectedLines > 0);
     }
 
     /**
@@ -219,7 +219,7 @@ class Comment
      * Set the value of frenchCreationDate
      *
      * @return self
-     */ 
+     */
     public function setFrenchCreationDate($frenchCreationDate)
     {
         $this->frenchCreationDate = $frenchCreationDate;

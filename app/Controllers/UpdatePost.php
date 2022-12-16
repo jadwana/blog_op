@@ -11,19 +11,18 @@ class UpdatePost extends Controller
      *
      * @param int $identifier
      * @param array|null $input
-     * 
+     *
      * @return void
      */
     public function execute(int $identifier, ?array $input)
-    { 
+    {
         //submission management if there is an entry
         if ($input !== null) {
-            
             $title = null;
             $content = null;
             $chapo = null;
 
-            if (!empty($input['title']) &&!empty($input['chapo']) 
+            if (!empty($input['title']) &&!empty($input['chapo'])
                 &&!empty($input['content'])
             ) {
                 
@@ -48,7 +47,7 @@ class UpdatePost extends Controller
                     alert("article modifié!");
                     document.location.href = 'index.php?action=adminpostlist';
                     </script>
-                    <?php 
+                    <?php
             }
 
         }
@@ -61,8 +60,8 @@ class UpdatePost extends Controller
             throw new \Exception("L'article $identifier n'existe pas.");
         }
         $this->twig->display(
-            'updatepost.twig', 
-            ['post'=>$post,'session'=> $_SESSION]
+            'updatepost.twig',
+            ['post'=> $post,'session'=> $_SESSION]
         );
     }
 }

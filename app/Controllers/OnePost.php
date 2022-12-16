@@ -28,8 +28,8 @@ class OnePost extends Controller
         $comments = $commentRepository->getComments($identifier);
 
         $this->twig->display(
-            'onepost.twig', 
-            ['post'=> $post, 'comments'=>$comments,'session'=> $_SESSION]
+            'onepost.twig',
+            ['post'=> $post, 'comments'=> $comments,'session'=> $_SESSION]
         );
     }
 }

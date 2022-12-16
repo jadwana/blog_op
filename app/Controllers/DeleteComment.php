@@ -10,7 +10,7 @@ class DeleteComment
      * Method to delete a comment
      *
      * @param int $identifier
-     * 
+     *
      * @return void
      */
     public function execute(int $identifier)
@@ -25,7 +25,7 @@ class DeleteComment
             <script language="javascript"> 
             alert("Commentaire supprimé");
             document.location.href = 'index.php?action=admincommentslist';</script>
-            <?php 
+            <?php
         }
     }
 }

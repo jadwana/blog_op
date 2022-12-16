@@ -24,7 +24,7 @@ require 'vendor/autoload.php';
 $loader = new Twig\Loader\FilesystemLoader('app/views');
 $twig = new \Twig\Environment(
     $loader, [
-    'cache'=> false, //'tmp'
+    'cache' => false, //'tmp'
     ]
 );
 
@@ -33,7 +33,7 @@ $twig = new \Twig\Environment(
 //router
 try{
 
-    if (isset($_GET['action']) && $_GET['action'] !=='') {
+    if (isset($_GET['action']) && $_GET['action'] !== '') {
         switch ($_GET['action']){
         case "postlist":
             (new PostList())->execute();
@@ -41,7 +41,6 @@ try{
         case "onepost":
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $identifier = $_GET['id'];
-        
                 (new OnePost())->execute($identifier);
             } else {
                   throw new Exception('aucun identifiant envoyé');
@@ -83,9 +82,9 @@ try{
             }
             break;
         case "admin":
-            if (isset($_SESSION['user_id']) && $_SESSION['role']=='admin') {
+            if (isset($_SESSION['user_id']) && $_SESSION['role'] == 'admin') {
                 echo $twig->render(
-                    'administration.twig', 
+                    'administration.twig',
                     array('session'=> $_SESSION)
                 );
             } else {
@@ -142,7 +141,7 @@ try{
             break;
         case "policy":
             echo $twig->render('privacypolicy.twig');
-            break;   
+            break;
         default:
             echo $twig->render('404.twig');
         }
@@ -150,7 +149,7 @@ try{
     
     
     } else {
-        echo $twig->render('homepage.twig', array('session'=> $_SESSION));
+        echo $twig->render('homepage.twig', array('session' => $_SESSION));
     }
 
 }catch (Exception $e) {
@@ -158,7 +157,7 @@ try{
 
     echo $twig->render(
         'error.twig',
-        ['error'=> $errorMessage, 'session'=> $_SESSION]
+        ['error' => $errorMessage, 'session' => $_SESSION]
     );
 }
 

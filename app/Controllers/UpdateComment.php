@@ -11,17 +11,17 @@ class UpdateComment extends Controller
      *
      * @param int $identifier
      * @param array|null $input
-     * 
+     *
      * @return void
      */
     public function execute(int $identifier, ?array $input)
-    { 
+    {
         //submission management if there is an entry
         if ($input !== null) {
             $comment = null;
 
             if (!empty($input['comment'])) {
-                
+
                 $comment = strip_tags($input['comment']);
             } else {
                 throw new \Exception('les données du formulaire sont invalides');
@@ -46,12 +46,12 @@ class UpdateComment extends Controller
         
         if ($comment === null) {
             throw new \Exception("Le commentaire $identifier n'existe pas.");
-        }    
+        } 
     
         $this->twig->display(
-            'updateComment.twig', 
-            ['comment'=>$comment,
-            'session'=> $_SESSION]
+            'updateComment.twig',
+            ['comment' => $comment,
+            'session' => $_SESSION]
         );
    
     }

@@ -10,7 +10,7 @@ class DeletePost
      * Method to delete a post
      *
      * @param int $identifier post id
-     * 
+     *
      * @return void
      */
     public function execute(string $identifier)
@@ -25,7 +25,7 @@ class DeletePost
             <script language="javascript"> 
             alert("article supprimé");
             document.location.href = 'index.php?action=adminpostlist';</script>
-            <?php 
+            <?php
         }
 
     }

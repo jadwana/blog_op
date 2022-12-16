@@ -20,8 +20,8 @@ class AdminPostList extends Controller
         $posts = $repository->getPosts();
         echo $this->twig->render(
             'adminpostlist.twig',
-            ['posts'=> $posts, 'session'=> $_SESSION]
+            ['posts' => $posts, 'session' => $_SESSION]
         );
     }
-    
+
 }

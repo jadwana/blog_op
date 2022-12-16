@@ -2,4 +2,4 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname= "blog";
+$dbname = "blog";

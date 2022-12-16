@@ -10,12 +10,14 @@ class AddComment extends Controller
      * Function in charge of doing security checks and adding a new comment
      *
      * @param string $post
-     * 
+     *
      * @return void
      */
+
+
     public function execute(string $post)
     {
-        $user_id =$_SESSION['user_id'];
+        $user_id = $_SESSION['user_id'];
         $comment = null;
         $_SESSION['message']=null;
         //we do the checks
@@ -27,7 +29,7 @@ class AddComment extends Controller
             var numpost = <?php echo $post?>;
             alert("les données du commentaires sont invalides");
             document.location.href = 'index.php?action=onepost&id='+numpost;</script>
-            <?php 
+            <?php
         }
         //we create a new comment
         $commentRepository = new Comment();

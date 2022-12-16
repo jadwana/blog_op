@@ -31,7 +31,7 @@ class Post
      * @var string
      */
     private string $chapo;
-    
+
     /**
      * Post indentifier
      *
@@ -54,7 +54,7 @@ class Post
      * Method to retrieve data from a single article according to its id
      *
      * @param int $identifier
-     * 
+     *
      * @return Post
      */
     public function getPost(int $identifier): Post
@@ -88,7 +88,7 @@ class Post
      */
     public function getPosts(): array
     {
-        $statement= $this->connection->getConnection()->query(
+        $statement = $this->connection->getConnection()->query(
             "SELECT users.username,posts.post_id,posts.title, posts.chapo, 
             DATE_FORMAT(posts.creationDate,'%d-%m-%Y à %Hh%imin%ss') 
             AS french_creation_date FROM users INNER JOIN posts ON 
@@ -120,7 +120,7 @@ class Post
      * 
      * @return boolean
      */
-    public function addPost(string $title, string $content, string $chapo, 
+    public function addPost(string $title, string $content, string $chapo,
         int $user_id
     ) {
        
@@ -129,7 +129,7 @@ class Post
                 VALUES(?, ?, ?, ?, NOW())'
             );
             $affectedLines = $statement->execute(
-                [$title, $content, $chapo, 
+                [$title, $content, $chapo,
                 $user_id]
             );
     
@@ -147,7 +147,7 @@ class Post
      * 
      * @return void
      */
-    public function updatePost(int $identifier, string $content, string $title, 
+    public function updatePost(int $identifier, string $content, string $title,
         string $chapo
     ) {
         $statement = $this->connection->getConnection()->prepare(
@@ -156,7 +156,7 @@ class Post
         );
        
         $affectedLines = $statement->execute(
-            [$content, $title, $chapo, 
+            [$content, $title, $chapo,
             $identifier]
         );
        
@@ -177,7 +177,7 @@ class Post
             'DELETE FROM posts WHERE post_id=?'
         );
         $affectedLines = $statement->execute([$identifier]);
-        return($affectedLines >0);
+        return($affectedLines > 0);
     }
     
 
@@ -198,7 +198,7 @@ class Post
      * @param string $title post title
      *
      * @return self
-     */ 
+     */
     public function setTitle(string $title)
     {
         $this->title = $title;
