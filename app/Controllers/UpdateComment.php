@@ -40,7 +40,7 @@ class UpdateComment extends Controller
             }
 
         }
-        //displays the form if there is no entry and at the beginning
+        // displays the form if there is no entry and at the beginning
         $commentRepository = new Comment();
         $commentRepository->connection = new DatabaseConnection();
         $comment = $commentRepository->getOneComment($identifier);
@@ -51,7 +51,8 @@ class UpdateComment extends Controller
     
         $this->twig->display(
             'updateComment.twig', 
-            ['comment'=>$comment,'session'=> $_SESSION]
+            ['comment'=>$comment,
+            'session'=> $_SESSION]
         );
    
     }

@@ -59,7 +59,7 @@ class Post
      */
     public function getPost(int $identifier): Post 
     {
-        $statement= $this->connection->getConnection()->prepare(
+        $statement = $this->connection->getConnection()->prepare(
             "SELECT users.username,posts.post_id, posts.title, posts.content, 
             posts.chapo, DATE_FORMAT(posts.creationDate, '%d-%m-%Y à %Hh%imin%ss')
              AS french_creation_date FROM posts INNER JOIN users ON 
