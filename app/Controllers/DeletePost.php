@@ -9,7 +9,7 @@ class DeletePost
     /**
      * Method to delete a post
      *
-     * @param int $identifier
+     * @param int $identifier post id
      * 
      * @return void
      */
@@ -27,5 +27,6 @@ class DeletePost
             document.location.href = 'index.php?action=adminpostlist';</script>
             <?php 
         }
+
     }
 }

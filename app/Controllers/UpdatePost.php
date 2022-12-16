@@ -59,7 +59,7 @@ class UpdatePost extends Controller
         
         if ($post === null) {
             throw new \Exception("L'article $identifier n'existe pas.");
-        }    
+        }
         $this->twig->display(
             'updatepost.twig', 
             ['post'=>$post,'session'=> $_SESSION]

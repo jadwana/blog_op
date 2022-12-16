@@ -51,7 +51,6 @@ class Logon extends Controller
                         document.location.href = 'index.php';
                         </script>
                         <?php 
-                        
                     } else {
                         ?>
                         <script language="javascript"> 
@@ -68,6 +67,6 @@ class Logon extends Controller
             }
         } else {
         }
-        $this->twig->display('connection.twig');  
+        $this->twig->display('connection.twig');
     }
 }

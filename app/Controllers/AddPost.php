@@ -49,5 +49,7 @@ class AddPost extends Controller
             }
         }
         $this->twig->display('addPost.twig', array('session'=>$_SESSION));
+
     }
+    
 }

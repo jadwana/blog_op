@@ -20,8 +20,8 @@ if (isset($_POST['firstname'], $_POST['surname'], $_POST['email'], $_POST['objec
         $mail->isSMTP();
         $mail->Host='smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username=$mailadd;
-        $mail->Password=$mailpass;
+        $mail->Username =$mailadd;
+        $mail->Password =$mailpass;
         $mail->SMTP='tls';
         $mail->Port=587;
         $mail->setFrom($mailadd, $name);
