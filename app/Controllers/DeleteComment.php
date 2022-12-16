@@ -3,18 +3,17 @@ namespace App\Controllers;
 
 use App\Models\Comment;
 use App\db\DatabaseConnection;
-require 'vendor/autoload.php';
 
 class DeleteComment
 {
     /**
      * Method to delete a comment
      *
-     * @param string $identifier
+     * @param int $identifier
      * 
      * @return void
      */
-    public function execute(string $identifier)
+    public function execute(int $identifier)
     {
         $postRepository = new Comment();
         $postRepository->connection = new DatabaseConnection();

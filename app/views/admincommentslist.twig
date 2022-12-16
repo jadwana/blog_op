@@ -9,13 +9,13 @@
 {% block content %}
 <h4 class="text-center my-5">Commentaire(s) à valider/supprimer</h4>
 <div class="my-5">
-     <img src="public/images/validation.jpg" class="rounded mx-auto d-block shadow" alt="buffer" id="commentimg">
+     <img src="public/images/validation.jpg" width="50%" class="img-fluid rounded mx-auto d-block shadow" alt="buffer">
 </div>
 
 <div class="row">
      {% for comment in comments %}
-     <div class="col col-md-6">
-          <div class="card mb-2">
+     <div class="col col-md-6 mb-2">
+          <div class="card  h-100">
                <div class="card-body ">
                <h6 class="card-subtitle mb-2 text-mutetd">le : {{comment.getFrenchCreationDate}}</h6>
                <p class="card-text">{{comment.getComment}}</p>

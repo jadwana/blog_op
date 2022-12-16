@@ -3,19 +3,18 @@ namespace App\Controllers;
 
 use App\Models\Comment;
 use App\db\DatabaseConnection;
-require 'vendor/autoload.php';
 
 class UpdateComment extends Controller
 {
     /**
      * Method to modify a comment
      *
-     * @param string     $identifier
+     * @param int $identifier
      * @param array|null $input
      * 
      * @return void
      */
-    public function execute(string $identifier, ?array $input)
+    public function execute(int $identifier, ?array $input)
     { 
         //submission management if there is an entry
         if ($input !== null) {

@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\db\DatabaseConnection;
-require 'vendor/autoload.php';
+// require 'vendor/autoload.php';
 
 class User
 {
@@ -28,9 +28,9 @@ class User
     /**
      * Id of user
      *
-     * @var string
+     * @var int
      */
-    private string $user_id;
+    private int $user_id;
     /**
      * email of user
      *
@@ -158,7 +158,7 @@ class User
     /**
      * Get the value of user_id
      * 
-     * @return string
+     * @return int
      */ 
     public function getUser_id()
     {

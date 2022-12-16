@@ -3,14 +3,13 @@ namespace App\Controllers;
 
 use App\Models\Post;
 use App\db\DatabaseConnection;
-require 'vendor/autoload.php';
 
 class DeletePost
 {
     /**
      * Method to delete a post
      *
-     * @param string $identifier
+     * @param int $identifier
      * 
      * @return void
      */

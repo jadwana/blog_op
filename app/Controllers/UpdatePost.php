@@ -3,19 +3,18 @@ namespace App\Controllers;
 
 use App\Models\Post;
 use App\db\DatabaseConnection;
-require 'vendor/autoload.php';
 
 class UpdatePost extends Controller
 {
     /**
      * Method to modify a post
      *
-     * @param string     $identifier
+     * @param int $identifier
      * @param array|null $input
      * 
      * @return void
      */
-    public function execute(string $identifier, ?array $input)
+    public function execute(int $identifier, ?array $input)
     { 
         //submission management if there is an entry
         if ($input !== null) {

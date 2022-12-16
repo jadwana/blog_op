@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-require 'vendor/autoload.php';
+// require 'vendor/autoload.php';
 use App\Models\Comment;
 use App\db\DatabaseConnection;
 

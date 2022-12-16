@@ -3,8 +3,6 @@ namespace App\Controllers;
 
 use App\Models\Comment;
 use App\db\DatabaseConnection;
-require 'vendor/autoload.php';
-
 
 class AddComment extends Controller
 {

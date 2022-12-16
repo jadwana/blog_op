@@ -4,11 +4,8 @@ namespace App\Controllers;
 use App\Models\Post;
 use App\db\DatabaseConnection;
 
-require 'vendor/autoload.php';
-
 class AddPost extends Controller
 {
-
    
     /**
      * Method to add a new post
