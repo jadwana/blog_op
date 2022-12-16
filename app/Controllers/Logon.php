@@ -3,8 +3,11 @@ namespace App\Controllers;
 
 use App\Models\User;
 use App\db\DatabaseConnection;
-require 'vendor/autoload.php';
 
+/**
+ * Class logon
+ * To logon the user
+ */
 class Logon extends Controller
 {
     /**

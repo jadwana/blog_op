@@ -1,7 +1,6 @@
 <?php
 namespace App\Controllers;
 
-require 'vendor/autoload.php';
 use App\Models\Comment;
 use App\db\DatabaseConnection;
         
@@ -10,11 +9,11 @@ class ValidatedComment extends Controller
     /**
      * Method to validated a comment
      *
-     * @param string $identifier
+     * @param int $identifier
      * 
      * @return void
      */
-    public function execute(string $identifier)
+    public function execute(int $identifier)
     {   
         $repository = new Comment();
         $repository->connection = new DatabaseConnection();

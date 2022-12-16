@@ -3,8 +3,6 @@ namespace App\Controllers;
 
 use App\Models\user;
 use App\db\DatabaseConnection;
-require 'vendor/autoload.php';
-
 
 class AddUser extends Controller
 {

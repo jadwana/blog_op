@@ -11,14 +11,15 @@ Inscription
    <div class="col-11 col-md-4 shadow mb-5 pt-3">
       <form action="index.php?action=register" method="post">
          <div class="row mb-3">
-               {{ forms.input ('username', 'Votre pseudo (minimum 5 caractères)', username, {class: 'col-12'}) }}
+               {{ forms.input ('username', 'Votre pseudo (minimum 5 caractères)*', username, {class: 'col-12'}) }}
           </div>
           <div class="row mb-3">
-             {{ forms.input ('password', 'Votre mot de passe', password,  {class: 'col-12', type: 'password'}) }}
+             {{ forms.input ('password', 'Votre mot de passe*', password,  {class: 'col-12', type: 'password'}) }}
           </div>
           <div class="row mb-3">
-             {{ forms.input ('email', 'Votre email', email,  {class: 'col-12', type: 'email'}) }}
+             {{ forms.input ('email', 'Votre email*', email,  {class: 'col-12', type: 'email'}) }}
         </div>
+        <div><p>* Tous les champs sont requis</p></div>
         <div class="form-group mb-5">
          <button type="submit" class="btn btn-primary">Envoyer</button>
      </div>

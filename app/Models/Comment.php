@@ -2,7 +2,6 @@
 namespace App\Models;
 
 use App\db\DatabaseConnection;
-require 'vendor/autoload.php';
 
 class Comment
 {
@@ -27,15 +26,15 @@ class Comment
     /**
      * Comment id
      *
-     * @var string
+     * @var int
      */
-    private string $identifier;
+    private int $identifier;
     /**
      * Post id
      *
-     * @var string
+     * @var int
      */
-    private string $post;
+    private int $post;
 
     //Connect to the data base
     public DatabaseConnection $connection;
@@ -105,11 +104,11 @@ class Comment
     /**
      * Method to validate a comment
      *
-     * @param string $identifier
+     * @param int $identifier
      * 
      * @return boolean
      */
-    public function validatedComment(string $identifier)
+    public function validatedComment(int $identifier)
     {
         $statement = $this->connection->getConnection()->prepare(
             "UPDATE comments SET  validation='y' WHERE comment_id=?"
@@ -122,11 +121,11 @@ class Comment
     /**
      * Method to delete a comment
      *
-     * @param string $identifier
+     * @param int $identifier
      * 
      * @return boolean
      */
-    public function deleteComment(string $identifier)
+    public function deleteComment(int $identifier)
     {
         $statement = $this->connection->getConnection()->prepare(
             'DELETE FROM comments WHERE comment_id=?'
@@ -138,11 +137,11 @@ class Comment
     /**
      * Method to retrieve a single comment based on its id
      *
-     * @param string $identifier
+     * @param int $identifier
      * 
      * @return Comment|null
      */
-    public function getOneComment(string $identifier): ?Comment
+    public function getOneComment(int $identifier): ?Comment
     {
         $statement = $this->connection->getConnection()->prepare(
             "SELECT comments.comment_id, comments.comment, 
@@ -172,12 +171,12 @@ class Comment
      * Method to add a new comment
      *
      * @param string $post
-     * @param string $user_id
+     * @param int $user_id
      * @param string $comment
      * 
      * @return boolean
      */
-    public function createComment(string $post, string $user_id, string $comment): bool
+    public function createComment(string $post, int $user_id, string $comment): bool
     {
         $statement = $this->connection->getConnection()->prepare(
             'INSERT INTO comments(post_id, user_id, comment, commentDate) 
@@ -191,12 +190,12 @@ class Comment
     /**
      * Method to update a comment
      *
-     * @param string $identifier
+     * @param int $identifier
      * @param string $comment
      * 
      * @return boolean
      */
-    public function updateComment(string $identifier, string $comment): bool
+    public function updateComment(int $identifier, string $comment): bool
     {
         $statement = $this->connection->getConnection()->prepare(
             "UPDATE comments SET  comment=?, validation='n', commentDate=NOW() 

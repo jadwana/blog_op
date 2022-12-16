@@ -2,11 +2,9 @@
 
 namespace App\Controllers;
 
-
 use App\Models\Post;
 use App\Models\Comment;
 use App\db\DatabaseConnection;
-require 'vendor/autoload.php';
 
 
 class OnePost extends Controller
@@ -14,11 +12,11 @@ class OnePost extends Controller
      /**
       * Method in charge of displaying one post and its comments
       *
-      * @param string $identifier
+      * @param int $identifier
       *
       * @return void
       */
-    public function execute(string $identifier)
+    public function execute(int $identifier)
     {
         $connection = new DatabaseConnection();
 

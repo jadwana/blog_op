@@ -47,7 +47,7 @@
           <div class="card mb-2">
                <div class="card-body ">
                    <h3 class="card-title ">{{comment.getUsername}}</h3>
-                   <h5 class="card-subtitle mb-2 text-mutetd">le : {{comment.getFrenchCreationDate}}</h5>
+                   <h6 class="card-subtitle mb-2 text-mutetd">Le : {{comment.getFrenchCreationDate}}</h6>
                    <p class="card-text">{{comment.getComment}}</p>
                     {% if session.username == comment.getUsername %}
                    <a href="index.php?action=updateComment&id={{comment.getIdentifier}}" class="btn card-link">Modifier</a>

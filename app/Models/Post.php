@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\db\DatabaseConnection;
-require 'vendor/autoload.php';
+// require 'vendor/autoload.php';
 
 class Post
 {
@@ -37,7 +37,7 @@ class Post
      *
      * @var string
      */
-    private string $identifier;
+    private int $identifier;
     /**
      * User's nickname
      *
@@ -53,11 +53,11 @@ class Post
     /**
      * Method to retrieve data from a single article according to its id
      *
-     * @param string $identifier
+     * @param int $identifier
      * 
      * @return Post
      */
-    public function getPost(string $identifier): Post 
+    public function getPost(int $identifier): Post 
     {
         $statement= $this->connection->getConnection()->prepare(
             "SELECT users.username,posts.post_id, posts.title, posts.content, 
@@ -116,12 +116,12 @@ class Post
      * @param string $title
      * @param string $content
      * @param string $chapo
-     * @param string $user_id
+     * @param int $user_id
      * 
      * @return boolean
      */
     public function addPost(string $title, string $content, string $chapo, 
-        string $user_id
+        int $user_id
     ) {
        
             $statement = $this->connection->getConnection()->prepare(
@@ -140,14 +140,14 @@ class Post
     /**
      * Method to update data of a post
      *
-     * @param string $identifier
+     * @param int $identifier
      * @param string $content
      * @param string $title
      * @param string $chapo
      * 
      * @return void
      */
-    public function updatePost(string $identifier, string $content, string $title, 
+    public function updatePost(int $identifier, string $content, string $title, 
         string $chapo 
     ) {
         $statement = $this->connection->getConnection()->prepare(
@@ -167,11 +167,11 @@ class Post
     /**
      * Method to delete data of a post
      *
-     * @param string $identifier
+     * @param int $identifier
      * 
      * @return void
      */
-    public function deletePost(string $identifier)
+    public function deletePost(int $identifier)
     {
         $statement = $this->connection->getConnection()->prepare(
             'DELETE FROM posts WHERE post_id=?'
@@ -281,7 +281,7 @@ class Post
     /**
      * Get post id
      *
-     * @return string
+     * @return int
      */ 
     public function getIdentifier()
     {
@@ -291,7 +291,7 @@ class Post
     /**
      * Set post id
      *
-     * @param string $identifier post id
+     * @param int $identifier post id
      *
      * @return self
      */ 

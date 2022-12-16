@@ -3,7 +3,6 @@ namespace App\Controllers;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-require 'vendor/autoload.php';
 
 abstract class Controller
 {
