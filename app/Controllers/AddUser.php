@@ -64,7 +64,7 @@ class AddUser extends Controller
                 <script language="javascript"> 
                 alert("Toutes les informations doivent être complétées");
                 document.location.href = 'index.php?action=register';</script>
-                <?php 
+                <?php
             }
         }
 

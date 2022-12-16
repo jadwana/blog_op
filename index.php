@@ -34,7 +34,6 @@ $twig = new \Twig\Environment(
 try{
 
     if (isset($_GET['action']) && $_GET['action'] !=='') {
-    
         switch ($_GET['action']){
         case "postlist":
             (new PostList())->execute();
@@ -53,7 +52,7 @@ try{
             break;
         case "logout":
             (new Logout())->execute();
-            break;  
+            break;
         case "register":
             if (isset($_SESSION['user_id'])) {
                 throw new Exception(
@@ -158,7 +157,7 @@ try{
     $errorMessage = $e->getMessage();
 
     echo $twig->render(
-        'error.twig', 
+        'error.twig',
         ['error'=> $errorMessage, 'session'=> $_SESSION]
     );
 }

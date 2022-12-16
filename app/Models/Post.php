@@ -57,7 +57,7 @@ class Post
      * 
      * @return Post
      */
-    public function getPost(int $identifier): Post 
+    public function getPost(int $identifier): Post
     {
         $statement = $this->connection->getConnection()->prepare(
             "SELECT users.username,posts.post_id, posts.title, posts.content, 
@@ -148,7 +148,7 @@ class Post
      * @return void
      */
     public function updatePost(int $identifier, string $content, string $title, 
-        string $chapo 
+        string $chapo
     ) {
         $statement = $this->connection->getConnection()->prepare(
             'UPDATE posts SET  content=?, title=?, chapo=?, creationDate=NOW() 
@@ -186,7 +186,7 @@ class Post
      * Get post title
      *
      * @return string
-     */ 
+     */
     public function getTitle()
     {
         return $this->title;

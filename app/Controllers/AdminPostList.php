@@ -14,12 +14,12 @@ class AdminPostList extends Controller
      * @return void
      */
     public function execute()
-    {   
+    {
         $repository = new Post();
         $repository->connection = new DatabaseConnection();
         $posts = $repository->getPosts();
         echo $this->twig->render(
-            'adminpostlist.twig', 
+            'adminpostlist.twig',
             ['posts'=> $posts, 'session'=> $_SESSION]
         );
     }

@@ -1,45 +1,57 @@
 body {
-    background-color: #e4f2e7;
-    color: #2d3e40;
+  background-color: #e4f2e7;
+  color: #2d3e40;
 }
+
 .navbar{
     background-color: #2d3e40;
 }
+
 .nav-link{
     color: #93bfb7;
 }
+
 .nav-link:hover{
     color: #387373;
 }
+
 .card-title{
     background-color: #93bfb7;
 }
+
 .btn
 {
     background-color: #387373;
     color: #e4f2e7;
     border-color: #387373;
 }
+
 .btn:hover{
     background-color: #387373;
     color: #2d3e40;
 }
+
 .gestion{
     background-color: #93bfb7;
 }
+
 i{
     color: #2d3e40;
 }
+
 #blog{
     max-height: 400px;
     width: auto;
 }
+
 .navbar-toggler{
     background-color: #93bfb7;
 }
+
 #admcom{
     background-color: #e4f2e7;
 }
+
 #admart{
     background-color: #e4f2e7;
 }

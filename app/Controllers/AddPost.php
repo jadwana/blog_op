@@ -6,7 +6,6 @@ use App\db\DatabaseConnection;
 
 class AddPost extends Controller
 {
-   
     /**
      * Method to add a new post
      *
@@ -21,7 +20,7 @@ class AddPost extends Controller
 
         if (!empty($_POST)) {
             // we do the checks
-            if (!empty($_POST['content']) && !empty($_POST['title']) 
+            if (!empty($_POST['content']) && !empty($_POST['title'])
                 && !empty($_POST['chapo'])
             ) {
                 $content = strip_tags($_POST['content']);

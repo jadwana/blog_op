@@ -15,7 +15,7 @@ class AdminCommentsList extends Controller
      * @return void
      */
     public function execute()
-    {   
+    {
         $repository = new Comment();
         $repository->connection = new DatabaseConnection();
         $comments = $repository->getUnvalidatedComments();
@@ -24,5 +24,5 @@ class AdminCommentsList extends Controller
             ['comments'=> $comments, 'session'=> $_SESSION]
         );
     }
-    
+
 }

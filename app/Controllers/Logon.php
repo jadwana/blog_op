@@ -50,7 +50,7 @@ class Logon extends Controller
                         alert("Connexion réussie!");
                         document.location.href = 'index.php';
                         </script>
-                        <?php 
+                        <?php
                     } else {
                         ?>
                         <script language="javascript"> 

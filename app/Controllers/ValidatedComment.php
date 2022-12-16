@@ -14,7 +14,7 @@ class ValidatedComment extends Controller
      * @return void
      */
     public function execute(int $identifier)
-    {   
+    {
         $repository = new Comment();
         $repository->connection = new DatabaseConnection();
         $success = $repository->validatedComment($identifier);
@@ -25,7 +25,7 @@ class ValidatedComment extends Controller
         }
 
         echo $this->twig->render(
-            'admincommentslist.twig', 
+            'admincommentslist.twig',
             ['session'=> $_SESSION]
         );
     }

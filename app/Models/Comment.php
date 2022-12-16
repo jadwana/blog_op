@@ -48,7 +48,6 @@ class Comment
      */
     public function getComments(string $post): array
     {
-    
         $statement= $this->connection->getConnection()->prepare(
             "SELECT comments.comment_id, comments.comment, 
             DATE_FORMAT(comments.commentDate, '%d-%m-%Y à %Hh%imin%ss') AS 
@@ -210,7 +209,7 @@ class Comment
 
     /**
      * Get the value of frenchCreationDate
-     */ 
+     */
     public function getFrenchCreationDate()
     {
         return $this->frenchCreationDate;

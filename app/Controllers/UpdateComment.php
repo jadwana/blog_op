@@ -18,7 +18,6 @@ class UpdateComment extends Controller
     { 
         //submission management if there is an entry
         if ($input !== null) {
-            
             $comment = null;
 
             if (!empty($input['comment'])) {

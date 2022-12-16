@@ -66,7 +66,6 @@ class User
             $user->getUser_id = $row['user_id'];
             $user->getRole = $row['role'];
             $user->getEmail = $row['email'];
-           
         return $user;
     }
 
