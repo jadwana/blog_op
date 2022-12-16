@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 use App\Models\Comment;
 use App\db\DatabaseConnection;
-  
+
 class ValidatedComment extends Controller
 {
     /**
@@ -13,6 +13,8 @@ class ValidatedComment extends Controller
      *
      * @return void
      */
+
+
     public function execute(int $identifier)
     {
         $repository = new Comment();
@@ -29,4 +31,6 @@ class ValidatedComment extends Controller
             ['session' => $_SESSION]
         );
     }
+
+
 }

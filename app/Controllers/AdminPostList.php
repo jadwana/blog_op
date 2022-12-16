@@ -13,6 +13,8 @@ class AdminPostList extends Controller
      *
      * @return void
      */
+
+
     public function execute()
     {
         $repository = new Post();
@@ -23,5 +25,6 @@ class AdminPostList extends Controller
             ['posts' => $posts, 'session' => $_SESSION]
         );
     }
+
 
 }

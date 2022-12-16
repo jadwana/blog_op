@@ -17,7 +17,7 @@ use App\Controllers\UpdateComment;
 use App\Controllers\ValidatedComment;
 use App\Controllers\AdminCommentsList;
 
-//autoload
+// Autoload
 require 'vendor/autoload.php';
 
 
@@ -30,7 +30,7 @@ $twig = new \Twig\Environment(
 
 
 
-//router
+// Router
 try{
 
     if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -145,7 +145,6 @@ try{
         default:
             echo $twig->render('404.twig');
         }
-        
     
     
     } else {

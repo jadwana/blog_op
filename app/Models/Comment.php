@@ -10,30 +10,35 @@ class Comment
      *
      * @var string
      */
+
     private string $username;
     /**
      * Comment date modification
      *
      * @var string
      */
+
     private string $frenchCreationDate;
     /**
      * Detail of the comment
      *
      * @var string
      */
+
     private string $comment;
     /**
      * Comment id
      *
      * @var int
      */
+
     private int $identifier;
     /**
      * Post id
      *
      * @var int
      */
+
     private int $post;
 
     //Connect to the data base
@@ -46,6 +51,8 @@ class Comment
      *
      * @return array
      */
+
+
     public function getComments(string $post): array
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -73,11 +80,15 @@ class Comment
 
         return $comments;
     }
+
+
     /**
      * Method to retrieve unvalidated comments
      *
      * @return array
      */
+
+
     public function getUnvalidatedComments()
     {
         $statement= $this->connection->getConnection()->prepare(
@@ -93,20 +104,23 @@ class Comment
             $comment->getComment = $row['comment'];
             $comment->getIdentifier = $row['comment_id'];
             $comment->getPost = $row['post_id'];
-    
+
                 $comments[] = $comment;
         }
         
             return $comments;
     }
 
+
     /**
      * Method to validate a comment
      *
      * @param int $identifier
-     * 
+     *
      * @return boolean
      */
+
+
     public function validatedComment(int $identifier)
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -117,13 +131,16 @@ class Comment
         return($affectedLines > 0);
     }
 
+
     /**
      * Method to delete a comment
      *
      * @param int $identifier
-     * 
+     *
      * @return boolean
      */
+
+
     public function deleteComment(int $identifier)
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -133,13 +150,16 @@ class Comment
         return($affectedLines > 0);
     }
 
+
     /**
      * Method to retrieve a single comment based on its id
      *
      * @param int $identifier
-     * 
+     *
      * @return Comment|null
      */
+
+
     public function getOneComment(int $identifier): ?Comment
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -166,15 +186,18 @@ class Comment
         return $comment;
     }
 
+
     /**
      * Method to add a new comment
      *
      * @param string $post
      * @param int $user_id
      * @param string $comment
-     * 
+     *
      * @return boolean
      */
+
+
     public function createComment(string $post, int $user_id, string $comment): bool
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -186,14 +209,17 @@ class Comment
         return($affectedLines > 0);
     }
 
+
     /**
      * Method to update a comment
      *
      * @param int $identifier
      * @param string $comment
-     * 
+     *
      * @return boolean
      */
+
+
     public function updateComment(int $identifier, string $comment): bool
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -204,7 +230,6 @@ class Comment
 
         return($affectedLines > 0);
     }
-
 
 
     /**
@@ -229,7 +254,7 @@ class Comment
 
     /**
      * Get the value of comment
-     */ 
+     */
     public function getComment()
     {
         return $this->comment;

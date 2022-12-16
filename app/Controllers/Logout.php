@@ -8,10 +8,12 @@ class Logout
      *
      * @return void
      */
+
+
     public function execute()
     {
         session_start();
-        // check that the user is logged in
+        // Check that the user is logged in
         // otherwise he is sent to the homepage
         if (!isset($_SESSION["user_id"])) {
             header("location: index.php");
@@ -21,4 +23,6 @@ class Logout
         session_destroy();
         header("location: index.php");
     }
+
+
 }

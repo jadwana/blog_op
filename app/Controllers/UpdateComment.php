@@ -14,9 +14,11 @@ class UpdateComment extends Controller
      *
      * @return void
      */
+
+
     public function execute(int $identifier, ?array $input)
     {
-        //submission management if there is an entry
+        // Submission management if there is an entry
         if ($input !== null) {
             $comment = null;
 
@@ -39,15 +41,15 @@ class UpdateComment extends Controller
             }
 
         }
-        // displays the form if there is no entry and at the beginning
+        // Displays the form if there is no entry and at the beginning
         $commentRepository = new Comment();
         $commentRepository->connection = new DatabaseConnection();
         $comment = $commentRepository->getOneComment($identifier);
-        
+  
         if ($comment === null) {
             throw new \Exception("Le commentaire $identifier n'existe pas.");
-        } 
-    
+        }
+
         $this->twig->display(
             'updateComment.twig',
             ['comment' => $comment,
@@ -55,4 +57,6 @@ class UpdateComment extends Controller
         );
    
     }
+
+
 }

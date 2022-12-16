@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\db\DatabaseConnection;
-// require 'vendor/autoload.php';
 
 class Post
 {
@@ -12,24 +11,28 @@ class Post
      *
      * @var string
      */
+
     private string $title;
     /**
      * Post date modification
      *
      * @var string
      */
+
     private string $frenchCreationDate;
     /**
      * Post content
      *
      * @var string
      */
+
     private string $content;
     /**
      * Post chapo
      *
      * @var string
      */
+
     private string $chapo;
 
     /**
@@ -37,14 +40,16 @@ class Post
      *
      * @var string
      */
+
     private int $identifier;
     /**
      * User's nickname
      *
      * @var string
      */
+
     private string $username;
-    
+
     
 
     //Connect to the database
@@ -57,6 +62,8 @@ class Post
      *
      * @return Post
      */
+
+
     public function getPost(int $identifier): Post
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -81,11 +88,14 @@ class Post
         return $post;
     }
 
+
     /**
      * Method to retrieve data from  all articles
      *
      * @return array
      */
+
+
     public function getPosts(): array
     {
         $statement = $this->connection->getConnection()->query(
@@ -110,6 +120,7 @@ class Post
         return $posts;
     }
 
+
     /**
      * Method to add data of a new post
      *
@@ -117,9 +128,11 @@ class Post
      * @param string $content
      * @param string $chapo
      * @param int $user_id
-     * 
+     *
      * @return boolean
      */
+
+
     public function addPost(string $title, string $content, string $chapo,
         int $user_id
     ) {
@@ -137,6 +150,7 @@ class Post
         
     }
 
+
     /**
      * Method to update data of a post
      *
@@ -147,6 +161,8 @@ class Post
      * 
      * @return void
      */
+
+
     public function updatePost(int $identifier, string $content, string $title,
         string $chapo
     ) {
@@ -164,6 +180,7 @@ class Post
         
     }
 
+
     /**
      * Method to delete data of a post
      *
@@ -171,6 +188,8 @@ class Post
      * 
      * @return void
      */
+
+
     public function deletePost(int $identifier)
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -180,7 +199,6 @@ class Post
         return($affectedLines > 0);
     }
     
-
 
     /**
      * Get post title
@@ -210,7 +228,7 @@ class Post
      * Get post date
      *
      * @return string
-     */ 
+     */
     public function getFrenchCreationDate()
     {
         return $this->frenchCreationDate;

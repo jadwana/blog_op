@@ -13,6 +13,8 @@ class DeletePost
      *
      * @return void
      */
+
+
     public function execute(string $identifier)
     {
         $postRepository = new Post();
@@ -29,4 +31,6 @@ class DeletePost
         }
 
     }
+
+
 }

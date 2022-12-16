@@ -20,7 +20,7 @@ class AddComment extends Controller
         $user_id = $_SESSION['user_id'];
         $comment = null;
         $_SESSION['message']=null;
-        //we do the checks
+        // We do the checks
         if (!empty($_POST['comment'])) {
             $comment = strip_tags($_POST['comment']);
         } else {
@@ -31,7 +31,7 @@ class AddComment extends Controller
             document.location.href = 'index.php?action=onepost&id='+numpost;</script>
             <?php
         }
-        //we create a new comment
+        // We create a new comment
         $commentRepository = new Comment();
         $commentRepository->connection = new DatabaseConnection();
         $success = $commentRepository->createComment($post, $user_id, $comment);
@@ -43,7 +43,9 @@ class AddComment extends Controller
             var numpost = <?php echo $post?>;
             alert("Commentaire envoyé, celui-ci sera visible après validation.");
             document.location.href = 'index.php?action=onepost&id='+numpost;</script>
-            <?php 
+            <?php
         }
     }
+
+
 }

@@ -13,6 +13,8 @@ class DeleteComment
      *
      * @return void
      */
+
+
     public function execute(int $identifier)
     {
         $postRepository = new Comment();
@@ -28,4 +30,6 @@ class DeleteComment
             <?php
         }
     }
+
+
 }

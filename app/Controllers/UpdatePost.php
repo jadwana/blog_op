@@ -14,9 +14,11 @@ class UpdatePost extends Controller
      *
      * @return void
      */
+
+
     public function execute(int $identifier, ?array $input)
     {
-        //submission management if there is an entry
+        // Submission management if there is an entry
         if ($input !== null) {
             $title = null;
             $content = null;
@@ -25,7 +27,7 @@ class UpdatePost extends Controller
             if (!empty($input['title']) &&!empty($input['chapo'])
                 &&!empty($input['content'])
             ) {
-                
+
                 $title = strip_tags($input['title']);
                 $chapo = strip_tags($input["chapo"]);
                 $content = strip_tags($input['content']);
@@ -51,7 +53,7 @@ class UpdatePost extends Controller
             }
 
         }
-        //displays the form if there is no entry and at the beginning
+        // Displays the form if there is no entry and at the beginning
         $postRepository = new Post();
         $postRepository->connection = new DatabaseConnection();
         $post = $postRepository->getPost($identifier);
@@ -64,4 +66,6 @@ class UpdatePost extends Controller
             ['post'=> $post,'session'=> $_SESSION]
         );
     }
+
+
 }

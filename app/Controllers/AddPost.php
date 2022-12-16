@@ -11,6 +11,8 @@ class AddPost extends Controller
      *
      * @return void
      */
+
+
     public function execute()
     {
         $user_id = $_SESSION['user_id'];
@@ -19,7 +21,7 @@ class AddPost extends Controller
         $chapo = null;
 
         if (!empty($_POST)) {
-            // we do the checks
+            // We do the checks
             if (!empty($_POST['content']) && !empty($_POST['title'])
                 && !empty($_POST['chapo'])
             ) {
@@ -44,11 +46,12 @@ class AddPost extends Controller
                 <script language="javascript"> 
                 alert("article ajouté");
                 document.location.href = 'index.php?action=admin';</script>
-                <?php 
+                <?php
             }
         }
         $this->twig->display('addPost.twig', array('session'=> $_SESSION));
 
     }
+
 
 }

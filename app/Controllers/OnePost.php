@@ -16,6 +16,8 @@ class OnePost extends Controller
       *
       * @return void
       */
+
+
     public function execute(int $identifier)
     {
         $connection = new DatabaseConnection();
@@ -32,4 +34,6 @@ class OnePost extends Controller
             ['post'=> $post, 'comments'=> $comments,'session'=> $_SESSION]
         );
     }
+
+
 }

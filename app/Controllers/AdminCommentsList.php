@@ -1,7 +1,6 @@
 <?php
 namespace App\Controllers;
 
-// require 'vendor/autoload.php';
 use App\Models\Comment;
 use App\db\DatabaseConnection;
 
@@ -14,6 +13,8 @@ class AdminCommentsList extends Controller
      *
      * @return void
      */
+
+
     public function execute()
     {
         $repository = new Comment();
@@ -24,5 +25,6 @@ class AdminCommentsList extends Controller
             ['comments'=> $comments, 'session'=> $_SESSION]
         );
     }
+
 
 }

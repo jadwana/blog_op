@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\db\DatabaseConnection;
-// require 'vendor/autoload.php';
 
 class User
 {
@@ -12,30 +11,35 @@ class User
      *
      * @var string
      */
+
     private string $role;
     /**
      * Username of user
      *
      * @var string
      */
+
     private string $username;
     /**
      * Password of user
      *
      * @var string
      */
+
     private string $password;
     /**
      * Id of user
      *
      * @var int
      */
+
     private int $user_id;
     /**
      * email of user
      *
      * @var string
      */
+
     private string $email;
 
     //Connect to database
@@ -48,6 +52,8 @@ class User
      *
      * @return user|null
      */
+
+
     public function checkUserUsername(string $username): ?user
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -69,13 +75,16 @@ class User
         return $user;
     }
 
+
     /**
      * Method to check user email
      *
      * @param string $email
-     * 
+     *
      * @return void
      */
+
+
     public function checkUserEmail(string $email)
     {
         $statement= $this->connection->getConnection()->prepare(
@@ -91,6 +100,7 @@ class User
         return $row;
     }
 
+
     /**
      * Method to add data of a new user
      *
@@ -100,6 +110,8 @@ class User
      * 
      * @return boolean
      */
+
+
     public function addUser(string $username, string $password, string $email): bool
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -109,6 +121,7 @@ class User
 
         return($affectedLines > 0);
     }
+
 
     /**
      * Get the value of role
@@ -124,7 +137,7 @@ class User
      * Set the value of role
      *
      * @return self
-     */ 
+     */
     public function setRole($role)
     {
         $this->role = $role;

@@ -49,5 +49,5 @@ if (isset($_POST['firstname'], $_POST['surname'], $_POST['email'], $_POST['objec
     <script language="javascript"> 
     alert("Vous devez remplir tous les champs !");
     document.location.href = '../../index.php?';</script>
-    <?php 
+    <?php
 }
