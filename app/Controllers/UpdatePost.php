@@ -18,7 +18,7 @@ class UpdatePost extends Controller
 
     public function execute(int $identifier, ?array $input)
     {
-        // Submission management if there is an entry
+        // Submission management if there is an entry.
         if ($input !== null) {
             $title = null;
             $content = null;
@@ -53,7 +53,7 @@ class UpdatePost extends Controller
             }
 
         }
-        // Displays the form if there is no entry and at the beginning
+        // Displays the form if there is no entry and at the beginning.
         $postRepository = new Post();
         $postRepository->connection = new DatabaseConnection();
         $post = $postRepository->getPost($identifier);

@@ -21,7 +21,7 @@ class AddPost extends Controller
         $chapo = null;
 
         if (!empty($_POST)) {
-            // We do the checks
+            // We do the checks.
             if (!empty($_POST['content']) && !empty($_POST['title'])
                 && !empty($_POST['chapo'])
             ) {
@@ -35,7 +35,7 @@ class AddPost extends Controller
                 document.location.href = 'index.php?action=addPost';</script>
                 <?php
             }
-            // we create the new article
+            // We create the new article.
             $postRepository = new Post();
             $postRepository->connection = new DatabaseConnection();
             $success = $postRepository->addPost($title, $content, $chapo, $user_id);

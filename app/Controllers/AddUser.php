@@ -9,7 +9,7 @@ class AddUser extends Controller
 
     /**
      * Method to do the checks and to secure the entrances
-     * and to add a new user
+     * and to add a new user.
      *
      * @return void
      */
@@ -30,14 +30,14 @@ class AddUser extends Controller
                 }
                     $email = $_POST['email'];
 
-                    // We check that the nickname is unique
+                    // We check that the nickname is unique.
                     $usernameCheck = new User();
                     $usernameCheck->connection = new DatabaseConnection();
                     $result1 = $usernameCheck->checkUserUsername($username);
                 if ($result1) {
                     throw new \Exception('pseudo déjà existant !');
                 }
-                    // We check that the email is unique
+                    // We check that the email is unique.
                     $userMailCheck = new User();
                     $userMailCheck->connection = new DatabaseConnection();
                     $result2 = $userMailCheck->checkUserEmail($email);
@@ -47,7 +47,7 @@ class AddUser extends Controller
 
                     $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-                    // We add the new user
+                    // We add the new user.
                     $userRepository = new User();
                     $userRepository->connection = new DatabaseConnection();
                     $success = $userRepository->addUser($username, $pass, $email);

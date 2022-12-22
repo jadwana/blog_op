@@ -26,7 +26,7 @@ class ValidatedComment extends Controller
             header('location: index.php?action=admincommentslist');
         }
 
-        echo $this->twig->render(
+        $this->twig->display(
             'admincommentslist.twig',
             ['session' => $_SESSION]
         );

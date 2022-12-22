@@ -19,10 +19,10 @@ abstract class Controller
 
     public function __construct()
     {
-        // We configure the folder containing the templates
+        // We configure the folder containing the templates.
         $this->loader = new FilesystemLoader('App/views');
 
-        // We set the twig environment
+        // We set the twig environment.
         $this->twig = new Environment($this->loader);
     }
 

@@ -35,8 +35,7 @@ if (isset($_POST['firstname'], $_POST['surname'], $_POST['email'], $_POST['objec
         $mail->Body = $message;
 
     if (!$mail->send()) {
-        echo 'mail non envoyé';
-        echo 'Erreurs: '.$mail->ErrorInfo;
+        throw new \Exception('Mail non envoyé !');
     } else {
         ?>
         <script language="javascript"> 

@@ -18,7 +18,7 @@ class UpdateComment extends Controller
 
     public function execute(int $identifier, ?array $input)
     {
-        // Submission management if there is an entry
+        // Submission management if there is an entry.
         if ($input !== null) {
             $comment = null;
 
@@ -41,7 +41,7 @@ class UpdateComment extends Controller
             }
 
         }
-        // Displays the form if there is no entry and at the beginning
+        // Displays the form if there is no entry and at the beginning.
         $commentRepository = new Comment();
         $commentRepository->connection = new DatabaseConnection();
         $comment = $commentRepository->getOneComment($identifier);

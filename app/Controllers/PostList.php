@@ -19,10 +19,10 @@ class PostList extends Controller
         $repository = new Post();
         $repository->connection = new DatabaseConnection();
         $posts = $repository->getPosts();
-        echo $this->twig->render(
-            'postlist.twig',
-            ['posts'=> $posts, 'session'=> $_SESSION]
-        );
+        $this->twig->display('postlist.twig', [
+            'posts'=> $posts,
+            'session'=> $_SESSION
+        ]);
     }
 
 
