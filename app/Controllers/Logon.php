@@ -2,6 +2,8 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Models\Session;
+use App\Models\PostGlobal;
 use App\db\DatabaseConnection;
 
 /**
@@ -20,13 +22,13 @@ class Logon extends Controller
 
     public function execute()
     {
-        if (!empty($_POST)) {
+        if (PostGlobal::get('submit')) {
              $username = null;
 
             if (isset($_POST['username'], $_POST['password'])
-                && !empty(trim($_POST['username'])) && !empty($_POST['password'])
+                && !empty(trim(PostGlobal::get('username'))) && !empty(PostGlobal::get('password'))
             ) {
-                $username = htmlspecialchars(trim($_POST['username']));
+                $username = htmlspecialchars(trim(PostGlobal::get('username')));
 
                 $userRepository = new User();
                 $userRepository->connection = new DatabaseConnection();
@@ -39,13 +41,13 @@ class Logon extends Controller
                     <?php
                 } else {
                     if (password_verify(
-                        trim($_POST['password']),
+                        trim(PostGlobal::get('password')),
                         $connectedUser->getPassword
                     )
                     ) {
-                        $_SESSION['user_id'] = $connectedUser->getUser_id;
-                        $_SESSION['username'] = $connectedUser->getUsername;
-                        $_SESSION['role'] = $connectedUser->getRole;
+                        Session::put('user_id', $connectedUser->getUser_id);
+                        Session::put('username', $connectedUser->getUsername);
+                        Session::put('role', $connectedUser->getRole);
 
                         ?>
                         <script language="javascript"> 
@@ -69,6 +71,7 @@ class Logon extends Controller
             }
         } else {
         }
+
         $this->twig->display('connection.twig');
     }
 

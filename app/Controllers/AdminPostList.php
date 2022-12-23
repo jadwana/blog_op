@@ -20,9 +20,11 @@ class AdminPostList extends Controller
         $repository = new Post();
         $repository->connection = new DatabaseConnection();
         $posts = $repository->getPosts();
-        $this->twig->display('adminpostlist.twig',
-            ['posts' => $posts, 'session' => $_SESSION]
+        $this->twig->display(
+            'adminpostlist.twig',
+            ['posts' => $posts]
         );
+        
     }
 
 

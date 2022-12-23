@@ -34,13 +34,13 @@ class UpdatePost extends Controller
             } else {
                 throw new \Exception('les données du formulaire sont invalides');
             }
+
                 $postRepository = new Post();
                 $postRepository->connection = new DatabaseConnection();
                 $success = $postRepository->updatePost($identifier, $content, $title, $chapo);
             if (!$success) {
                 throw new \Exception('Impossible de modifier l\'article !');
             } else {
-                
                 $postRepository = new Post();
                 $postRepository->connection = new DatabaseConnection();
                 $post = $postRepository->getPost($identifier);
@@ -51,7 +51,6 @@ class UpdatePost extends Controller
                     </script>
                     <?php
             }
-
         }
         // Displays the form if there is no entry and at the beginning.
         $postRepository = new Post();
@@ -63,7 +62,7 @@ class UpdatePost extends Controller
         }
         $this->twig->display(
             'updatepost.twig',
-            ['post'=> $post,'session'=> $_SESSION]
+            ['post'=> $post]
         );
     }
 

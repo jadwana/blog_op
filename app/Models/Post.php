@@ -117,6 +117,7 @@ class Post
 
             $posts[] = $post;
         }
+        
         return $posts;
     }
 

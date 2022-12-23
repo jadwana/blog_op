@@ -24,7 +24,9 @@ abstract class Controller
 
         // We set the twig environment.
         $this->twig = new Environment($this->loader);
+
+        $this->twig->addGlobal('session', $_SESSION);
     }
 
-
+    
 }

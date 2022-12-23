@@ -21,13 +21,13 @@ class UpdateComment extends Controller
         // Submission management if there is an entry.
         if ($input !== null) {
             $comment = null;
-
             if (!empty($input['comment'])) {
 
                 $comment = strip_tags($input['comment']);
             } else {
                 throw new \Exception('les données du formulaire sont invalides');
             }
+
                 $commentRepository = new Comment();
                 $commentRepository->connection = new DatabaseConnection();
                 $success = $commentRepository->updateComment($identifier, $comment);
@@ -52,8 +52,7 @@ class UpdateComment extends Controller
 
         $this->twig->display(
             'updateComment.twig',
-            ['comment' => $comment,
-            'session' => $_SESSION]
+            ['comment' => $comment,]
         );
    
     }

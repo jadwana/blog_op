@@ -28,7 +28,6 @@ class ValidatedComment extends Controller
 
         $this->twig->display(
             'admincommentslist.twig',
-            ['session' => $_SESSION]
         );
     }
 

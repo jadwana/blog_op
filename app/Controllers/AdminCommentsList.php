@@ -20,8 +20,9 @@ class AdminCommentsList extends Controller
         $repository = new Comment();
         $repository->connection = new DatabaseConnection();
         $comments = $repository->getUnvalidatedComments();
-        $this->twig->display('admincommentslist.twig',
-            ['comments'=> $comments, 'session'=> $_SESSION]
+        $this->twig->display(
+            'admincommentslist.twig',
+            ['comments'=> $comments]
         );
     }
 

@@ -240,6 +240,7 @@ class Comment
         return $this->frenchCreationDate;
     }
 
+
     /**
      * Set the value of frenchCreationDate
      *

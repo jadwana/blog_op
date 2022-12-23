@@ -2,6 +2,8 @@
 
 session_start();
 
+use App\Models\Get;
+use App\Models\Session;
 use App\Controllers\Logon;
 use App\Controllers\Logout;
 use App\Controllers\AddPost;
@@ -27,20 +29,21 @@ $twig = new \Twig\Environment(
     'cache' => false, //'tmp'
     ]
 );
+$twig->addGlobal('session', $_SESSION);
 
 
 
 // Router
 try{
 
-    if (isset($_GET['action']) && $_GET['action'] !== '') {
-        switch ($_GET['action']){
+    if (null !==Get::get('action') && Get::get('action') !== '') {
+        switch (Get::get('action')){
         case "postlist":
             (new PostList())->execute();
             break;
         case "onepost":
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $identifier = $_GET['id'];
+            if (null !==Get::get('id') && get::get('id') > 0) {
+                $identifier = Get::get('id');
                 (new OnePost())->execute($identifier);
             } else {
                   throw new Exception('aucun identifiant envoyé');
@@ -53,7 +56,7 @@ try{
             (new Logout())->execute();
             break;
         case "register":
-            if (isset($_SESSION['user_id'])) {
+            if (null !==Session::get('user_id')) {
                 throw new Exception(
                     'Vous êtes déjà connecté, 
                 vous ne pouvez pas vous inscrire à nouveau'
@@ -62,16 +65,16 @@ try{
             (new AddUser())->execute();
             break;
         case "addComment":
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $identifier = $_GET['id'];
+            if (null !==Get::get('id') && Get::get('id') > 0) {
+                $identifier = Get::get('id');
                 (new AddComment())->execute($identifier);
             } else {
                   throw new Exception('aucun identifiant envoyé');
             }
             break;
         case "updateComment":
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $identifier = $_GET['id'];
+            if (null !==Get::get('id') && Get::get('id') > 0) {
+                $identifier = Get::get('id');
                 $input = null;
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $input = $_POST;
@@ -82,10 +85,9 @@ try{
             }
             break;
         case "admin":
-            if (isset($_SESSION['user_id']) && $_SESSION['role'] == 'admin') {
+            if (null !==Session::get('user_id') && Session::get('role') == 'admin') {
                 echo $twig->render(
                     'administration.twig',
-                    array('session'=> $_SESSION)
                 );
             } else {
                   throw new Exception('Seul l\'administrateur à accès à cette page');
@@ -98,8 +100,8 @@ try{
             (new AdminPostList())->execute();
             break;
         case "updatepost":
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $identifier = $_GET['id'];
+            if (null !==Get::get('id') && Get::get('id') > 0) {
+                $identifier = Get::get('id');
                 $input = null;
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $input = $_POST;
@@ -110,8 +112,8 @@ try{
             }
             break;
         case "deletepost":
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $identifier = $_GET['id'];
+            if (null !==Get::get('id') && Get::get('id') > 0) {
+                $identifier = Get::get('id');
                 (new DeletePost())->execute($identifier);
             } else {
                   throw new Exception('aucun identifiant envoyé');
@@ -121,16 +123,16 @@ try{
             (new AdminCommentsList())->execute();
             break;
         case "validationComment":
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $identifier = $_GET['id'];
+            if (null !==Get::get('id') && Get::get('id') > 0) {
+                $identifier = Get::get('id');
                 (new ValidatedComment())->execute($identifier);
             } else {
                   throw new Exception('aucun identifiant envoyé');
             }
             break;
         case "deleteComment":
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $identifier = $_GET['id'];
+            if (null !==Get::get('id') && Get::get('id') > 0) {
+                $identifier = Get::get('id');
                 (new DeleteComment())->execute($identifier);
             } else {
                   throw new Exception('aucun identifiant envoyé');
@@ -148,7 +150,7 @@ try{
     
     
     } else {
-        echo $twig->render('homepage.twig', array('session' => $_SESSION));
+        echo $twig->render('homepage.twig');
     }
 
 }catch (Exception $e) {
@@ -156,7 +158,7 @@ try{
 
     echo $twig->render(
         'error.twig',
-        ['error' => $errorMessage, 'session' => $_SESSION]
+        ['error' => $errorMessage]
     );
 }
 

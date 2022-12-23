@@ -2,6 +2,8 @@
 namespace App\Controllers;
 
 use App\Models\user;
+use App\Models\Session;
+use App\Models\PostGlobal;
 use App\db\DatabaseConnection;
 
 class AddUser extends Controller
@@ -17,18 +19,19 @@ class AddUser extends Controller
 
     public function execute()
     {
-        if (!empty($_POST)) {
-            if (isset($_POST["username"], $_POST["password"])
-                && !empty($_POST["username"]) && !empty($_POST["password"])
+        if (PostGlobal::get('submit')) {
+            if (null !==PostGlobal::get('username') && null !==PostGlobal::get('password')
+                && !empty(PostGlobal::get('username')) && !empty(PostGlobal::get('password'))
             ) {
-                $username = strip_tags(trim($_POST['username']));
+                $username = strip_tags(trim(PostGlobal::get('username')));
                 if (strlen($username) <5) {
                     throw new \Exception('pseudo trop court!');
                 }
-                if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+
+                if (!filter_var(PostGlobal::get('email'), FILTER_VALIDATE_EMAIL)) {
                     throw new \Exception('adresse mail incorrecte !');
                 }
-                    $email = $_POST['email'];
+                    $email = PostGlobal::get('email');
 
                     // We check that the nickname is unique.
                     $usernameCheck = new User();
@@ -45,7 +48,7 @@ class AddUser extends Controller
                     throw new \Exception('email déjà existant !');
                 }
 
-                    $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                    $pass = password_hash(PostGlobal::get('password'), PASSWORD_DEFAULT);
 
                     // We add the new user.
                     $userRepository = new User();
@@ -57,9 +60,9 @@ class AddUser extends Controller
                         $usersession = new User();
                         $usersession->connection = new DatabaseConnection();
                         $sessionResult = $usersession->checkUserUsername($username);
-                        $_SESSION['user_id'] = $sessionResult->getUser_id;
-                        $_SESSION['username'] = $sessionResult->getUsername;
-                        $_SESSION['role'] = $sessionResult->getRole;
+                        Session::put('user_id', $sessionResult->getUser_id);
+                        Session::put('username', $sessionResult->getUsername);
+                        Session::put('role', $sessionResult->getRole);
                         header('location: index.php');
             } else {
                 ?>

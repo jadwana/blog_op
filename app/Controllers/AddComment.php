@@ -2,7 +2,9 @@
 namespace App\Controllers;
 
 use App\Models\Comment;
+use App\Models\Session;
 use App\db\DatabaseConnection;
+use App\Models\PostGlobal;
 
 class AddComment extends Controller
 {
@@ -17,12 +19,11 @@ class AddComment extends Controller
 
     public function execute(string $post)
     {
-        $user_id = $_SESSION['user_id'];
+        $user_id = Session::get('user_id');
         $comment = null;
-        $_SESSION['message']=null;
         // We do the checks.
-        if (!empty($_POST['comment'])) {
-            $comment = strip_tags($_POST['comment']);
+        if (!empty(PostGlobal::get('comment'))) {
+            $comment = strip_tags(PostGlobal::get('comment'));
         } else {
             ?>
             <script language="javascript"> 
@@ -31,6 +32,7 @@ class AddComment extends Controller
             document.location.href = 'index.php?action=onepost&id='+numpost;</script>
             <?php
         }
+
         // We create a new comment.
         $commentRepository = new Comment();
         $commentRepository->connection = new DatabaseConnection();

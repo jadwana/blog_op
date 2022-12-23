@@ -31,7 +31,7 @@ class OnePost extends Controller
 
         $this->twig->display(
             'onepost.twig',
-            ['post'=> $post, 'comments'=> $comments,'session'=> $_SESSION]
+            ['post'=> $post, 'comments'=> $comments]
         );
     }
 
