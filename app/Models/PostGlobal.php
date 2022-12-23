@@ -12,7 +12,5 @@ class PostGlobal{
         return (isset($_POST[$key]) ? $_POST[$key] : null);
     }
 
-    public static function forget($key){
-        unset($_POST[$key]);
-    }
+    
 }

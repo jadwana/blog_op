@@ -11,7 +11,5 @@ class Session{
         return (isset($_SESSION[$key]) ? $_SESSION[$key] : null);
     }
 
-    public static function forget($key){
-        unset($_SESSION[$key]);
-    }
+   
 }

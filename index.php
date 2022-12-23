@@ -37,12 +37,12 @@ $twig->addGlobal('session', $_SESSION);
 try{
 
     if (null !==Get::get('action') && Get::get('action') !== '') {
-        switch (Get::get('action')){
+        switch (Get::get('action')) {
         case "postlist":
             (new PostList())->execute();
             break;
         case "onepost":
-            if (null !==Get::get('id') && get::get('id') > 0) {
+            if (null !== Get::get('id') && get::get('id') > 0) {
                 $identifier = Get::get('id');
                 (new OnePost())->execute($identifier);
             } else {
@@ -65,7 +65,7 @@ try{
             (new AddUser())->execute();
             break;
         case "addComment":
-            if (null !==Get::get('id') && Get::get('id') > 0) {
+            if (null !== Get::get('id') && Get::get('id') > 0) {
                 $identifier = Get::get('id');
                 (new AddComment())->execute($identifier);
             } else {
@@ -73,7 +73,7 @@ try{
             }
             break;
         case "updateComment":
-            if (null !==Get::get('id') && Get::get('id') > 0) {
+            if (null !== Get::get('id') && Get::get('id') > 0) {
                 $identifier = Get::get('id');
                 $input = null;
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -85,7 +85,7 @@ try{
             }
             break;
         case "admin":
-            if (null !==Session::get('user_id') && Session::get('role') == 'admin') {
+            if (null !== Session::get('user_id') && Session::get('role') == 'admin') {
                 echo $twig->render(
                     'administration.twig',
                 );
@@ -100,7 +100,7 @@ try{
             (new AdminPostList())->execute();
             break;
         case "updatepost":
-            if (null !==Get::get('id') && Get::get('id') > 0) {
+            if (null !== Get::get('id') && Get::get('id') > 0) {
                 $identifier = Get::get('id');
                 $input = null;
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -112,7 +112,7 @@ try{
             }
             break;
         case "deletepost":
-            if (null !==Get::get('id') && Get::get('id') > 0) {
+            if (null !== Get::get('id') && Get::get('id') > 0) {
                 $identifier = Get::get('id');
                 (new DeletePost())->execute($identifier);
             } else {
@@ -131,7 +131,7 @@ try{
             }
             break;
         case "deleteComment":
-            if (null !==Get::get('id') && Get::get('id') > 0) {
+            if (null !== Get::get('id') && Get::get('id') > 0) {
                 $identifier = Get::get('id');
                 (new DeleteComment())->execute($identifier);
             } else {

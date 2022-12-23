@@ -25,7 +25,7 @@ class Logon extends Controller
         if (PostGlobal::get('submit')) {
              $username = null;
 
-            if (isset($_POST['username'], $_POST['password'])
+            if (null !==PostGlobal::get('username') && null !==PostGlobal::get('password')
                 && !empty(trim(PostGlobal::get('username'))) && !empty(PostGlobal::get('password'))
             ) {
                 $username = htmlspecialchars(trim(PostGlobal::get('username')));

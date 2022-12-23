@@ -1,7 +1,6 @@
 <?php
 namespace App\Controllers;
 
-// require 'vendor/autoload.php';
 use App\Models\Post;
 use App\db\DatabaseConnection;
   

@@ -11,7 +11,5 @@ class Get{
         return (isset($_GET[$key]) ? $_GET[$key] : null);
     }
 
-    public static function forget($key){
-        unset($_GET[$key]);
-    }
+   
 }
