@@ -2,18 +2,20 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use App\Models\PostGlobal;
 require '../../vendor/autoload.php';
 require 'configmail.php';
 
-if (isset($_POST['firstname'], $_POST['surname'], $_POST['email'], $_POST['object'], $_POST['message']) && !empty($_POST["surname"])
-    && !empty($_POST["firstname"]) && !empty($_POST["email"])
-    && !empty($_POST["object"]) && !empty($_POST["message"])
-) {
-        $firstname = strip_tags(trim($_POST['firstname']));
-        $surname = strip_tags(trim($_POST['surname']));
+if (null !==Postglobal::get('firstname') && null !==Postglobal::get('surname') && null !==Postglobal::get('email') &&
+ null !==Postglobal::get('object') && null !==Postglobal::get('message') && null !==Postglobal::get('surname')
+    && !empty(Postglobal::get('firstname')) && !empty(Postglobal::get('email'))
+    && !empty(Postglobal::get('object')) && !empty(Postglobal::get('message')))
+ {
+        $firstname = strip_tags(trim(Postglobal::get('firstname')));
+        $surname = strip_tags(trim(Postglobal::get('surname')));
         $name = $firstname." ".$surname;
-        $object = strip_tags(trim($_POST['object']));
-        $message = strip_tags(trim($_POST['message']));
+        $object = strip_tags(trim(Postglobal::get('object')));
+        $message = strip_tags(trim(Postglobal::get('message')));
 
         $mail = new PHPMailer(true);
 
