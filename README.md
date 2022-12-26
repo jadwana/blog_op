@@ -1,7 +1,7 @@
 # blog_op
 This project, develop your own blog using PHP, is a part of my training with Openclassrooms : Application's developper - PHP/Symfony.
 
-
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f3ee6d5a76e845f08ef23a59851b389d)](https://www.codacy.com/gh/jadwana/blog_op/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jadwana/blog_op&amp;utm_campaign=Badge_Grade)
 
 ## Features
 
