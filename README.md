@@ -1,5 +1,6 @@
 # blog_op
-This projets is the 5th Openclassrooms project of the PHP/Symfony developer course : develop your own blog using PHP
+This project, develop your own blog using PHP, is a part of my training with Openclassrooms : Application's developper - PHP/Symfony.
+
 
 
 ## Features
@@ -23,7 +24,6 @@ This interface includes :
 * Comments management : validation of comments, modify or delte comments
 
 
-
 ### Specs
 *	PHP 8
 *	Bootstrap 5
@@ -41,9 +41,44 @@ The website must be responsive & secured. Code quality assessments done via Coda
 *	Class diagram
 *	Sequence diagrams
 
+### Requirements
+
+*	You need to have composer on your computer
+*	Your server needs PHP version 8.0
+*	MySQL or MariaDB
+*	Apache or Nginx
+
+
 ## Set up your environment
-If you would like to install this project on your computer, you will first need to clone the repo of this project using Git.
+If you would like to install this project on your computer, you will first need to clone or download the repo of this project in a folder of your local server.
 
-At the root of your projet, you need to create a .env file (same level as .env.example) in which you need to configure the appropriate values for your blog to run 
+1. In the db folder edit the dbConfig.php file with your own credentials for database :
 
+*	DB_HOST=XXX
+*	DB_USER=XXX
+*	DB_PASSWORD=XXX
+*	DB_NAME=XXX
+
+
+2. In the services folder modify the mailConfigEx.php with your own SMTP values and rename it in mailConfig.php:
+
+* MAIL_ADD (sending address)
+* MAIL_PASS
+* MAIL_SEND (receiving address)
+Remark : it is designed to work with gmail smtp (so smtp host = smtp.gmail.com and smtp port = 587)
+
+3. Install composer if you don't have it
+
+4. Import the supplied MySQL database to your server (blog.sql) with is a prefilled database.
+
+## Test the blog
+
+* As a regular member:
+Register via the registration form
+
+* As administrator:
+Use the identifiers below or register via the registration form and change your user role your to admin directly in the database.
+
+    * username: sandrine
+    * Password: mdp
 
