@@ -2,8 +2,8 @@
 namespace App\Controllers;
 
 use App\Models\Post;
-use App\Models\Session;
-use App\Models\PostGlobal;
+use App\services\Session;
+use App\services\PostGlobal;
 use App\db\DatabaseConnection;
 
 class AddPost extends Controller

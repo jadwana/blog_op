@@ -1,34 +1,34 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
+use App\services\PostGlobal;
 use PHPMailer\PHPMailer\Exception;
-use App\Models\PostGlobal;
+use PHPMailer\PHPMailer\PHPMailer;
 require '../../vendor/autoload.php';
-require 'configmail.php';
+require 'mailConfig.php';
 
-if (null !==Postglobal::get('firstname') && null !==Postglobal::get('surname') && null !==Postglobal::get('email') &&
- null !==Postglobal::get('object') && null !==Postglobal::get('message') && null !==Postglobal::get('surname')
-    && !empty(Postglobal::get('firstname')) && !empty(Postglobal::get('email'))
-    && !empty(Postglobal::get('object')) && !empty(Postglobal::get('message')))
+if (null !==PostGlobal::get('firstname') && null !==PostGlobal::get('surname') && null !==PostGlobal::get('email') &&
+ null !==PostGlobal::get('object') && null !==PostGlobal::get('message') && null !==PostGlobal::get('surname')
+    && !empty(PostGlobal::get('firstname')) && !empty(PostGlobal::get('email'))
+    && !empty(PostGlobal::get('object')) && !empty(PostGlobal::get('message')))
  {
-        $firstname = strip_tags(trim(Postglobal::get('firstname')));
-        $surname = strip_tags(trim(Postglobal::get('surname')));
+        $firstname = strip_tags(trim(PostGlobal::get('firstname')));
+        $surname = strip_tags(trim(PostGlobal::get('surname')));
         $name = $firstname." ".$surname;
-        $object = strip_tags(trim(Postglobal::get('object')));
-        $message = strip_tags(trim(Postglobal::get('message')));
+        $object = strip_tags(trim(PostGlobal::get('object')));
+        $message = strip_tags(trim(PostGlobal::get('message')));
 
         $mail = new PHPMailer(true);
 
         $mail->isSMTP();
         $mail->Host ='smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = $mailadd;
-        $mail->Password = $mailpass;
+        $mail->Username = MAIL_ADD;
+        $mail->Password = MAIL_PASS;
         $mail->SMTP ='tls';
         $mail->Port = 587;
-        $mail->setFrom($mailadd, $name);
-        $mail->addReplyTo($_POST['email']);
-        $mail->addAddress($mailsend);
+        $mail->setFrom(MAIL_ADD, $name);
+        $mail->addReplyTo(PostGlobal::get('email'));
+        $mail->addAddress(MAIL_SEND);
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
         $mail->Encoding = 'base64';

@@ -2,8 +2,8 @@
 namespace App\Controllers;
 
 use App\Models\User;
-use App\Models\Session;
-use App\Models\PostGlobal;
+use App\services\Session;
+use App\services\PostGlobal;
 use App\db\DatabaseConnection;
 
 /**
@@ -22,14 +22,14 @@ class Logon extends Controller
 
     public function execute()
     {
-        if (PostGlobal::get('submit')) {
+        if (!empty(PostGlobal::getAllPostVars())) {
              $username = null;
 
-            if (null !==PostGlobal::get('username') && null !==PostGlobal::get('password')
-                && !empty(trim(PostGlobal::get('username'))) && !empty(PostGlobal::get('password'))
-            ) {
+            if (PostGlobal::isParamSet('username') &&  PostGlobal::isParamSet('password')
+            && !empty(trim(PostGlobal::get('username'))) && !empty(PostGlobal::get('password')))
+             {
                 $username = htmlspecialchars(trim(PostGlobal::get('username')));
-
+               
                 $userRepository = new User();
                 $userRepository->connection = new DatabaseConnection();
                 $connectedUser = $userRepository->checkUserUsername($username);

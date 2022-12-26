@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\Session;
+use App\services\Session;
 
 class Logout
 {
@@ -14,16 +14,18 @@ class Logout
 
     public function execute()
     {
-        session_start();
-        // Check that the user is logged in
-        // otherwise he is sent to the homepage
-        if (null !==Session::get('user_id')) {
-            header("location: index.php");
-            exit;
-        }
+        // session_start();
+        // // Check that the user is logged in
+        // // otherwise he is sent to the homepage
+        // if (null !==Session::get('user_id')) {
+        //     header("location: index.php");
+        //     exit;
+        // }
 
-        session_unset();
-        session_destroy();
+        // session_unset();
+        // session_destroy();
+        $session = new Session;
+        $session->destroySession();
         header("location: index.php");
     }
 

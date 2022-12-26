@@ -37,7 +37,7 @@ class User
     /**
      * email of user
      *
-     * @var string
+     * @var int
      */
 
     private string $email;

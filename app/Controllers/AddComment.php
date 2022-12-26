@@ -2,9 +2,9 @@
 namespace App\Controllers;
 
 use App\Models\Comment;
-use App\Models\Session;
+use App\services\Session;
 use App\db\DatabaseConnection;
-use App\Models\PostGlobal;
+use App\services\PostGlobal;
 
 class AddComment extends Controller
 {
