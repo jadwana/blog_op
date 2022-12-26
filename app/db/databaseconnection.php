@@ -18,11 +18,10 @@ class DatabaseConnection
 
     public function getConnection(): \PDO
     {
-        include 'dbConfig.php';
         if ($this->database === null) {
             $this->database = new \PDO(
-                "mysql:host = DB_HOST;dbname = DB_NAME;charset=UTF8",
-                DB_USER, DB_PASSWORD
+                "mysql:host=".$_ENV['DB_SERVER'].";dbname=".$_ENV['DB_NAME'].";charset=UTF8",
+                $_ENV['DB_USER'], $_ENV['DB_PASS']
             );
         }
         return $this->database;

@@ -1,12 +1,16 @@
 <?php
 
+use Dotenv\Dotenv;
 use App\services\PostGlobal;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 require '../../vendor/autoload.php';
-require 'mailConfig.php';
 
-if (null !==PostGlobal::get('firstname') && null !==PostGlobal::get('surname') && null !==PostGlobal::get('email') 
+$dotenv = Dotenv::createImmutable('../../');
+$dotenv->load();
+
+
+if (null !==PostGlobal::get('firstname') && null !==PostGlobal::get('surname') && null !==PostGlobal::get('email')
     && null !==PostGlobal::get('object') && null !==PostGlobal::get('message') && null !==PostGlobal::get('surname')
     && !empty(PostGlobal::get('firstname')) && !empty(PostGlobal::get('email'))
     && !empty(PostGlobal::get('object')) && !empty(PostGlobal::get('message'))
@@ -22,13 +26,13 @@ if (null !==PostGlobal::get('firstname') && null !==PostGlobal::get('surname') &
         $mail->isSMTP();
         $mail->Host ='smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = MAIL_ADD;
-        $mail->Password = MAIL_PASS;
+        $mail->Username = $_ENV['MAIL_ADD'];
+        $mail->Password = $_ENV['MAIL_PASS'];
         $mail->SMTP ='tls';
         $mail->Port = 587;
-        $mail->setFrom(MAIL_ADD, $name);
+        $mail->setFrom($_ENV['MAIL_ADD'], $name);
         $mail->addReplyTo(PostGlobal::get('email'));
-        $mail->addAddress(MAIL_SEND);
+        $mail->addAddress($_ENV['MAIL_SEND']);
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
         $mail->Encoding = 'base64';

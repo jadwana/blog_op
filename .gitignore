@@ -1,2 +1,3 @@
 /vendor/
 /services/mailConfig.php
+/.env

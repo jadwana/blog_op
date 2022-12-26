@@ -2,6 +2,7 @@
 
 session_start();
 
+use Dotenv\Dotenv;
 use App\services\Get;
 use App\services\Session;
 use App\Controllers\Logon;
@@ -31,7 +32,8 @@ $twig = new \Twig\Environment(
 );
 $twig->addGlobal('session', $_SESSION);
 
-
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 // Router
 try{
