@@ -4,12 +4,16 @@ namespace App\Controllers;
 use App\Models\Post;
 use App\db\DatabaseConnection;
 
+/**
+ * UpdatePost class
+ * To update a post in the admin part
+ */
 class UpdatePost extends Controller
 {
     /**
      * Method to modify a post
      *
-     * @param int $identifier
+     * @param int        $identifier
      * @param array|null $input
      *
      * @return void

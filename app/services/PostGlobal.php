@@ -6,16 +6,18 @@ namespace App\services;
  * Class postsuperglobal
  * postsuperglobal handler
  */
-class PostGlobal{
+class PostGlobal
+{
 
     /**
      * Put the $_POST values
      *
-     * @param string $key
-     * @param string $value
+     * @param  string $key
+     * @param  string $value
      * @return void
      */
-    public static function put($key, $value){
+    public static function put($key, $value)
+    {
         $_POST[$key] = $value;
     }
 
@@ -25,14 +27,15 @@ class PostGlobal{
      * @param  $key
      * @return void
      */
-    public static function get($key){
+    public static function get($key)
+    {
         return $_POST[$key] ?? null;
     }
 
     /**
      * Check if parameter of the $_POST is set
      *
-     * @param void $param
+     * @param  void $param
      * @return boolean
      */
     public static function isParamSet($param): bool
@@ -45,7 +48,8 @@ class PostGlobal{
      *
      * @return void
      */
-    public static function getAllPostVars() {
+    public static function getAllPostVars()
+    {
         return $_POST;
     }
 

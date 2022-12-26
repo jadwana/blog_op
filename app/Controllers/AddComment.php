@@ -6,6 +6,10 @@ use App\services\Session;
 use App\db\DatabaseConnection;
 use App\services\PostGlobal;
 
+/**
+ * AddComment class
+ * To add a new comment after checking
+ */
 class AddComment extends Controller
 {
     /**
@@ -15,8 +19,6 @@ class AddComment extends Controller
      *
      * @return void
      */
-
-
     public function execute(string $post)
     {
         $user_id = Session::get('user_id');

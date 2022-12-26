@@ -4,12 +4,16 @@ namespace App\Controllers;
 use App\Models\Comment;
 use App\db\DatabaseConnection;
 
+/**
+ * UpdateComment class
+ * To update a comment on the one post page
+ */
 class UpdateComment extends Controller
 {
     /**
      * Method to modify a comment
      *
-     * @param int $identifier
+     * @param int        $identifier
      * @param array|null $input
      *
      * @return void

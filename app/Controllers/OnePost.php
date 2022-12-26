@@ -6,7 +6,10 @@ use App\Models\Post;
 use App\Models\Comment;
 use App\db\DatabaseConnection;
 
-
+/**
+ * OnePost class
+ * To display a post on the blog page
+ */
 class OnePost extends Controller
 {
      /**

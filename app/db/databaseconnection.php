@@ -1,6 +1,10 @@
 <?php
 namespace App\db;
 
+/**
+ * DatabaseConnection class
+ * To connect to the data base
+ */
 class DatabaseConnection
 {
 

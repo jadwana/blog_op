@@ -3,6 +3,9 @@ namespace App\Models;
 
 use App\db\DatabaseConnection;
 
+/**
+ * Comment class
+ */
 class Comment
 {
     /**
@@ -191,7 +194,7 @@ class Comment
      * Method to add a new comment
      *
      * @param string $post
-     * @param int $user_id
+     * @param int    $user_id
      * @param string $comment
      *
      * @return boolean
@@ -213,7 +216,7 @@ class Comment
     /**
      * Method to update a comment
      *
-     * @param int $identifier
+     * @param int    $identifier
      * @param string $comment
      *
      * @return boolean

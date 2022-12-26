@@ -6,6 +6,10 @@ use App\services\Session;
 use App\services\PostGlobal;
 use App\db\DatabaseConnection;
 
+/**
+ * AddPost class
+ * To add a new post in the admin part
+ */
 class AddPost extends Controller
 {
     /**

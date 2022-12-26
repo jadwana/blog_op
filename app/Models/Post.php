@@ -4,6 +4,9 @@ namespace App\Models;
 
 use App\db\DatabaseConnection;
 
+/**
+ * Post class
+ */
 class Post
 {
     /**
@@ -128,7 +131,7 @@ class Post
      * @param string $title
      * @param string $content
      * @param string $chapo
-     * @param int $user_id
+     * @param int    $user_id
      *
      * @return boolean
      */
@@ -155,7 +158,7 @@ class Post
     /**
      * Method to update data of a post
      *
-     * @param int $identifier
+     * @param int    $identifier
      * @param string $content
      * @param string $title
      * @param string $chapo

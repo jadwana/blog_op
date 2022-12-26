@@ -5,7 +5,8 @@ namespace App\services;
  * Get class
  * Getsuperglobal handler
  */
-class Get{
+class Get
+{
 
     /**
      * Put the $_GET values
@@ -14,17 +15,19 @@ class Get{
      * @param  $value
      * @return void
      */
-    public static function put($key, $value){
+    public static function put($key, $value)
+    {
         $_GET[$key] = $value;
     }
 
     /**
      * Get the $_GET values
      *
-     * @param [type] $key
+     * @param  [type] $key
      * @return void
      */
-    public static function get($key){
+    public static function get($key)
+    {
         return (isset($_GET[$key]) ? $_GET[$key] : null);
     }
 

@@ -3,6 +3,10 @@ namespace App\Controllers;
 
 use App\services\Session;
 
+/**
+ * Logout class
+ * To logout the user
+ */
 class Logout
 {
     /**

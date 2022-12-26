@@ -26,8 +26,8 @@ class Logon extends Controller
              $username = null;
 
             if (PostGlobal::isParamSet('username') &&  PostGlobal::isParamSet('password')
-            && !empty(trim(PostGlobal::get('username'))) && !empty(PostGlobal::get('password')))
-             {
+                && !empty(trim(PostGlobal::get('username'))) && !empty(PostGlobal::get('password'))
+            ) {
                 $username = htmlspecialchars(trim(PostGlobal::get('username')));
                
                 $userRepository = new User();

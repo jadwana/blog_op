@@ -3,7 +3,11 @@ namespace App\Controllers;
 
 use App\Models\Post;
 use App\db\DatabaseConnection;
-  
+
+/**
+ * PostList class
+ * To display all posts on the blog page
+ */
 class PostList extends Controller
 {
     /**
@@ -21,8 +25,8 @@ class PostList extends Controller
         $this->twig->display(
             'postlist.twig', [
             'posts' => $posts,
-        ]
-    );
+            ]
+        );
     }
 
 

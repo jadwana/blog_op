@@ -4,7 +4,10 @@ namespace App\Controllers;
 use App\Models\Comment;
 use App\db\DatabaseConnection;
 
-
+/**
+ * AdminCommentList class
+ * To manage comments in admin part
+ */
 class AdminCommentsList extends Controller
 {
     /**

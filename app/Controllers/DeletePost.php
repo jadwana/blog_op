@@ -4,6 +4,10 @@ namespace App\Controllers;
 use App\Models\Post;
 use App\db\DatabaseConnection;
 
+/**
+ * DeletePost class
+ * To delete post in the admin part
+ */
 class DeletePost
 {
     /**

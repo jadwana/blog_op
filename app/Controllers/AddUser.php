@@ -6,6 +6,10 @@ use App\services\Session;
 use App\services\PostGlobal;
 use App\db\DatabaseConnection;
 
+/**
+ * AddUser class
+ * Adding a new user after checking
+ */
 class AddUser extends Controller
 {
 
@@ -48,20 +52,20 @@ class AddUser extends Controller
                     throw new \Exception('email déjà existant !');
                 }
 
-                if (strlen(PostGlobal::get('password')) <= 8){
+                if (strlen(PostGlobal::get('password')) <= 8) {
                     throw new \Exception('Mot de passe trop court!');
                 }
                 $passtest = PostGlobal::get('password');
 
-                if (!preg_match("#[0-9]+#",$passtest)) {
+                if (!preg_match("#[0-9]+#", $passtest)) {
                     throw new \Exception('Mot de passe doit contenir au moins 1 chiffre!');
                 }
 
-                if (!preg_match("#[A-Z]+#",$passtest)) {
+                if (!preg_match("#[A-Z]+#", $passtest)) {
                     throw new \Exception('Mot de passe doit contenir au moins 1 majuscule!');
                 }
 
-                if (!preg_match("#[a-z]+#",$passtest)) {
+                if (!preg_match("#[a-z]+#", $passtest)) {
                     throw new \Exception('Mot de passe doit contenir au moins 1 minuscule!');
                 }
                     $pass = password_hash(PostGlobal::get('password'), PASSWORD_DEFAULT);

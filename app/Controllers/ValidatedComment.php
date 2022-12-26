@@ -4,6 +4,10 @@ namespace App\Controllers;
 use App\Models\Comment;
 use App\db\DatabaseConnection;
 
+/**
+ * ValidatedComment class
+ * To validate comment in the admin part
+ */
 class ValidatedComment extends Controller
 {
     /**

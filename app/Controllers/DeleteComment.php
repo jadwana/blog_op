@@ -4,6 +4,10 @@ namespace App\Controllers;
 use App\Models\Comment;
 use App\db\DatabaseConnection;
 
+/**
+ * DeleteComment class
+ * To delete comment in the admin part
+ */
 class DeleteComment
 {
     /**

@@ -4,6 +4,9 @@ namespace App\Models;
 
 use App\db\DatabaseConnection;
 
+/**
+ * User class
+ */
 class User
 {
     /**

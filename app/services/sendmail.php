@@ -6,11 +6,11 @@ use PHPMailer\PHPMailer\PHPMailer;
 require '../../vendor/autoload.php';
 require 'mailConfig.php';
 
-if (null !==PostGlobal::get('firstname') && null !==PostGlobal::get('surname') && null !==PostGlobal::get('email') &&
- null !==PostGlobal::get('object') && null !==PostGlobal::get('message') && null !==PostGlobal::get('surname')
+if (null !==PostGlobal::get('firstname') && null !==PostGlobal::get('surname') && null !==PostGlobal::get('email') 
+    && null !==PostGlobal::get('object') && null !==PostGlobal::get('message') && null !==PostGlobal::get('surname')
     && !empty(PostGlobal::get('firstname')) && !empty(PostGlobal::get('email'))
-    && !empty(PostGlobal::get('object')) && !empty(PostGlobal::get('message')))
- {
+    && !empty(PostGlobal::get('object')) && !empty(PostGlobal::get('message'))
+) {
         $firstname = strip_tags(trim(PostGlobal::get('firstname')));
         $surname = strip_tags(trim(PostGlobal::get('surname')));
         $name = $firstname." ".$surname;
