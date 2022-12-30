@@ -1,6 +1,8 @@
 <?php
 namespace App\db;
 
+use App\services\Env;
+
 /**
  * DatabaseConnection class
  * To connect to the data base
@@ -20,8 +22,8 @@ class DatabaseConnection
     {
         if ($this->database === null) {
             $this->database = new \PDO(
-                "mysql:host=".$_ENV['DB_SERVER'].";dbname=".$_ENV['DB_NAME'].";charset=UTF8",
-                $_ENV['DB_USER'], $_ENV['DB_PASS']
+                "mysql:host=".Env::get('DB_SERVER').";dbname=".Env::get('DB_NAME').";charset=UTF8",
+                Env::get('DB_USER'), Env::get('DB_PASS')
             );
         }
         return $this->database;
