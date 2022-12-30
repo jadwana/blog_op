@@ -55,20 +55,22 @@ If you would like to install this project on your computer, you will first need 
 
 1. Create a file .env in the same folder than index.php and insert your credentials for Database and SMTP :
 
+Database :
 *	DB_HOST=XXX
 *	DB_USER=XXX
 *	DB_PASSWORD=XXX
 *	DB_NAME=XXX
 
-
+SMTP :
 * MAIL_ADD (sending address)
 * MAIL_PASS
 * MAIL_SEND (receiving address)
+
 Remark : it is designed to work with gmail smtp (so smtp host = smtp.gmail.com and smtp port = 587)
 
 2. Install composer if you don't have it
 
-3. Import the supplied MySQL database to your server (blog.sql) with is a prefilled database.
+3. Import the supplied MySQL database to your server (blog.sql) which is a prefilled database.
 
 ## Test the blog
 
