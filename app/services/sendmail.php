@@ -1,6 +1,7 @@
 <?php
 
 use Dotenv\Dotenv;
+use App\services\Env;
 use App\services\PostGlobal;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -26,13 +27,13 @@ if (null !==PostGlobal::get('firstname') && null !==PostGlobal::get('surname') &
         $mail->isSMTP();
         $mail->Host ='smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = $_ENV['MAIL_ADD'];
-        $mail->Password = $_ENV['MAIL_PASS'];
+        $mail->Username = Env::get('MAIL_ADD');
+        $mail->Password = Env::get('MAIL_PASS');
         $mail->SMTP ='tls';
         $mail->Port = 587;
-        $mail->setFrom($_ENV['MAIL_ADD'], $name);
+        $mail->setFrom(Env::get('MAIL_ADD'), $name);
         $mail->addReplyTo(PostGlobal::get('email'));
-        $mail->addAddress($_ENV['MAIL_SEND']);
+        $mail->addAddress(Env::get('MAIL_SEND'));
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
         $mail->Encoding = 'base64';
