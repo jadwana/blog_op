@@ -32,6 +32,7 @@ This interface includes :
     * Autoload
     * PHP CodeSniffer
     * PHP Mailer
+    * PHP dotenv
 
 #### Success criteria
 The website must be responsive & secured. Code quality assessments done via Codacy.
@@ -52,24 +53,24 @@ The website must be responsive & secured. Code quality assessments done via Coda
 ## Set up your environment
 If you would like to install this project on your computer, you will first need to clone or download the repo of this project in a folder of your local server.
 
-1. In the db folder edit the dbConfig.php file with your own credentials for database :
+1. Create a file .env in the same folder than index.php and insert your credentials for Database and SMTP :
 
+Database :
 *	DB_HOST=XXX
 *	DB_USER=XXX
 *	DB_PASSWORD=XXX
 *	DB_NAME=XXX
 
-
-2. In the services folder modify the mailConfigEx.php with your own SMTP values and rename it in mailConfig.php:
-
+SMTP :
 * MAIL_ADD (sending address)
 * MAIL_PASS
 * MAIL_SEND (receiving address)
+
 Remark : it is designed to work with gmail smtp (so smtp host = smtp.gmail.com and smtp port = 587)
 
-3. Install composer if you don't have it
+2. Install composer if you don't have it
 
-4. Import the supplied MySQL database to your server (blog.sql) with is a prefilled database.
+3. Import the supplied MySQL database to your server (blog.sql) which is a prefilled database.
 
 ## Test the blog
 
