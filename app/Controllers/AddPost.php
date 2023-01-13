@@ -21,11 +21,15 @@ class AddPost extends Controller
 
     public function execute()
     {
+        $role = Session::get('role');
         $user_id = Session::get('user_id');
         $content = null;
         $title = null;
         $chapo = null;
 
+        if ($role !='admin') {
+            throw new \Exception('Page résevée à l\'administration !');
+        }
         if (PostGlobal::get('submit')) {
             // We do the checks.
             if (!empty(PostGlobal::get('content')) && !empty(PostGlobal::get('title'))

@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\Post;
+use App\services\Session;
 use App\db\DatabaseConnection;
 
 /**
@@ -21,6 +22,10 @@ class DeletePost
 
     public function execute(string $identifier)
     {
+        $role = Session::get('role');
+        if ($role !='admin') {
+            throw new \Exception('Page résevée à l\'administration !');
+        }
         $postRepository = new Post();
         $postRepository->connection = new DatabaseConnection();
         $success = $postRepository->deletePost($identifier);

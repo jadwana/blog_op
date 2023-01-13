@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\Post;
+use App\services\Session;
 use App\db\DatabaseConnection;
 
 /**
@@ -22,6 +23,10 @@ class UpdatePost extends Controller
 
     public function execute(int $identifier, ?array $input)
     {
+        $role = Session::get('role');
+        if ($role !='admin') {
+            throw new \Exception('Page résevée à l\'administration !');
+        }
         // Submission management if there is an entry.
         if ($input !== null) {
             $title = null;

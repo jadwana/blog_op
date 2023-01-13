@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\Post;
+use App\services\Session;
 use App\db\DatabaseConnection;
 
 /**
@@ -19,6 +20,10 @@ class AdminPostList extends Controller
 
     public function execute()
     {
+        $role = Session::get('role');
+        if ($role !='admin') {
+            throw new \Exception('Page résevée à l\'administration !');
+        }
         $repository = new Post();
         $repository->connection = new DatabaseConnection();
         $posts = $repository->getPosts();

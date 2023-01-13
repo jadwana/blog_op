@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\Comment;
+use App\services\Session;
 use App\db\DatabaseConnection;
 
 /**
@@ -20,6 +21,10 @@ class AdminCommentsList extends Controller
 
     public function execute()
     {
+        $role = Session::get('role');
+        if ($role !='admin') {
+            throw new \Exception('Page résevée à l\'administration !');
+        }
         $repository = new Comment();
         $repository->connection = new DatabaseConnection();
         $comments = $repository->getUnvalidatedComments();

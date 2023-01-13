@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\db\DatabaseConnection;
+use Exception;
 
 /**
  * Post class
@@ -66,7 +67,7 @@ class Post
      * @return Post
      */
 
-
+    
     public function getPost(int $identifier): Post
     {
         $statement = $this->connection->getConnection()->prepare(
@@ -77,18 +78,20 @@ class Post
         );
 
         $statement->execute([$identifier]);
-
         $row = $statement->fetch();
         $post = new Post();
+        if ($post->getIdentifier = $row['post_id']){
             $post->getTitle = $row['title'];
             $post->getFrench_creation_date = $row['french_creation_date'];
             $post->getContent = $row['content'];
             $post->getIdentifier = $row['post_id'];
             $post->getChapo = $row['chapo'];
             $post->getUsername = $row['username'];
-            
-            
         return $post;
+        } else {
+            throw new Exception('Cette page n\'existe pas');
+        }
+            
     }
 
 
